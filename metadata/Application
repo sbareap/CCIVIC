@@ -7,18 +7,24 @@
     },
     "codeClass": null,
     "userConfig": {
-        "actionsRefGroup": 0.16491470066830516,
-        "refsRefGroup": 0.8554432995151728,
+        "actionsRefGroup": 0.033143533393740654,
+        "models": [
+            "Dades"
+        ],
+        "refsRefGroup": 0.12148447777144611,
+        "stores": [
+            "Dades"
+        ],
         "views": [
             "NavView"
         ],
-        "beforeFiltersRefGroup": 0.19315116410143673,
+        "beforeFiltersRefGroup": 0.7551010407041758,
         "designer|launch": "",
-        "routesRefGroup": 0.4089057478122413,
-        "eventsRefGroup": 0.5102128591388464,
+        "routesRefGroup": 0.2052801090758294,
+        "eventsRefGroup": 0.345976633252576,
         "name": "MyApp",
-        "viewport": 0.283275164430961,
-        "functionsRefGroup": 0.9777864899951965
+        "viewport": 0.3793638604693115,
+        "functionsRefGroup": 0.8240511063486338
     },
     "customConfigs": [],
     "designerId": "application",

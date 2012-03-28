@@ -1,0 +1,47 @@
+{
+    "id": "ExtBox1-ext-gen6201",
+    "type": "store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "model": "Dades",
+        "storeId": "Dades",
+        "fields": 0.1845318074338138,
+        "proxy": 0.7698030129540712,
+        "filters": 0.9765979340299964,
+        "grouper": 0.4219485654029995,
+        "sorters": 0.3428663285449147,
+        "eventsRefGroup": 0.9522567191161215,
+        "designer|userClassName": "Dades",
+        "designer|userAlias": "dades",
+        "functionsRefGroup": 0.9131592113990337
+    },
+    "customConfigs": [],
+    "designerId": "8ddb3f87-9d27-43fa-9bc7-ca1728b81de7",
+    "$viewOrder": 0,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen6975",
+            "type": "localstorageproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "readerRefGroup": 0.3889057729393244,
+                "writerRefGroup": 0.20774216973222792,
+                "eventsRefGroup": 0.6775817947927862,
+                "id": "proxyDades",
+                "designer|userClassName": "MyLocalStorageProxy"
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
+}

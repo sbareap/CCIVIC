@@ -42,6 +42,7 @@ Ext.define('MyApp.view.NavView', {
                     },
                     {
                         xtype: 'textfield',
+                        height: 21,
                         id: 'nom',
                         itemId: 'Nom',
                         label: '',
@@ -131,10 +132,27 @@ Ext.define('MyApp.view.NavView', {
                     },
                     {
                         xtype: 'textfield'
+                    },
+                    {
+                        xtype: 'button',
+                        id: 'grabar',
+                        itemId: 'Grabar',
+                        text: 'Grabar'
                     }
                 ]
             }
+        ],
+        listeners: [
+            {
+                fn: 'onGrabarTap',
+                event: 'tap',
+                delegate: '#grabar'
+            }
         ]
+    },
+
+    onGrabarTap: function(button, e, options) {
+
     }
 
 });
