@@ -131,7 +131,9 @@ Ext.define('MyApp.view.NavView', {
                         itemId: 'lbContacte'
                     },
                     {
-                        xtype: 'textfield'
+                        xtype: 'textfield',
+                        id: 'contacte',
+                        itemId: 'Contacte'
                     },
                     {
                         xtype: 'button',
@@ -152,6 +154,32 @@ Ext.define('MyApp.view.NavView', {
     },
 
     onGrabarTap: function(button, e, options) {
+        //console.log('Pulsado boton...');
+
+        var store = Ext.data.StoreManager.lookup('dades');
+
+        var vEmail, vTel;
+
+        if (Ext.ComponentQuery.query('#tipusContacte')[0].getValue() == 'EMAIL'){
+            vEmail = Ext.ComponentQuery.query('#contacte')[0].getValue();
+        }
+
+        if (Ext.ComponentQuery.query('#tipusContacte')[0].getValue() == 'TELEFON'){
+            vTel = Ext.ComponentQuery.query('#contacte')[0].getValue();
+        }
+
+        console.log(cognoms);
+
+        //myStore.add({some: 'data2'}, {some: 'other data2'});
+        store.add({nom: Ext.ComponentQuery.query('#nom')[0].getValue(), 
+            cognoms: Ext.ComponentQuery.query('#cognoms')[0].getValue(),
+            tipusDoc: Ext.ComponentQuery.query('#tipusDoc')[0].getValue(),
+            numDoc: Ext.ComponentQuery.query('#numDoc')[0].getValue(),
+            tipusContacte: Ext.ComponentQuery.query('#tipusContacte')[0].getValue(),
+            email: vEmail,
+            telefon: vTelefon
+        });
+        store.sync();
 
     }
 

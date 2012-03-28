@@ -23,7 +23,7 @@ Ext.define('MyApp.store.Dades', {
     config: {
         autoLoad: true,
         model: 'MyApp.model.Dades',
-        storeId: 'Dades',
+        storeId: 'dades',
         proxy: {
             type: 'localstorage',
             id: 'proxyDades'

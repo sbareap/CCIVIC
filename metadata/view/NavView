@@ -8,11 +8,11 @@
     "codeClass": null,
     "userConfig": {
         "designer|initialView": true,
-        "eventsRefGroup": 0.6714549455791712,
-        "navigationBarRefGroup": 0.07918433053418994,
+        "eventsRefGroup": 0.759214791469276,
+        "navigationBarRefGroup": 0.12588072172366083,
         "designer|userClassName": "NavView",
         "designer|userAlias": "navview",
-        "functionsRefGroup": 0.9205430527217686
+        "functionsRefGroup": 0.5834466340020299
     },
     "customConfigs": [],
     "designerId": "b8648ff3-8a96-4078-a141-613cc599da7d",
@@ -30,9 +30,9 @@
             "userConfig": {
                 "id": "navbar",
                 "itemId": "NavBar",
-                "eventsRefGroup": 0.760567300952971,
+                "eventsRefGroup": 0.07495550415478647,
                 "designer|userClassName": "MyNavigationBar",
-                "functionsRefGroup": 0.3502642409875989,
+                "functionsRefGroup": 0.6752175805158913,
                 "title": "Bústia Ciutadana"
             },
             "customConfigs": [],
@@ -49,9 +49,9 @@
             "userConfig": {
                 "id": "dadespersonals",
                 "itemId": "DadesPersonals",
-                "eventsRefGroup": 0.6653530502226204,
+                "eventsRefGroup": 0.9113752534613013,
                 "designer|userClassName": "MyFormPanel",
-                "functionsRefGroup": 0.4839285456109792,
+                "functionsRefGroup": 0.9923944505862892,
                 "title": "Dades personals"
             },
             "customConfigs": [],
@@ -74,9 +74,9 @@
                         "itemId": "lbNom",
                         "tpl": null,
                         "ui": "",
-                        "eventsRefGroup": 0.13152009434998035,
+                        "eventsRefGroup": 0.6588929207064211,
                         "designer|userClassName": "MyLabel",
-                        "functionsRefGroup": 0.822772970655933
+                        "functionsRefGroup": 0.9615185456350446
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -93,12 +93,12 @@
                         "height": 21,
                         "id": "nom",
                         "itemId": "Nom",
-                        "eventsRefGroup": 0.5940580759197474,
+                        "eventsRefGroup": 0.7959970312658697,
                         "label": "",
                         "name": "",
                         "required": true,
                         "designer|userClassName": "MyTextField",
-                        "functionsRefGroup": 0.12877123127691448
+                        "functionsRefGroup": 0.9740258385427296
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -115,9 +115,9 @@
                         "html": "Cognoms (*)",
                         "id": "lbcognoms",
                         "itemId": "lbCognoms",
-                        "eventsRefGroup": 0.21888485015369952,
+                        "eventsRefGroup": 0.24396808980964124,
                         "designer|userClassName": "MyLabel1",
-                        "functionsRefGroup": 0.12389778415672481
+                        "functionsRefGroup": 0.42330406815744936
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -133,12 +133,12 @@
                     "userConfig": {
                         "id": "cognoms",
                         "itemId": "Cognoms",
-                        "eventsRefGroup": 0.17543694120831788,
+                        "eventsRefGroup": 0.8092878747265786,
                         "label": null,
                         "labelWidth": 90,
                         "required": true,
                         "designer|userClassName": "MyTextField1",
-                        "functionsRefGroup": 0.021071202121675014
+                        "functionsRefGroup": 0.45332895359024405
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -155,9 +155,9 @@
                         "html": "Tipus document (*)",
                         "id": "lbtipusdocument",
                         "itemId": "lbTipusDocument",
-                        "eventsRefGroup": 0.5290632664691657,
+                        "eventsRefGroup": 0.7827968848869205,
                         "designer|userClassName": "MyLabel2",
-                        "functionsRefGroup": 0.8260633614845574
+                        "functionsRefGroup": 0.5759442560374737
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -171,13 +171,13 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "eventsRefGroup": 0.8503581834957004,
+                        "eventsRefGroup": 0.858001078478992,
                         "label": "",
                         "name": "tipusDocument",
                         "required": true,
                         "options": "[{text:'NIF', value:'NIF'},\n{text:'NIE', value:'NIE'}]",
                         "designer|userClassName": "MySelectField",
-                        "functionsRefGroup": 0.8861720601562411
+                        "functionsRefGroup": 0.5919219879433513
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -194,9 +194,9 @@
                         "html": "Núm. document (*)",
                         "id": "lbNumDoc",
                         "itemId": "lbNumDoc",
-                        "eventsRefGroup": 0.8705654919613153,
+                        "eventsRefGroup": 0.42456257226876915,
                         "designer|userClassName": "MyLabel3",
-                        "functionsRefGroup": 0.9490775230806321
+                        "functionsRefGroup": 0.7824569414369762
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -213,11 +213,11 @@
                         "height": null,
                         "id": "numdocument",
                         "itemId": "NumDocument",
-                        "eventsRefGroup": 0.2626276796218008,
+                        "eventsRefGroup": 0.5302971515338868,
                         "label": null,
                         "required": true,
                         "designer|userClassName": "MyTextField2",
-                        "functionsRefGroup": 0.3483039669226855
+                        "functionsRefGroup": 0.5165993664413691
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -234,9 +234,9 @@
                         "html": "Enviar la resposta a...",
                         "id": "lbresp",
                         "itemId": "lbResp",
-                        "eventsRefGroup": 0.5777737919706851,
+                        "eventsRefGroup": 0.3351547005586326,
                         "designer|userClassName": "MyLabel4",
-                        "functionsRefGroup": 0.6900054309517145
+                        "functionsRefGroup": 0.5126833415124565
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -252,11 +252,11 @@
                     "userConfig": {
                         "id": "resposta",
                         "itemId": "Resposta",
-                        "eventsRefGroup": 0.5927048353478312,
+                        "eventsRefGroup": 0.5423829418141395,
                         "label": null,
                         "options": "[{text:'E-mail', value:'EMAIL'},\n{text:'Telèfon', value:'TEL'},\n{text:'Sense Resposta', value:'SR'}]",
                         "designer|userClassName": "MySelectField1",
-                        "functionsRefGroup": 0.4935746898408979
+                        "functionsRefGroup": 0.4777717078104615
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -276,9 +276,9 @@
                         "html": "Contacte",
                         "id": "lbcontacte",
                         "itemId": "lbContacte",
-                        "eventsRefGroup": 0.3939319245982915,
+                        "eventsRefGroup": 0.5937107647769153,
                         "designer|userClassName": "MyLabel5",
-                        "functionsRefGroup": 0.599599389359355
+                        "functionsRefGroup": 0.3694606521166861
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -292,10 +292,12 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "eventsRefGroup": 0.8221724980976433,
+                        "id": "contacte",
+                        "itemId": "Contacte",
+                        "eventsRefGroup": 0.28353458154015243,
                         "label": null,
                         "designer|userClassName": "MyTextField3",
-                        "functionsRefGroup": 0.19560266472399235
+                        "functionsRefGroup": 0.31610654830001295
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -311,9 +313,10 @@
                     "userConfig": {
                         "id": "grabar",
                         "itemId": "Grabar",
-                        "eventsRefGroup": 0.5983408011961728,
+                        "eventsRefGroup": 0.1243252782151103,
                         "text": "Grabar",
-                        "designer|userClassName": "MyButton"
+                        "designer|userClassName": "MyButton",
+                        "functionsRefGroup": 0.9285805155523121
                     },
                     "customConfigs": [],
                     "expanded": true,
@@ -328,7 +331,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onGrabarTap",
-                                "implHandler": "",
+                                "implHandler": "//console.log('Pulsado boton...');\n\nvar store = Ext.data.StoreManager.lookup('dades');\n\nvar vEmail, vTel;\n\nif (Ext.ComponentQuery.query('#tipusContacte')[0].getValue() == 'EMAIL'){\n    vEmail = Ext.ComponentQuery.query('#contacte')[0].getValue();\n}\n\nif (Ext.ComponentQuery.query('#tipusContacte')[0].getValue() == 'TELEFON'){\n    vTel = Ext.ComponentQuery.query('#contacte')[0].getValue();\n}\n\nconsole.log(cognoms);\n\n//myStore.add({some: 'data2'}, {some: 'other data2'});\nstore.add({nom: Ext.ComponentQuery.query('#nom')[0].getValue(), \n    cognoms: Ext.ComponentQuery.query('#cognoms')[0].getValue(),\n    tipusDoc: Ext.ComponentQuery.query('#tipusDoc')[0].getValue(),\n    numDoc: Ext.ComponentQuery.query('#numDoc')[0].getValue(),\n    tipusContacte: Ext.ComponentQuery.query('#tipusContacte')[0].getValue(),\n    email: vEmail,\n    telefon: vTelefon\n});\nstore.sync();\n",
                                 "name": "tap",
                                 "designer|userClassName": "onGrabarTap"
                             },
