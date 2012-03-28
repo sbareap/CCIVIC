@@ -1,0 +1,27 @@
+{
+    "id": "ExtBox1-ext-gen2158",
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "actionsRefGroup": 0.16491470066830516,
+        "refsRefGroup": 0.8554432995151728,
+        "views": [
+            "NavView"
+        ],
+        "beforeFiltersRefGroup": 0.19315116410143673,
+        "designer|launch": "",
+        "routesRefGroup": 0.4089057478122413,
+        "eventsRefGroup": 0.5102128591388464,
+        "name": "MyApp",
+        "viewport": 0.283275164430961,
+        "functionsRefGroup": 0.9777864899951965
+    },
+    "customConfigs": [],
+    "designerId": "application",
+    "$viewOrder": 0,
+    "expanded": true
+}

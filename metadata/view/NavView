@@ -1,0 +1,303 @@
+{
+    "id": "ExtBox1-ext-gen2287",
+    "type": "navigationview",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|initialView": true,
+        "eventsRefGroup": 0.4498157552443445,
+        "navigationBarRefGroup": 0.8016570121981204,
+        "designer|userClassName": "NavView",
+        "designer|userAlias": "navview",
+        "functionsRefGroup": 0.2164734669495374
+    },
+    "customConfigs": [],
+    "designerId": "b8648ff3-8a96-4078-a141-613cc599da7d",
+    "$viewOrder": 0,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen2663",
+            "type": "navigationbar",
+            "reference": {
+                "name": "navigationBar",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "navbar",
+                "itemId": "NavBar",
+                "eventsRefGroup": 0.5153658627532423,
+                "designer|userClassName": "MyNavigationBar",
+                "functionsRefGroup": 0.24278767802752554,
+                "title": "Bústia Ciutadana"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen3099",
+            "type": "formpanel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "dadespersonals",
+                "itemId": "DadesPersonals",
+                "eventsRefGroup": 0.6640067561529577,
+                "designer|userClassName": "MyFormPanel",
+                "functionsRefGroup": 0.28083123615942895,
+                "title": "Dades personals"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen4856",
+                    "type": "label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            ""
+                        ],
+                        "html": "Nom (*)",
+                        "id": "lbnom",
+                        "itemId": "lbNom",
+                        "tpl": null,
+                        "ui": "",
+                        "eventsRefGroup": 0.770778329577297,
+                        "designer|userClassName": "MyLabel",
+                        "functionsRefGroup": 0.7142783685121685
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen3636",
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "nom",
+                        "itemId": "Nom",
+                        "eventsRefGroup": 0.6471075105946511,
+                        "label": "",
+                        "name": "",
+                        "required": true,
+                        "designer|userClassName": "MyTextField",
+                        "functionsRefGroup": 0.18486951384693384
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen5891",
+                    "type": "label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "html": "Cognoms (*)",
+                        "id": "lbcognoms",
+                        "itemId": "lbCognoms",
+                        "eventsRefGroup": 0.14037711615674198,
+                        "designer|userClassName": "MyLabel1",
+                        "functionsRefGroup": 0.42697852896526456
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen4049",
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "cognoms",
+                        "itemId": "Cognoms",
+                        "eventsRefGroup": 0.5641512505244464,
+                        "label": null,
+                        "labelWidth": 90,
+                        "required": true,
+                        "designer|userClassName": "MyTextField1",
+                        "functionsRefGroup": 0.8797846967354417
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen7602",
+                    "type": "label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "html": "Tipus document (*)",
+                        "id": "lbtipusdocument",
+                        "itemId": "lbTipusDocument",
+                        "eventsRefGroup": 0.11310509336180985,
+                        "designer|userClassName": "MyLabel2",
+                        "functionsRefGroup": 0.11171179381199181
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen7124",
+                    "type": "selectfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "eventsRefGroup": 0.912144269561395,
+                        "label": "",
+                        "name": "tipusDocument",
+                        "required": true,
+                        "options": "[{text:'NIF', value:'NIF'},\n{text:'NIE', value:'NIE'}]",
+                        "designer|userClassName": "MySelectField",
+                        "functionsRefGroup": 0.9670314656104892
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen8688",
+                    "type": "label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "html": "Núm. document (*)",
+                        "id": "lbNumDoc",
+                        "itemId": "lbNumDoc",
+                        "eventsRefGroup": 0.02134404215030372,
+                        "designer|userClassName": "MyLabel3",
+                        "functionsRefGroup": 0.4716897674370557
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen8441",
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": null,
+                        "id": "numdocument",
+                        "itemId": "NumDocument",
+                        "eventsRefGroup": 0.8008387992158532,
+                        "label": null,
+                        "required": true,
+                        "designer|userClassName": "MyTextField2",
+                        "functionsRefGroup": 0.7126292760949582
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen9974",
+                    "type": "label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "html": "Enviar la resposta a...",
+                        "id": "lbresp",
+                        "itemId": "lbResp",
+                        "eventsRefGroup": 0.5259499552194029,
+                        "designer|userClassName": "MyLabel4",
+                        "functionsRefGroup": 0.8359241615980864
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen12107",
+                    "type": "selectfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "resposta",
+                        "itemId": "Resposta",
+                        "eventsRefGroup": 0.14144228654913604,
+                        "label": null,
+                        "options": "[{text:'E-mail', value:'EMAIL'},\n{text:'Telèfon', value:'TEL'},\n{text:'Sense Resposta', value:'SR'}]",
+                        "designer|userClassName": "MySelectField1",
+                        "functionsRefGroup": 0.7187107680365443
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen3758",
+                    "type": "label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            ""
+                        ],
+                        "html": "Contacte",
+                        "id": "lbcontacte",
+                        "itemId": "lbContacte",
+                        "eventsRefGroup": 0.44439284689724445,
+                        "designer|userClassName": "MyLabel5"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen2856",
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "eventsRefGroup": 0.8913670296315104,
+                        "label": null,
+                        "designer|userClassName": "MyTextField3"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        }
+    ]
+}

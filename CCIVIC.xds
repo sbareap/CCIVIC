@@ -1,0 +1,39 @@
+{
+    "name": "CCIVIC",
+    "settings": {
+        "urlPrefix": "http://localhost/ccivic/",
+        "directAPI": "",
+        "spacesToIndent": 4,
+        "codeGenFormat": "Class",
+        "exportPath": "C:/xampp/htdocs/ccivic/",
+        "extPath": "http://extjs.cachefly.net/touch/sencha-touch-2.0.0/",
+        "senchaIoKey": "",
+        "senchaIoPath": "http://extjs.cachefly.net/designer/IO/",
+        "lineEnding": "CRLF",
+        "instantiateStore": true,
+        "genTimestamps": false,
+        "saveOnDeploy": false,
+        "appName": "MyApp",
+        "mapsAPI": "http://maps.google.com/maps/api/js?sensor=true",
+        "cssPath": ""
+    },
+    "xdsVersion": "2.0.0",
+    "xdsBuild": "341",
+    "framework": "touch20",
+    "topInstanceFileMap": {
+        "b8648ff3-8a96-4078-a141-613cc599da7d": {
+            "paths": [
+                "metadata/view/NavView",
+                "app/view/override/NavView.js",
+                "app/view/NavView.js"
+            ],
+            "className": "NavView"
+        }
+    },
+    "expandedState": {
+        "data": true,
+        "model": true,
+        "component": true,
+        "controller": true
+    }
+}
