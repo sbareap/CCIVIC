@@ -8,11 +8,11 @@
     "codeClass": null,
     "userConfig": {
         "designer|initialView": true,
-        "eventsRefGroup": 0.759214791469276,
-        "navigationBarRefGroup": 0.12588072172366083,
+        "eventsRefGroup": 0.002395224990323186,
+        "navigationBarRefGroup": 0.7376112672500312,
         "designer|userClassName": "NavView",
         "designer|userAlias": "navview",
-        "functionsRefGroup": 0.5834466340020299
+        "functionsRefGroup": 0.40561537677422166
     },
     "customConfigs": [],
     "designerId": "b8648ff3-8a96-4078-a141-613cc599da7d",
@@ -28,301 +28,62 @@
             },
             "codeClass": null,
             "userConfig": {
-                "id": "navbar",
+                "id": "navBar",
                 "itemId": "NavBar",
-                "eventsRefGroup": 0.07495550415478647,
+                "eventsRefGroup": 0.30448119854554534,
                 "designer|userClassName": "MyNavigationBar",
-                "functionsRefGroup": 0.6752175805158913,
-                "title": "Bústia Ciutadana"
+                "functionsRefGroup": 0.6794564593583345,
+                "title": null
             },
             "customConfigs": [],
             "expanded": true
         },
         {
-            "id": "ExtBox1-ext-gen3099",
-            "type": "formpanel",
+            "id": "ExtBox1-ext-gen5921",
+            "type": "container",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "id": "dadespersonals",
-                "itemId": "DadesPersonals",
-                "eventsRefGroup": 0.9113752534613013,
-                "designer|userClassName": "MyFormPanel",
-                "functionsRefGroup": 0.9923944505862892,
-                "title": "Dades personals"
+                "itemId": "listContainer",
+                "ui": "",
+                "eventsRefGroup": 0.7087134122848511,
+                "layout": "fit",
+                "designer|userClassName": "MyContainer",
+                "functionsRefGroup": 0.5676033855415881
             },
             "customConfigs": [],
             "expanded": true,
             "cn": [
                 {
-                    "id": "ExtBox1-ext-gen4856",
-                    "type": "label",
+                    "id": "ExtBox1-ext-gen14781",
+                    "type": "list",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "cls": [
-                            ""
-                        ],
-                        "html": "Nom (*)",
-                        "id": "lbnom",
-                        "itemId": "lbNom",
-                        "tpl": null,
-                        "ui": "",
-                        "eventsRefGroup": 0.6588929207064211,
-                        "designer|userClassName": "MyLabel",
-                        "functionsRefGroup": 0.9615185456350446
+                        "cls": null,
+                        "itemId": "prefList",
+                        "ui": "round",
+                        "eventsRefGroup": 0.1264632693491876,
+                        "itemTpl": "<div>{CodiPref}:  {ValorPref}</div>",
+                        "store": "PrefStore",
+                        "grouped": false,
+                        "indexBar": 0.01134217157959938,
+                        "onItemDisclosure": true,
+                        "pluginsRefGroup": 0.5733994136098772,
+                        "designer|userClassName": "MyList",
+                        "functionsRefGroup": 0.13022109982557595
                     },
                     "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen3636",
-                    "type": "textfield",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "height": 21,
-                        "id": "nom",
-                        "itemId": "Nom",
-                        "eventsRefGroup": 0.7959970312658697,
-                        "label": "",
-                        "name": "",
-                        "required": true,
-                        "designer|userClassName": "MyTextField",
-                        "functionsRefGroup": 0.9740258385427296
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen5891",
-                    "type": "label",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "html": "Cognoms (*)",
-                        "id": "lbcognoms",
-                        "itemId": "lbCognoms",
-                        "eventsRefGroup": 0.24396808980964124,
-                        "designer|userClassName": "MyLabel1",
-                        "functionsRefGroup": 0.42330406815744936
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen4049",
-                    "type": "textfield",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "id": "cognoms",
-                        "itemId": "Cognoms",
-                        "eventsRefGroup": 0.8092878747265786,
-                        "label": null,
-                        "labelWidth": 90,
-                        "required": true,
-                        "designer|userClassName": "MyTextField1",
-                        "functionsRefGroup": 0.45332895359024405
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen7602",
-                    "type": "label",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "html": "Tipus document (*)",
-                        "id": "lbtipusdocument",
-                        "itemId": "lbTipusDocument",
-                        "eventsRefGroup": 0.7827968848869205,
-                        "designer|userClassName": "MyLabel2",
-                        "functionsRefGroup": 0.5759442560374737
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen7124",
-                    "type": "selectfield",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "eventsRefGroup": 0.858001078478992,
-                        "label": "",
-                        "name": "tipusDocument",
-                        "required": true,
-                        "options": "[{text:'NIF', value:'NIF'},\n{text:'NIE', value:'NIE'}]",
-                        "designer|userClassName": "MySelectField",
-                        "functionsRefGroup": 0.5919219879433513
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen8688",
-                    "type": "label",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "html": "Núm. document (*)",
-                        "id": "lbNumDoc",
-                        "itemId": "lbNumDoc",
-                        "eventsRefGroup": 0.42456257226876915,
-                        "designer|userClassName": "MyLabel3",
-                        "functionsRefGroup": 0.7824569414369762
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen8441",
-                    "type": "textfield",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "height": null,
-                        "id": "numdocument",
-                        "itemId": "NumDocument",
-                        "eventsRefGroup": 0.5302971515338868,
-                        "label": null,
-                        "required": true,
-                        "designer|userClassName": "MyTextField2",
-                        "functionsRefGroup": 0.5165993664413691
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen9974",
-                    "type": "label",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "html": "Enviar la resposta a...",
-                        "id": "lbresp",
-                        "itemId": "lbResp",
-                        "eventsRefGroup": 0.3351547005586326,
-                        "designer|userClassName": "MyLabel4",
-                        "functionsRefGroup": 0.5126833415124565
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen12107",
-                    "type": "selectfield",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "id": "resposta",
-                        "itemId": "Resposta",
-                        "eventsRefGroup": 0.5423829418141395,
-                        "label": null,
-                        "options": "[{text:'E-mail', value:'EMAIL'},\n{text:'Telèfon', value:'TEL'},\n{text:'Sense Resposta', value:'SR'}]",
-                        "designer|userClassName": "MySelectField1",
-                        "functionsRefGroup": 0.4777717078104615
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen3758",
-                    "type": "label",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "cls": [
-                            ""
-                        ],
-                        "html": "Contacte",
-                        "id": "lbcontacte",
-                        "itemId": "lbContacte",
-                        "eventsRefGroup": 0.5937107647769153,
-                        "designer|userClassName": "MyLabel5",
-                        "functionsRefGroup": 0.3694606521166861
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen2856",
-                    "type": "textfield",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "id": "contacte",
-                        "itemId": "Contacte",
-                        "eventsRefGroup": 0.28353458154015243,
-                        "label": null,
-                        "designer|userClassName": "MyTextField3",
-                        "functionsRefGroup": 0.31610654830001295
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen2753",
-                    "type": "button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "id": "grabar",
-                        "itemId": "Grabar",
-                        "eventsRefGroup": 0.1243252782151103,
-                        "text": "Grabar",
-                        "designer|userClassName": "MyButton",
-                        "functionsRefGroup": 0.9285805155523121
-                    },
-                    "customConfigs": [],
-                    "expanded": true,
+                    "expanded": false,
                     "cn": [
                         {
-                            "id": "ExtBox1-ext-gen7257",
+                            "id": "ExtBox1-ext-gen4332",
                             "type": "basiceventbinding",
                             "reference": {
                                 "name": "listeners",
@@ -330,10 +91,49 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "fn": "onGrabarTap",
-                                "implHandler": "//console.log('Pulsado boton...');\n\nvar store = Ext.data.StoreManager.lookup('dades');\n\nvar vEmail, vTel;\n\nif (Ext.ComponentQuery.query('#tipusContacte')[0].getValue() == 'EMAIL'){\n    vEmail = Ext.ComponentQuery.query('#contacte')[0].getValue();\n}\n\nif (Ext.ComponentQuery.query('#tipusContacte')[0].getValue() == 'TELEFON'){\n    vTel = Ext.ComponentQuery.query('#contacte')[0].getValue();\n}\n\nconsole.log(cognoms);\n\n//myStore.add({some: 'data2'}, {some: 'other data2'});\nstore.add({nom: Ext.ComponentQuery.query('#nom')[0].getValue(), \n    cognoms: Ext.ComponentQuery.query('#cognoms')[0].getValue(),\n    tipusDoc: Ext.ComponentQuery.query('#tipusDoc')[0].getValue(),\n    numDoc: Ext.ComponentQuery.query('#numDoc')[0].getValue(),\n    tipusContacte: Ext.ComponentQuery.query('#tipusContacte')[0].getValue(),\n    email: vEmail,\n    telefon: vTelefon\n});\nstore.sync();\n",
+                                "fn": "onPrefListItemTap",
+                                "implHandler": "Ext.Msg.prompt('Dades personals', record.get('CodiPref')+':', function(btn,text) {    \n    if (btn == 'ok'){        \n        record.set('ValorPref', text);                \n    }       \n});\n\n",
+                                "name": "itemtap",
+                                "designer|userClassName": "onPrefListItemTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen6568",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "bottom",
+                        "id": "btnGrabar",
+                        "itemId": "BtnGrabar",
+                        "eventsRefGroup": 0.34827787592075765,
+                        "text": "Grabar",
+                        "designer|userClassName": "MyButton",
+                        "functionsRefGroup": 0.8525609287898988
+                    },
+                    "customConfigs": [],
+                    "expanded": false,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen6980",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onBtnGrabarTap",
+                                "implHandler": "var store = Ext.data.StoreManager.lookup('PrefStore');\nstore.sync();",
                                 "name": "tap",
-                                "designer|userClassName": "onGrabarTap"
+                                "designer|userClassName": "onBtnGrabarTap"
                             },
                             "customConfigs": [],
                             "expanded": true
@@ -341,6 +141,23 @@
                     ]
                 }
             ]
+        },
+        {
+            "id": "ExtBox1-ext-gen2701",
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onNavigationviewShow",
+                "implHandler": "var store = Ext.data.StoreManager.lookup('PrefStore');\n\nif (store.getCount() === 0){\n    store.add(\n    {CodiPref: 'Nom', ValorPref: ''},\n    {CodiPref: 'Cognoms', ValorPref: ''},\n    {CodiPref: 'Tipus de document', ValorPref: ''},\n    {CodiPref: 'Número de document', ValorPref: ''},\n    {CodiPref: 'Enviar resposta a...', ValorPref: ''},\n    {CodiPref: 'Mòbil', ValorPref: ''},\n    {CodiPref: 'Adreça electrònica', ValorPref: ''});\n}",
+                "name": "show",
+                "designer|userClassName": "onNavigationviewShow"
+            },
+            "customConfigs": [],
+            "expanded": true
         }
     ]
 }

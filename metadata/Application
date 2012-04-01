@@ -7,24 +7,24 @@
     },
     "codeClass": null,
     "userConfig": {
-        "actionsRefGroup": 0.490182688459754,
+        "actionsRefGroup": 0.6116318188142031,
         "models": [
-            "Dades"
+            "Preferencies"
         ],
-        "refsRefGroup": 0.731198942521587,
+        "refsRefGroup": 0.6767363103572279,
         "stores": [
-            "Dades"
+            "prefStore"
         ],
         "views": [
             "NavView"
         ],
-        "beforeFiltersRefGroup": 0.703627758892253,
+        "beforeFiltersRefGroup": 0.041431377874687314,
         "designer|launch": "",
-        "routesRefGroup": 0.502164765028283,
-        "eventsRefGroup": 0.9255605868529528,
-        "name": "MyApp",
-        "viewport": 0.5197067358531058,
-        "functionsRefGroup": 0.0014281529001891613
+        "routesRefGroup": 0.7387978860642761,
+        "eventsRefGroup": 0.08908712584525347,
+        "name": "CCIVIC",
+        "viewport": 0.7337826241273433,
+        "functionsRefGroup": 0.2317505006212741
     },
     "customConfigs": [],
     "designerId": "application",

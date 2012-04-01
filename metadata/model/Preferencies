@@ -1,0 +1,57 @@
+{
+    "id": "ExtBox1-ext-gen15965",
+    "type": "datamodel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "associations": 0.28624724713154137,
+        "fields": 0.1708596176467836,
+        "proxy": 0.6966231134720147,
+        "validations": 0.23195510962978005,
+        "designer|userClassName": "Preferencies",
+        "functionsRefGroup": 0.9816033244132996
+    },
+    "customConfigs": [],
+    "designerId": "647c96a2-891b-4db1-9873-555e43774371",
+    "$viewOrder": 0,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen5931",
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "convert": 0.9086221402976662,
+                "name": "CodiPref",
+                "designer|userClassName": "MyField7",
+                "functionsRefGroup": 0.9223609648179263
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen7853",
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "convert": 0.3265644866041839,
+                "name": "ValorPref",
+                "designer|userClassName": "MyField8",
+                "functionsRefGroup": 0.673210977576673
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
+}

@@ -13,132 +13,40 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('MyApp.view.NavView', {
+Ext.define('CCIVIC.view.NavView', {
     extend: 'Ext.navigation.View',
     alias: 'widget.navview',
 
     config: {
         navigationBar: {
-            id: 'navbar',
-            itemId: 'NavBar',
-            title: 'Bústia Ciutadana'
+            id: 'navBar',
+            itemId: 'NavBar'
         },
         items: [
             {
-                xtype: 'formpanel',
-                id: 'dadespersonals',
-                itemId: 'DadesPersonals',
-                title: 'Dades personals',
+                xtype: 'container',
+                itemId: 'listContainer',
+                ui: '',
+                layout: {
+                    type: 'fit'
+                },
                 items: [
                     {
-                        xtype: 'label',
-                        cls: [
-                            ''
+                        xtype: 'list',
+                        itemId: 'prefList',
+                        ui: 'round',
+                        itemTpl: [
+                            '<div>{CodiPref}:  {ValorPref}</div>'
                         ],
-                        html: 'Nom (*)',
-                        id: 'lbnom',
-                        itemId: 'lbNom',
-                        ui: ''
-                    },
-                    {
-                        xtype: 'textfield',
-                        height: 21,
-                        id: 'nom',
-                        itemId: 'Nom',
-                        label: '',
-                        name: '',
-                        required: true
-                    },
-                    {
-                        xtype: 'label',
-                        html: 'Cognoms (*)',
-                        id: 'lbcognoms',
-                        itemId: 'lbCognoms'
-                    },
-                    {
-                        xtype: 'textfield',
-                        id: 'cognoms',
-                        itemId: 'Cognoms',
-                        labelWidth: 90,
-                        required: true
-                    },
-                    {
-                        xtype: 'label',
-                        html: 'Tipus document (*)',
-                        id: 'lbtipusdocument',
-                        itemId: 'lbTipusDocument'
-                    },
-                    {
-                        xtype: 'selectfield',
-                        label: '',
-                        name: 'tipusDocument',
-                        required: true,
-                        options: [
-                            {
-                                text: 'NIF',
-                                value: 'NIF'
-                            },
-                            {
-                                text: 'NIE',
-                                value: 'NIE'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'label',
-                        html: 'Núm. document (*)',
-                        id: 'lbNumDoc',
-                        itemId: 'lbNumDoc'
-                    },
-                    {
-                        xtype: 'textfield',
-                        id: 'numdocument',
-                        itemId: 'NumDocument',
-                        required: true
-                    },
-                    {
-                        xtype: 'label',
-                        html: 'Enviar la resposta a...',
-                        id: 'lbresp',
-                        itemId: 'lbResp'
-                    },
-                    {
-                        xtype: 'selectfield',
-                        id: 'resposta',
-                        itemId: 'Resposta',
-                        options: [
-                            {
-                                text: 'E-mail',
-                                value: 'EMAIL'
-                            },
-                            {
-                                text: 'Telèfon',
-                                value: 'TEL'
-                            },
-                            {
-                                text: 'Sense Resposta',
-                                value: 'SR'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'label',
-                        cls: [
-                            ''
-                        ],
-                        html: 'Contacte',
-                        id: 'lbcontacte',
-                        itemId: 'lbContacte'
-                    },
-                    {
-                        xtype: 'textfield',
-                        id: 'contacte',
-                        itemId: 'Contacte'
+                        store: 'PrefStore',
+                        grouped: false,
+                        onItemDisclosure: true
                     },
                     {
                         xtype: 'button',
-                        id: 'grabar',
-                        itemId: 'Grabar',
+                        docked: 'bottom',
+                        id: 'btnGrabar',
+                        itemId: 'BtnGrabar',
                         text: 'Grabar'
                     }
                 ]
@@ -146,41 +54,50 @@ Ext.define('MyApp.view.NavView', {
         ],
         listeners: [
             {
-                fn: 'onGrabarTap',
+                fn: 'onPrefListItemTap',
+                event: 'itemtap',
+                delegate: '#prefList'
+            },
+            {
+                fn: 'onBtnGrabarTap',
                 event: 'tap',
-                delegate: '#grabar'
+                delegate: '#btnGrabar'
+            },
+            {
+                fn: 'onNavigationviewShow',
+                event: 'show'
             }
         ]
     },
 
-    onGrabarTap: function(button, e, options) {
-        //console.log('Pulsado boton...');
-
-        var store = Ext.data.StoreManager.lookup('dades');
-
-        var vEmail, vTel;
-
-        if (Ext.ComponentQuery.query('#tipusContacte')[0].getValue() == 'EMAIL'){
-            vEmail = Ext.ComponentQuery.query('#contacte')[0].getValue();
-        }
-
-        if (Ext.ComponentQuery.query('#tipusContacte')[0].getValue() == 'TELEFON'){
-            vTel = Ext.ComponentQuery.query('#contacte')[0].getValue();
-        }
-
-        console.log(cognoms);
-
-        //myStore.add({some: 'data2'}, {some: 'other data2'});
-        store.add({nom: Ext.ComponentQuery.query('#nom')[0].getValue(), 
-            cognoms: Ext.ComponentQuery.query('#cognoms')[0].getValue(),
-            tipusDoc: Ext.ComponentQuery.query('#tipusDoc')[0].getValue(),
-            numDoc: Ext.ComponentQuery.query('#numDoc')[0].getValue(),
-            tipusContacte: Ext.ComponentQuery.query('#tipusContacte')[0].getValue(),
-            email: vEmail,
-            telefon: vTelefon
+    onPrefListItemTap: function(dataview, index, target, record, e, options) {
+        Ext.Msg.prompt('Dades personals', record.get('CodiPref')+':', function(btn,text) {    
+            if (btn == 'ok'){        
+                record.set('ValorPref', text);                
+            }       
         });
-        store.sync();
 
+
+    },
+
+    onBtnGrabarTap: function(button, e, options) {
+        var store = Ext.data.StoreManager.lookup('PrefStore');
+        store.sync();
+    },
+
+    onNavigationviewShow: function(component, options) {
+        var store = Ext.data.StoreManager.lookup('PrefStore');
+
+        if (store.getCount() === 0){
+            store.add(
+            {CodiPref: 'Nom', ValorPref: ''},
+            {CodiPref: 'Cognoms', ValorPref: ''},
+            {CodiPref: 'Tipus de document', ValorPref: ''},
+            {CodiPref: 'Número de document', ValorPref: ''},
+            {CodiPref: 'Enviar resposta a...', ValorPref: ''},
+            {CodiPref: 'Mòbil', ValorPref: ''},
+            {CodiPref: 'Adreça electrònica', ValorPref: ''});
+        }
     }
 
 });

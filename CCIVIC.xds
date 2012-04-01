@@ -29,26 +29,26 @@
             ],
             "className": "NavView"
         },
-        "8ddb3f87-9d27-43fa-9bc7-ca1728b81de7": {
+        "5f1163a2-88f7-46d1-a34b-0cb32651a065": {
             "paths": [
-                "metadata/store/Dades",
-                "app/store/override/Dades.js",
-                "app/store/Dades.js"
+                "metadata/store/prefStore",
+                "app/store/override/prefStore.js",
+                "app/store/prefStore.js"
             ],
-            "className": "Dades"
+            "className": "prefStore"
         },
-        "595b0bc9-ae36-4ece-8e24-8ec72c79961a": {
+        "647c96a2-891b-4db1-9873-555e43774371": {
             "paths": [
-                "metadata/model/Dades",
-                "app/model/override/Dades.js",
-                "app/model/Dades.js"
+                "metadata/model/Preferencies",
+                "app/model/override/Preferencies.js",
+                "app/model/Preferencies.js"
             ],
-            "className": "Dades"
+            "className": "Preferencies"
         }
     },
     "expandedState": {
         "data": true,
-        "model": true,
+        "model": false,
         "component": true,
         "controller": true
     }
