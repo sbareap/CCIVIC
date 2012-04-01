@@ -7,18 +7,35 @@
     },
     "codeClass": null,
     "userConfig": {
-        "associations": 0.28624724713154137,
-        "fields": 0.1708596176467836,
-        "proxy": 0.6966231134720147,
-        "validations": 0.23195510962978005,
+        "associations": 0.3982309477869421,
+        "fields": 0.6826148983091116,
+        "proxy": 0.9067097625229508,
+        "validations": 0.4392260580789298,
         "designer|userClassName": "Preferencies",
-        "functionsRefGroup": 0.9816033244132996
+        "functionsRefGroup": 0.39733894378878176
     },
     "customConfigs": [],
     "designerId": "647c96a2-891b-4db1-9873-555e43774371",
     "$viewOrder": 0,
     "expanded": true,
     "cn": [
+        {
+            "id": "ExtBox1-ext-gen8610",
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "convert": 0.5549918168690056,
+                "name": "IdPref",
+                "type": "string",
+                "designer|userClassName": "MyField2"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
         {
             "id": "ExtBox1-ext-gen5931",
             "type": "datafield",
@@ -28,10 +45,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "convert": 0.9086221402976662,
+                "convert": 0.7013197692576796,
                 "name": "CodiPref",
+                "type": "string",
                 "designer|userClassName": "MyField7",
-                "functionsRefGroup": 0.9223609648179263
+                "functionsRefGroup": 0.09002210642211139
             },
             "customConfigs": [],
             "expanded": true
@@ -45,10 +63,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "convert": 0.3265644866041839,
+                "convert": 0.43027677689678967,
                 "name": "ValorPref",
+                "type": "string",
                 "designer|userClassName": "MyField8",
-                "functionsRefGroup": 0.673210977576673
+                "functionsRefGroup": 0.713172784075141
             },
             "customConfigs": [],
             "expanded": true

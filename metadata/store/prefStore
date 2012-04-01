@@ -11,14 +11,14 @@
         "data": null,
         "model": "Preferencies",
         "storeId": "PrefStore",
-        "fields": 0.2429872048087418,
-        "proxy": 0.24997847736813128,
-        "filters": 0.3606411530636251,
-        "grouper": 0.80885129282251,
-        "sorters": 0.5174286630935967,
-        "eventsRefGroup": 0.3613909655250609,
+        "fields": 0.372621429618448,
+        "proxy": 0.15761649026535451,
+        "filters": 0.3859686846844852,
+        "grouper": 0.30608331598341465,
+        "sorters": 0.24464221973903477,
+        "eventsRefGroup": 0.88560003018938,
         "designer|userClassName": "prefStore",
-        "functionsRefGroup": 0.6362316985614598
+        "functionsRefGroup": 0.5822755144909024
     },
     "customConfigs": [],
     "designerId": "5f1163a2-88f7-46d1-a34b-0cb32651a065",
@@ -34,12 +34,12 @@
             },
             "codeClass": null,
             "userConfig": {
-                "readerRefGroup": 0.23474786430597305,
-                "writerRefGroup": 0.8249278347939253,
-                "eventsRefGroup": 0.6844105734489858,
+                "readerRefGroup": 0.4890855853445828,
+                "writerRefGroup": 0.6829732153564692,
+                "eventsRefGroup": 0.9856698482763022,
                 "id": "proxyPref",
                 "designer|userClassName": "MyLocalStorageProxy1",
-                "functionsRefGroup": 0.4295795008074492
+                "functionsRefGroup": 0.4978793493937701
             },
             "customConfigs": [],
             "expanded": true

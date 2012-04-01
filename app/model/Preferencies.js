@@ -18,10 +18,16 @@ Ext.define('CCIVIC.model.Preferencies', {
     config: {
         fields: [
             {
-                name: 'CodiPref'
+                name: 'IdPref',
+                type: 'string'
             },
             {
-                name: 'ValorPref'
+                name: 'CodiPref',
+                type: 'string'
+            },
+            {
+                name: 'ValorPref',
+                type: 'string'
             }
         ]
     }

@@ -8,11 +8,11 @@
     "codeClass": null,
     "userConfig": {
         "designer|initialView": true,
-        "eventsRefGroup": 0.002395224990323186,
-        "navigationBarRefGroup": 0.7376112672500312,
+        "eventsRefGroup": 0.689003212377429,
+        "navigationBarRefGroup": 0.16326149692758918,
         "designer|userClassName": "NavView",
         "designer|userAlias": "navview",
-        "functionsRefGroup": 0.40561537677422166
+        "functionsRefGroup": 0.28127315756864846
     },
     "customConfigs": [],
     "designerId": "b8648ff3-8a96-4078-a141-613cc599da7d",
@@ -30,9 +30,9 @@
             "userConfig": {
                 "id": "navBar",
                 "itemId": "NavBar",
-                "eventsRefGroup": 0.30448119854554534,
+                "eventsRefGroup": 0.852636803407222,
                 "designer|userClassName": "MyNavigationBar",
-                "functionsRefGroup": 0.6794564593583345,
+                "functionsRefGroup": 0.5931760019157082,
                 "title": null
             },
             "customConfigs": [],
@@ -49,10 +49,10 @@
             "userConfig": {
                 "itemId": "listContainer",
                 "ui": "",
-                "eventsRefGroup": 0.7087134122848511,
+                "eventsRefGroup": 0.4495175324846059,
                 "layout": "fit",
                 "designer|userClassName": "MyContainer",
-                "functionsRefGroup": 0.5676033855415881
+                "functionsRefGroup": 0.9745856975205243
             },
             "customConfigs": [],
             "expanded": true,
@@ -69,18 +69,18 @@
                         "cls": null,
                         "itemId": "prefList",
                         "ui": "round",
-                        "eventsRefGroup": 0.1264632693491876,
+                        "eventsRefGroup": 0.9701380538754165,
                         "itemTpl": "<div>{CodiPref}:  {ValorPref}</div>",
                         "store": "PrefStore",
                         "grouped": false,
-                        "indexBar": 0.01134217157959938,
+                        "indexBar": 0.6062268842943013,
                         "onItemDisclosure": true,
-                        "pluginsRefGroup": 0.5733994136098772,
+                        "pluginsRefGroup": 0.4759240716230124,
                         "designer|userClassName": "MyList",
-                        "functionsRefGroup": 0.13022109982557595
+                        "functionsRefGroup": 0.4267149295192212
                     },
                     "customConfigs": [],
-                    "expanded": false,
+                    "expanded": true,
                     "cn": [
                         {
                             "id": "ExtBox1-ext-gen4332",
@@ -92,7 +92,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onPrefListItemTap",
-                                "implHandler": "Ext.Msg.prompt('Dades personals', record.get('CodiPref')+':', function(btn,text) {    \n    if (btn == 'ok'){        \n        record.set('ValorPref', text);                \n    }       \n});\n\n",
+                                "implHandler": "Ext.Msg.prompt('Dades personals', record.get('CodiPref')+':', function(btn,text) {    \n    if (btn == 'ok'){      \n        // Validació del mail\n        if (record.get('IdPref') == 'EMAIL'){\n            console.log('Estoy en email');\n            if (valEmail(text)){\n                record.set('ValorPref', text);\n            }\n            else{\n                Ext.Msg.alert('Avís:', 'Adreça electrònica incorrecta. Torna a introduir-la.');\n            }\n        } \n\n        // Validació del NIF o NIE\n        if (record.get('IdPref') == 'NUMDOC'){\n            console.log('Estoy en numdoc');\n            var res = valNumDoc(text);\n            if (res == 1 || res == 2){\n                record.set('ValorPref', text);\n            }\n            else{\n                Ext.Msg.alert('Avís:', 'Número de document incorrecte. Torna a introduir-lo.');\n            }\n        }\n\n        // Validació del mòvil\n        if (record.get('IdPref') == 'TEL'){\n            console.log('Estoy en TEL');\n            if (valMovil(text)){\n                record.set('ValorPref', text);\n            }\n            else{\n                Ext.Msg.alert('Avís:', 'Mòvil incorrecta. Torna a introduir-lo.');\n            }\n        }\n    }       \n});\n\nfunction valEmail(valor){\n    re=/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$/\n    if(!re.exec(valor))    {\n        return false;\n    }else{\n        return true;\n    }\n}\n\n//Retorna: 1 = NIF ok, 2 = NIE ok, -1 = NIF error, -2 = NIE error, 0 = ??? error\nfunction valNumDoc(a) \n{\n    var temp=a.toUpperCase();\n    var cadenadni=\"TRWAGMYFPDXBNJZSQVHLCKE\";\n\n    if (temp!==''){\n        //si no tiene un formato valido devuelve error\n        if ((!/^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$/.test(temp) && !/^[T]{1}[A-Z0-9]{8}$/.test(temp)) && !/^[0-9]{8}[A-Z]{1}$/.test(temp))\n        {\n            return 0;\n        }\n\n        //comprobacion de NIFs estandar\n        if (/^[0-9]{8}[A-Z]{1}$/.test(temp))\n        {\n            posicion = a.substring(8,0) % 23;\n            letra = cadenadni.charAt(posicion);\n            var letradni=temp.charAt(8);\n            if (letra == letradni)\n            {\n                return 1;\n            }\n            else\n            {\n                return -1;\n            }\n        }\n\n        //comprobacion de NIFs especiales (se calculan como CIFs)\n        if (/^[KLM]{1}/.test(temp))\n        {\n            if (a[8] == String.fromCharCode(64 + n))\n            {\n                return 1;\n            }\n            else\n            {\n                return -1;\n            }\n        }\n\n\n        //comprobacion de NIEs\n        //T\n        if (/^[T]{1}/.test(temp))\n        {\n            if (a[8] == /^[T]{1}[A-Z0-9]{8}$/.test(temp))\n            {\n                return 2;\n            }\n            else\n            {\n                return -2;\n            }\n        }\n\n        //XYZ\n        if (/^[XYZ]{1}/.test(temp))\n        {\n            pos = str_replace(['X', 'Y', 'Z'], ['0','1','2'], temp).substring(0, 8) % 23;\n            if (a[8] == cadenadni.substring(pos, pos + 1))\n            {\n                return 2;\n            }\n            else\n            {\n                return -2;\n            }\n        }\n    }\n\n    return 0;\n}\n\nfunction valMovil(valor) {\n    re=/^\\d{9}$/\n    if(!re.exec(valor))    {\n        return false;\n    }else{\n        return true;\n    }    \n}",
                                 "name": "itemtap",
                                 "designer|userClassName": "onPrefListItemTap"
                             },
@@ -113,13 +113,13 @@
                         "docked": "bottom",
                         "id": "btnGrabar",
                         "itemId": "BtnGrabar",
-                        "eventsRefGroup": 0.34827787592075765,
+                        "eventsRefGroup": 0.15520895551890135,
                         "text": "Grabar",
                         "designer|userClassName": "MyButton",
-                        "functionsRefGroup": 0.8525609287898988
+                        "functionsRefGroup": 0.5996132872533053
                     },
                     "customConfigs": [],
-                    "expanded": false,
+                    "expanded": true,
                     "cn": [
                         {
                             "id": "ExtBox1-ext-gen6980",
@@ -131,7 +131,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onBtnGrabarTap",
-                                "implHandler": "var store = Ext.data.StoreManager.lookup('PrefStore');\nstore.sync();",
+                                "implHandler": "var store = Ext.data.StoreManager.lookup('PrefStore');\nstore.sync();\nExt.Msg.alert('Avís:', 'Dades gravades correctament.');",
                                 "name": "tap",
                                 "designer|userClassName": "onBtnGrabarTap"
                             },
@@ -152,7 +152,7 @@
             "codeClass": null,
             "userConfig": {
                 "fn": "onNavigationviewShow",
-                "implHandler": "var store = Ext.data.StoreManager.lookup('PrefStore');\n\nif (store.getCount() === 0){\n    store.add(\n    {CodiPref: 'Nom', ValorPref: ''},\n    {CodiPref: 'Cognoms', ValorPref: ''},\n    {CodiPref: 'Tipus de document', ValorPref: ''},\n    {CodiPref: 'Número de document', ValorPref: ''},\n    {CodiPref: 'Enviar resposta a...', ValorPref: ''},\n    {CodiPref: 'Mòbil', ValorPref: ''},\n    {CodiPref: 'Adreça electrònica', ValorPref: ''});\n}",
+                "implHandler": "var store = Ext.data.StoreManager.lookup('PrefStore');\n\nif (store.getCount() === 0){\n    store.add(\n    {IdPref:'NOM', CodiPref: 'Nom', ValorPref: ''},\n    {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: ''},\n    {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: ''},\n    {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: ''},\n    {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: ''});\n}",
                 "name": "show",
                 "designer|userClassName": "onNavigationviewShow"
             },

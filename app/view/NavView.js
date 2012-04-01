@@ -72,17 +72,141 @@ Ext.define('CCIVIC.view.NavView', {
 
     onPrefListItemTap: function(dataview, index, target, record, e, options) {
         Ext.Msg.prompt('Dades personals', record.get('CodiPref')+':', function(btn,text) {    
-            if (btn == 'ok'){        
-                record.set('ValorPref', text);                
+            if (btn == 'ok'){      
+                // Validació del mail
+                if (record.get('IdPref') == 'EMAIL'){
+                    console.log('Estoy en email');
+                    if (valEmail(text)){
+                        record.set('ValorPref', text);
+                    }
+                    else{
+                        Ext.Msg.alert('Avís:', 'Adreça electrònica incorrecta. Torna a introduir-la.');
+                    }
+                } 
+
+                // Validació del NIF o NIE
+                if (record.get('IdPref') == 'NUMDOC'){
+                    console.log('Estoy en numdoc');
+                    var res = valNumDoc(text);
+                    if (res == 1 || res == 2){
+                        record.set('ValorPref', text);
+                    }
+                    else{
+                        Ext.Msg.alert('Avís:', 'Número de document incorrecte. Torna a introduir-lo.');
+                    }
+                }
+
+                // Validació del mòvil
+                if (record.get('IdPref') == 'TEL'){
+                    console.log('Estoy en TEL');
+                    if (valMovil(text)){
+                        record.set('ValorPref', text);
+                    }
+                    else{
+                        Ext.Msg.alert('Avís:', 'Mòvil incorrecta. Torna a introduir-lo.');
+                    }
+                }
             }       
         });
 
+        function valEmail(valor){
+            re=/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$/
+            if(!re.exec(valor))    {
+                return false;
+            }else{
+                return true;
+            }
+        }
 
+        //Retorna: 1 = NIF ok, 2 = NIE ok, -1 = NIF error, -2 = NIE error, 0 = ??? error
+        function valNumDoc(a) 
+        {
+            var temp=a.toUpperCase();
+            var cadenadni="TRWAGMYFPDXBNJZSQVHLCKE";
+
+            if (temp!==''){
+                //si no tiene un formato valido devuelve error
+                if ((!/^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$/.test(temp) && !/^[T]{1}[A-Z0-9]{8}$/.test(temp)) && !/^[0-9]{8}[A-Z]{1}$/.test(temp))
+                {
+                    return 0;
+                }
+
+                //comprobacion de NIFs estandar
+                if (/^[0-9]{8}[A-Z]{1}$/.test(temp))
+                {
+                    posicion = a.substring(8,0) % 23;
+                    letra = cadenadni.charAt(posicion);
+                    var letradni=temp.charAt(8);
+                    if (letra == letradni)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return -1;
+                    }
+                }
+
+                //comprobacion de NIFs especiales (se calculan como CIFs)
+                if (/^[KLM]{1}/.test(temp))
+                {
+                    if (a[8] == String.fromCharCode(64 + n))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return -1;
+                    }
+                }
+
+
+                //comprobacion de NIEs
+                //T
+                if (/^[T]{1}/.test(temp))
+                {
+                    if (a[8] == /^[T]{1}[A-Z0-9]{8}$/.test(temp))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return -2;
+                    }
+                }
+
+                //XYZ
+                if (/^[XYZ]{1}/.test(temp))
+                {
+                    pos = str_replace(['X', 'Y', 'Z'], ['0','1','2'], temp).substring(0, 8) % 23;
+                    if (a[8] == cadenadni.substring(pos, pos + 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return -2;
+                    }
+                }
+            }
+
+            return 0;
+        }
+
+        function valMovil(valor) {
+            re=/^\d{9}$/
+            if(!re.exec(valor))    {
+                return false;
+            }else{
+                return true;
+            }    
+        }
     },
 
     onBtnGrabarTap: function(button, e, options) {
         var store = Ext.data.StoreManager.lookup('PrefStore');
         store.sync();
+        Ext.Msg.alert('Avís:', 'Dades gravades correctament.');
     },
 
     onNavigationviewShow: function(component, options) {
@@ -90,13 +214,11 @@ Ext.define('CCIVIC.view.NavView', {
 
         if (store.getCount() === 0){
             store.add(
-            {CodiPref: 'Nom', ValorPref: ''},
-            {CodiPref: 'Cognoms', ValorPref: ''},
-            {CodiPref: 'Tipus de document', ValorPref: ''},
-            {CodiPref: 'Número de document', ValorPref: ''},
-            {CodiPref: 'Enviar resposta a...', ValorPref: ''},
-            {CodiPref: 'Mòbil', ValorPref: ''},
-            {CodiPref: 'Adreça electrònica', ValorPref: ''});
+            {IdPref:'NOM', CodiPref: 'Nom', ValorPref: ''},
+            {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: ''},
+            {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: ''},
+            {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: ''},
+            {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: ''});
         }
     }
 

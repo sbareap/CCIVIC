@@ -7,24 +7,24 @@
     },
     "codeClass": null,
     "userConfig": {
-        "actionsRefGroup": 0.6116318188142031,
+        "actionsRefGroup": 0.35449302149936557,
         "models": [
             "Preferencies"
         ],
-        "refsRefGroup": 0.6767363103572279,
+        "refsRefGroup": 0.04552642325870693,
         "stores": [
             "prefStore"
         ],
         "views": [
             "NavView"
         ],
-        "beforeFiltersRefGroup": 0.041431377874687314,
+        "beforeFiltersRefGroup": 0.656065832125023,
         "designer|launch": "",
-        "routesRefGroup": 0.7387978860642761,
-        "eventsRefGroup": 0.08908712584525347,
+        "routesRefGroup": 0.6228404431603849,
+        "eventsRefGroup": 0.786589192925021,
         "name": "CCIVIC",
-        "viewport": 0.7337826241273433,
-        "functionsRefGroup": 0.2317505006212741
+        "viewport": 0.011245459550991654,
+        "functionsRefGroup": 0.09556868788786232
     },
     "customConfigs": [],
     "designerId": "application",
