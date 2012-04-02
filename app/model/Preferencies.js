@@ -28,6 +28,10 @@ Ext.define('CCIVIC.model.Preferencies', {
             {
                 name: 'ValorPref',
                 type: 'string'
+            },
+            {
+                name: 'Req',
+                type: 'string'
             }
         ]
     }

@@ -7,12 +7,12 @@
     },
     "codeClass": null,
     "userConfig": {
-        "associations": 0.3982309477869421,
-        "fields": 0.6826148983091116,
-        "proxy": 0.9067097625229508,
-        "validations": 0.4392260580789298,
+        "associations": 0.5787575012072921,
+        "fields": 0.10715593467466533,
+        "proxy": 0.9377595246769488,
+        "validations": 0.6222212258726358,
         "designer|userClassName": "Preferencies",
-        "functionsRefGroup": 0.39733894378878176
+        "functionsRefGroup": 0.12648719735443592
     },
     "customConfigs": [],
     "designerId": "647c96a2-891b-4db1-9873-555e43774371",
@@ -28,10 +28,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "convert": 0.5549918168690056,
+                "convert": 0.8276738617569208,
                 "name": "IdPref",
                 "type": "string",
-                "designer|userClassName": "MyField2"
+                "designer|userClassName": "MyField2",
+                "functionsRefGroup": 0.6245967040304095
             },
             "customConfigs": [],
             "expanded": true
@@ -45,11 +46,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "convert": 0.7013197692576796,
+                "convert": 0.13567554019391537,
                 "name": "CodiPref",
                 "type": "string",
                 "designer|userClassName": "MyField7",
-                "functionsRefGroup": 0.09002210642211139
+                "functionsRefGroup": 0.967437980696559
             },
             "customConfigs": [],
             "expanded": true
@@ -63,11 +64,29 @@
             },
             "codeClass": null,
             "userConfig": {
-                "convert": 0.43027677689678967,
+                "convert": 0.48364374227821827,
                 "name": "ValorPref",
                 "type": "string",
                 "designer|userClassName": "MyField8",
-                "functionsRefGroup": 0.713172784075141
+                "functionsRefGroup": 0.18080624472349882
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen4821",
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "convert": 0.2219557052012533,
+                "name": "Req",
+                "type": "string",
+                "designer|userClassName": "MyField3",
+                "functionsRefGroup": 0.19973444798961282
             },
             "customConfigs": [],
             "expanded": true

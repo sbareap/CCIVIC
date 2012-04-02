@@ -20,7 +20,10 @@ Ext.define('CCIVIC.view.NavView', {
     config: {
         navigationBar: {
             id: 'navBar',
-            itemId: 'NavBar'
+            itemId: 'NavBar',
+            tpl: [
+                ''
+            ]
         },
         items: [
             {
@@ -33,10 +36,11 @@ Ext.define('CCIVIC.view.NavView', {
                 items: [
                     {
                         xtype: 'list',
+                        id: 'prefList',
                         itemId: 'prefList',
                         ui: 'round',
                         itemTpl: [
-                            '<div>{CodiPref}:  {ValorPref}</div>'
+                            '<div>{Req}&nbsp;&nbsp;{CodiPref}:  {ValorPref}</div>'
                         ],
                         store: 'PrefStore',
                         grouped: false,
@@ -106,6 +110,7 @@ Ext.define('CCIVIC.view.NavView', {
                         Ext.Msg.alert('Avís:', 'Mòvil incorrecta. Torna a introduir-lo.');
                     }
                 }
+                else record.set('ValorPref', text);
             }       
         });
 
@@ -204,9 +209,24 @@ Ext.define('CCIVIC.view.NavView', {
     },
 
     onBtnGrabarTap: function(button, e, options) {
-        var store = Ext.data.StoreManager.lookup('PrefStore');
-        store.sync();
-        Ext.Msg.alert('Avís:', 'Dades gravades correctament.');
+        var store = Ext.data.StoreManager.lookup('PrefStore'),
+            list = Ext.getCmp('prefList'),
+            correcte = 1,
+            ListStore = list.getStore();
+
+        for(var i = 0; i < ListStore.getCount(); i++) {   
+            if ((ListStore.getAt(i).get('Req') == '*') && (ListStore.getAt(i).get('ValorPref').length === 0)){
+                console.log(ListStore.getAt(i).get('Req'));
+                console.log(ListStore.getAt(i).get('ValorPref').length);
+                Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       
+                correcte = 0;
+            }
+        }
+
+        if (correcte == 1) {
+            store.sync();
+            Ext.Msg.alert('Avís:', 'Dades gravades correctament.');
+        }
     },
 
     onNavigationviewShow: function(component, options) {
@@ -214,11 +234,11 @@ Ext.define('CCIVIC.view.NavView', {
 
         if (store.getCount() === 0){
             store.add(
-            {IdPref:'NOM', CodiPref: 'Nom', ValorPref: ''},
-            {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: ''},
-            {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: ''},
-            {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: ''},
-            {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: ''});
+            {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: '*',},
+            {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: '*'},
+            {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: '*'},
+            {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:' '},
+            {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: ' '});
         }
     }
 
