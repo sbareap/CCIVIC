@@ -1,0 +1,84 @@
+{
+    "id": "ExtBox1-ext-gen6459",
+    "type": "tabpanel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|initialView": false,
+        "designer|userClassName": "Incidencia"
+    },
+    "customConfigs": [],
+    "designerId": "e67f8aa9-a1eb-483d-9e34-0cbecb977dbe",
+    "$viewOrder": 2,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen6466",
+            "type": "container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyContainer",
+                "title": "Incidencia"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen9982",
+                    "type": "label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "html": "",
+                        "itemId": "nomTema",
+                        "designer|userClassName": "MyLabel"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        },
+        {
+            "id": "ExtBox1-ext-gen6474",
+            "type": "container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyContainer1",
+                "title": "Localització"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen4245",
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTabpanelShow",
+                "implHandler": "",
+                "name": "show",
+                "designer|userClassName": "onTabpanelShow"
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
+}

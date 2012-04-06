@@ -1,0 +1,45 @@
+{
+    "tema": [
+        {
+            "idTema": "1",
+			"nom": "Cal&ccedil;ada",
+            "tema": [
+                { "idTema": "11", "nom": "Cal&ccedil;ada en mal estat", "leaf": true },
+                { "idTema": "12", "nom": "Forat a la cal&ccedil;ada", "leaf": true }
+            ]
+        },
+        {
+            "idTema": "2",
+     		"nom": "Enllumenat",
+            "tema": [
+                {"idTema": "21", "nom": "Fanal que no funciona", "leaf": true },
+                {"idTema": "22", "nom": "Fanal trencat", "leaf": true }
+            ]
+        },
+		{
+            "idTema": "3",
+			"nom": "Fuites Aigua",
+            "tema": [
+                {"idTema": "31", "nom": "Fuita a la cal&ccedil;ada", "leaf": true },
+                {"idTema": "32", "nom": "Fuita al carrer", "leaf": true }
+            ]
+        },
+		{
+            "idTema": "4",
+			"nom": "Neteja",
+            "tema": [
+                {"idTema": "41", "nom": "Carrer brut", "leaf": true },
+				{"idTema": "42", "nom": "Pintades", "leaf": true },
+                {"idTema": "43", "nom": "Paperera trencada", "leaf": true }
+            ]
+        },
+		{
+            "idTema": "5",
+            "nom": "Jocs Infantils",
+            "tema": [
+                {"idTema": "51", "nom": "Joc Infantil en mal estat", "leaf": true },
+                {"idTema": "52", "nom": "Joc Infantil trencat", "leaf": true }
+            ]
+        }
+    ]
+}

@@ -7,27 +7,41 @@
     },
     "codeClass": null,
     "userConfig": {
-        "actionsRefGroup": 0.516109547810629,
         "models": [
-            "Preferencies"
+            "Preferencies",
+            "Temes"
         ],
-        "refsRefGroup": 0.4075649054720998,
         "stores": [
-            "prefStore"
+            "prefStore",
+            "temesTreeStore"
         ],
         "views": [
-            "NavView"
+            "navTemes",
+            "Dades",
+            "Incidencia"
         ],
-        "beforeFiltersRefGroup": 0.23344785696826875,
-        "designer|launch": "",
-        "routesRefGroup": 0.5320023100357503,
-        "eventsRefGroup": 0.12864540610462427,
-        "name": "CCIVIC",
-        "viewport": 0.859228627057746,
-        "functionsRefGroup": 0.22043678583577275
+        "name": "CCIVIC"
     },
     "customConfigs": [],
     "designerId": "application",
     "$viewOrder": 0,
-    "expanded": true
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen2297",
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "launch",
+                "implHandler": "",
+                "designer|userClassName": "launch"
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
 }

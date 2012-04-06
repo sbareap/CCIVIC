@@ -1,0 +1,50 @@
+{
+    "id": "ExtBox1-ext-gen4031",
+    "type": "datamodel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Temes"
+    },
+    "customConfigs": [],
+    "designerId": "551751a1-9cb7-4fa9-9416-a5d743064092",
+    "$viewOrder": 1,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen4224",
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "idTema",
+                "type": "string",
+                "designer|userClassName": "MyField4"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen4333",
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "nom",
+                "type": "string",
+                "designer|userClassName": "MyField5"
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
+}

@@ -18,17 +18,9 @@
         "cssPath": ""
     },
     "xdsVersion": "2.0.0",
-    "xdsBuild": "341",
+    "xdsBuild": "360",
     "framework": "touch20",
     "topInstanceFileMap": {
-        "b8648ff3-8a96-4078-a141-613cc599da7d": {
-            "paths": [
-                "metadata/view/NavView",
-                "app/view/override/NavView.js",
-                "app/view/NavView.js"
-            ],
-            "className": "NavView"
-        },
         "5f1163a2-88f7-46d1-a34b-0cb32651a065": {
             "paths": [
                 "metadata/store/prefStore",
@@ -44,11 +36,51 @@
                 "app/model/Preferencies.js"
             ],
             "className": "Preferencies"
+        },
+        "01da075a-8dfe-4ac3-9d89-3d0caf51129b": {
+            "paths": [
+                "metadata/store/temesTreeStore",
+                "app/store/override/temesTreeStore.js",
+                "app/store/temesTreeStore.js"
+            ],
+            "className": "temesTreeStore"
+        },
+        "551751a1-9cb7-4fa9-9416-a5d743064092": {
+            "paths": [
+                "metadata/model/Temes",
+                "app/model/override/Temes.js",
+                "app/model/Temes.js"
+            ],
+            "className": "Temes"
+        },
+        "e27ac681-9788-44df-8ff3-5c8441776606": {
+            "paths": [
+                "metadata/view/navTemes",
+                "app/view/override/navTemes.js",
+                "app/view/navTemes.js"
+            ],
+            "className": "navTemes"
+        },
+        "2c3d283d-b991-43c0-a226-4a278f8abbff": {
+            "paths": [
+                "metadata/view/Dades",
+                "app/view/override/Dades.js",
+                "app/view/Dades.js"
+            ],
+            "className": "Dades"
+        },
+        "e67f8aa9-a1eb-483d-9e34-0cbecb977dbe": {
+            "paths": [
+                "metadata/view/Incidencia",
+                "app/view/override/Incidencia.js",
+                "app/view/Incidencia.js"
+            ],
+            "className": "Incidencia"
         }
     },
     "expandedState": {
-        "data": true,
-        "model": true,
+        "data": false,
+        "model": false,
         "component": true,
         "controller": true
     }

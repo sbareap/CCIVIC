@@ -1,0 +1,53 @@
+{
+    "id": "ExtBox1-ext-gen3573",
+    "type": "treestore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "model": "Temes",
+        "storeId": "temesTreeStore",
+        "designer|userClassName": "temesTreeStore"
+    },
+    "customConfigs": [],
+    "designerId": "01da075a-8dfe-4ac3-9d89-3d0caf51129b",
+    "$viewOrder": 1,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen3580",
+            "type": "ajaxproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "data/temes.json",
+                "designer|userClassName": "MyAjaxProxy"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen3587",
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "rootProperty": "tema",
+                        "designer|userClassName": "MyJsonReader"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        }
+    ]
+}
