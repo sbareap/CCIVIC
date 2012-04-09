@@ -16,7 +16,113 @@
     "expanded": true,
     "cn": [
         {
-            "id": "ExtBox1-ext-gen6466",
+            "id": "ExtBox1-ext-gen10967",
+            "type": "tabbar",
+            "reference": {
+                "name": "tabBar",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "bottom",
+                "designer|userClassName": "MyTabBar"
+            },
+            "customConfigs": [],
+            "iconCls": "icon-tab-bar",
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen4488",
+            "type": "formpanel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "tabIncidencia",
+                "designer|userClassName": "MyFormPanel",
+                "title": "Incidencia",
+                "iconCls": "info"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen6010",
+                    "type": "fieldset",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "descIncid",
+                        "itemId": "descIncid",
+                        "title": null,
+                        "designer|userClassName": "MyFieldSet"
+                    },
+                    "customConfigs": [],
+                    "expanded": false,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen7658",
+                            "type": "textareafield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "observacions",
+                                "label": "Observacions",
+                                "labelAlign": "top",
+                                "designer|userClassName": "MyTextArea"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen10671",
+                            "type": "togglefield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "label": "Comporta un risc?",
+                                "labelWidth": 160,
+                                "name": "risc",
+                                "designer|userClassName": "MyToggleField"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        },
+                        {
+                            "id": "ExtBox1-ext-gen12297",
+                            "type": "button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "btnEnviar",
+                                "itemId": "BtnEnviar",
+                                "ui": "round",
+                                "text": "Enviar",
+                                "designer|userClassName": "MyButton1"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ExtBox1-ext-gen9668",
             "type": "container",
             "reference": {
                 "name": "items",
@@ -24,14 +130,51 @@
             },
             "codeClass": null,
             "userConfig": {
+                "id": "tabLocalitzacio",
+                "itemId": "tabLocalitzacio",
                 "designer|userClassName": "MyContainer",
-                "title": "Incidencia"
+                "title": "Localització",
+                "iconCls": "search"
             },
             "customConfigs": [],
             "expanded": true,
             "cn": [
                 {
-                    "id": "ExtBox1-ext-gen9982",
+                    "id": "ExtBox1-ext-gen15574",
+                    "type": "map",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 400,
+                        "id": "map",
+                        "itemId": "Map",
+                        "designer|userClassName": "MyMap"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen3332",
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onTabLocalitzacioShow",
+                        "implHandler": "var initialLocation;\nvar cornella = new google.maps.LatLng(41.35, 2.08333);\nvar browserSupportFlag;\nvar map;\nvar infowindow = new google.maps.InfoWindow();\n\nvar myOptions = {\n    zoom: 17,\n    mapTypeId: google.maps.MapTypeId.ROADMAP\n};\nmap = new google.maps.Map(document.getElementById(\"map\"), myOptions);\n\n// Try W3C Geolocation method (Preferred)\nif(navigator.geolocation) {\n    browserSupportFlag = true;\n    navigator.geolocation.getCurrentPosition(function(position) {\n        initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);\n        //contentString = \"Estamos aqui\";\n        map.setCenter(initialLocation);\n\n        var marker = new google.maps.Marker({map: map, \n            position: map.getCenter(),\n            draggable: true\n        });\n\n        google.maps.event.addListener(marker, 'click', function() {\n            infowindow.open(map, marker);     \n\n        });      \n\n        //infowindow.setContent(contentString);        \n        infowindow.setPosition(initialLocation);\n        infowindow.open(map);\n    }, function() {\n        handleNoGeolocation(browserSupportFlag);\n    });\n} else {\n    // El navegador no soporta la Geolocalización\n    browserSupportFlag = false;\n    handleNoGeolocation(browserSupportFlag);\n}\n\nfunction handleNoGeolocation(errorFlag) {\n    if (errorFlag === true) {\n        initialLocation = cornella;\n        contentString = \"Error: El servicio de geolocalización ha fallado.\";\n    } else {\n        initialLocation = cornella;\n        contentString = \"Error: Tu navegador no soporta la geolocalización. Estas en Cornellà?\";\n    }\n    map.setCenter(initialLocation);\n    infowindow.setContent(contentString);\n    infowindow.setPosition(initialLocation);\n    infowindow.open(map);\n}\n",
+                        "name": "show",
+                        "designer|userClassName": "onTabLocalitzacioShow"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen7417",
                     "type": "label",
                     "reference": {
                         "name": "items",
@@ -39,46 +182,15 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "html": "",
-                        "itemId": "nomTema",
+                        "itemId": "adreca",
+                        "padding": 12,
+                        "width": null,
                         "designer|userClassName": "MyLabel"
                     },
                     "customConfigs": [],
                     "expanded": true
                 }
             ]
-        },
-        {
-            "id": "ExtBox1-ext-gen6474",
-            "type": "container",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "MyContainer1",
-                "title": "Localització"
-            },
-            "customConfigs": [],
-            "expanded": true
-        },
-        {
-            "id": "ExtBox1-ext-gen4245",
-            "type": "basiceventbinding",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "fn": "onTabpanelShow",
-                "implHandler": "",
-                "name": "show",
-                "designer|userClassName": "onTabpanelShow"
-            },
-            "customConfigs": [],
-            "expanded": true
         }
     ]
 }

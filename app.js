@@ -27,7 +27,7 @@ Ext.application({
         'temesTreeStore'
     ],
     views: [
-        'navTemes',
+        'MainNav',
         'Dades',
         'Incidencia'
     ],
@@ -35,7 +35,7 @@ Ext.application({
 
     launch: function() {
 
-        Ext.create('CCIVIC.view.navTemes', {fullscreen: true});
+        Ext.create('CCIVIC.view.Dades', {fullscreen: true});
     }
 
 });

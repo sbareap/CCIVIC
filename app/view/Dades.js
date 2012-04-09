@@ -20,11 +20,6 @@ Ext.define('CCIVIC.view.Dades', {
         modal: false,
         items: [
             {
-                xtype: 'titlebar',
-                docked: 'top',
-                title: 'Dades personals'
-            },
-            {
                 xtype: 'list',
                 height: 400,
                 id: 'prefList',
@@ -109,7 +104,8 @@ Ext.define('CCIVIC.view.Dades', {
             }
         }
 
-        //Retorna: 1 = NIF ok, 2 = NIE ok, -1 = NIF error, -2 = NIE error, 0 = ??? error
+        //Retorna: 1 = NIF ok, 2 = NIE ok, -1 = NIF error, -2 = NIE error, 0 = formato invalido
+        //fuente: http://compartecodigo.com/javascript/validar-nif-cif-nie-segun-ley-vigente-31.html
         function valNumDoc(a) 
         {
             var temp=a.toUpperCase();
@@ -182,6 +178,40 @@ Ext.define('CCIVIC.view.Dades', {
             }
 
             return 0;
+        }
+
+        //fuente: https://raw.github.com/kvz/phpjs/master/functions/strings/str_replace.js
+        function str_replace (search, replace, subject, count) {
+            var i = 0,
+                j = 0,
+                temp = '',
+                repl = '',
+                sl = 0,
+                fl = 0,
+                f = [].concat(search),
+                r = [].concat(replace),
+                s = subject,
+                ra = Object.prototype.toString.call(r) === '[object Array]',
+                sa = Object.prototype.toString.call(s) === '[object Array]';
+            s = [].concat(s);
+            if (count) {
+                this.window[count] = 0;
+            }
+
+            for (i = 0, sl = s.length; i < sl; i++) {
+                if (s[i] === '') {
+                    continue;
+                }
+                for (j = 0, fl = f.length; j < fl; j++) {
+                    temp = s[i] + '';
+                    repl = ra ? (r[j] !== undefined ? r[j] : '') : r[0];
+                    s[i] = (temp).split(f[j]).join(repl);
+                    if (count && s[i] !== temp) {
+                        this.window[count] += (temp.length - s[i].length) / f[j].length;
+                    }
+                }
+            }
+            return sa ? s : s[0];
         }
 
         function valMovil(valor) {

@@ -17,32 +17,130 @@ Ext.define('CCIVIC.view.Incidencia', {
     extend: 'Ext.tab.Panel',
 
     config: {
+        tabBar: {
+            docked: 'bottom'
+        },
         items: [
             {
-                xtype: 'container',
+                xtype: 'formpanel',
+                itemId: 'tabIncidencia',
                 title: 'Incidencia',
+                iconCls: 'info',
                 items: [
                     {
-                        xtype: 'label',
-                        html: '',
-                        itemId: 'nomTema'
+                        xtype: 'fieldset',
+                        id: 'descIncid',
+                        itemId: 'descIncid',
+                        items: [
+                            {
+                                xtype: 'textareafield',
+                                itemId: 'observacions',
+                                label: 'Observacions',
+                                labelAlign: 'top'
+                            },
+                            {
+                                xtype: 'togglefield',
+                                label: 'Comporta un risc?',
+                                labelWidth: 160,
+                                name: 'risc'
+                            },
+                            {
+                                xtype: 'button',
+                                id: 'btnEnviar',
+                                itemId: 'BtnEnviar',
+                                ui: 'round',
+                                text: 'Enviar'
+                            }
+                        ]
                     }
                 ]
             },
             {
                 xtype: 'container',
-                title: 'Localització'
+                id: 'tabLocalitzacio',
+                itemId: 'tabLocalitzacio',
+                title: 'Localització',
+                iconCls: 'search',
+                items: [
+                    {
+                        xtype: 'map',
+                        height: 400,
+                        id: 'map',
+                        itemId: 'Map'
+                    },
+                    {
+                        xtype: 'label',
+                        itemId: 'adreca',
+                        padding: 12
+                    }
+                ]
             }
         ],
         listeners: [
             {
-                fn: 'onTabpanelShow',
-                event: 'show'
+                fn: 'onTabLocalitzacioShow',
+                event: 'show',
+                delegate: '#tabLocalitzacio'
             }
         ]
     },
 
-    onTabpanelShow: function(component, options) {
+    onTabLocalitzacioShow: function(component, options) {
+        var initialLocation;
+        var cornella = new google.maps.LatLng(41.35, 2.08333);
+        var browserSupportFlag;
+        var map;
+        var infowindow = new google.maps.InfoWindow();
+
+        var myOptions = {
+            zoom: 17,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+        // Try W3C Geolocation method (Preferred)
+        if(navigator.geolocation) {
+            browserSupportFlag = true;
+            navigator.geolocation.getCurrentPosition(function(position) {
+                initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                //contentString = "Estamos aqui";
+                map.setCenter(initialLocation);
+
+                var marker = new google.maps.Marker({map: map, 
+                    position: map.getCenter(),
+                    draggable: true
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map, marker);     
+
+                });      
+
+                //infowindow.setContent(contentString);        
+                infowindow.setPosition(initialLocation);
+                infowindow.open(map);
+            }, function() {
+                handleNoGeolocation(browserSupportFlag);
+            });
+        } else {
+            // El navegador no soporta la Geolocalización
+            browserSupportFlag = false;
+            handleNoGeolocation(browserSupportFlag);
+        }
+
+        function handleNoGeolocation(errorFlag) {
+            if (errorFlag === true) {
+                initialLocation = cornella;
+                contentString = "Error: El servicio de geolocalización ha fallado.";
+            } else {
+                initialLocation = cornella;
+                contentString = "Error: Tu navegador no soporta la geolocalización. Estas en Cornellà?";
+            }
+            map.setCenter(initialLocation);
+            infowindow.setContent(contentString);
+            infowindow.setPosition(initialLocation);
+            infowindow.open(map);
+        }
 
     }
 
