@@ -35,7 +35,7 @@ Ext.application({
 
     launch: function() {
 
-        Ext.create('CCIVIC.view.Dades', {fullscreen: true});
+        Ext.create('CCIVIC.view.MainNav', {fullscreen: true});
     }
 
 });

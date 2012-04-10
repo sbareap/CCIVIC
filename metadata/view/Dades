@@ -7,7 +7,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|initialView": true,
+        "designer|initialView": false,
         "width": null,
         "modal": false,
         "designer|userClassName": "Dades"
