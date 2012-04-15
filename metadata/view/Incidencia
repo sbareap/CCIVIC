@@ -7,7 +7,6 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|initialView": false,
         "designer|userClassName": "Incidencia"
     },
     "customConfigs": [],
@@ -24,7 +23,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "docked": "bottom",
+                "docked": "top",
                 "designer|userClassName": "MyTabBar"
             },
             "customConfigs": [],
@@ -42,8 +41,7 @@
             "userConfig": {
                 "itemId": "tabIncidencia",
                 "designer|userClassName": "MyFormPanel",
-                "title": "Incidencia",
-                "iconCls": "info"
+                "title": "Incidencia"
             },
             "customConfigs": [],
             "expanded": true,
@@ -63,8 +61,25 @@
                         "designer|userClassName": "MyFieldSet"
                     },
                     "customConfigs": [],
-                    "expanded": false,
+                    "expanded": true,
                     "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen3615",
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "adrecaMap",
+                                "label": "Adreça",
+                                "labelAlign": "top",
+                                "designer|userClassName": "MyTextField"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        },
                         {
                             "id": "ExtBox1-ext-gen7658",
                             "type": "textareafield",
@@ -133,8 +148,7 @@
                 "id": "tabLocalitzacio",
                 "itemId": "tabLocalitzacio",
                 "designer|userClassName": "MyContainer",
-                "title": "Localització",
-                "iconCls": "search"
+                "title": "Localització"
             },
             "customConfigs": [],
             "expanded": true,
@@ -166,7 +180,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "fn": "onTabLocalitzacioShow",
-                        "implHandler": "var initialLocation;\nvar cornella = new google.maps.LatLng(41.35, 2.08333);\nvar browserSupportFlag;\nvar map;\nvar infowindow = new google.maps.InfoWindow();\n\nvar myOptions = {\n    zoom: 17,\n    mapTypeId: google.maps.MapTypeId.ROADMAP\n};\nmap = new google.maps.Map(document.getElementById(\"map\"), myOptions);\n\n// Try W3C Geolocation method (Preferred)\nif(navigator.geolocation) {\n    browserSupportFlag = true;\n    navigator.geolocation.getCurrentPosition(function(position) {\n        initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);\n        //contentString = \"Estamos aqui\";\n        map.setCenter(initialLocation);\n\n        var marker = new google.maps.Marker({map: map, \n            position: map.getCenter(),\n            draggable: true\n        });\n\n        google.maps.event.addListener(marker, 'click', function() {\n            infowindow.open(map, marker);     \n\n        });      \n\n        //infowindow.setContent(contentString);        \n        infowindow.setPosition(initialLocation);\n        infowindow.open(map);\n    }, function() {\n        handleNoGeolocation(browserSupportFlag);\n    });\n} else {\n    // El navegador no soporta la Geolocalización\n    browserSupportFlag = false;\n    handleNoGeolocation(browserSupportFlag);\n}\n\nfunction handleNoGeolocation(errorFlag) {\n    if (errorFlag === true) {\n        initialLocation = cornella;\n        contentString = \"Error: El servicio de geolocalización ha fallado.\";\n    } else {\n        initialLocation = cornella;\n        contentString = \"Error: Tu navegador no soporta la geolocalización. Estas en Cornellà?\";\n    }\n    map.setCenter(initialLocation);\n    infowindow.setContent(contentString);\n    infowindow.setPosition(initialLocation);\n    infowindow.open(map);\n}\n",
+                        "implHandler": "var initialLocation;\nvar cornella = new google.maps.LatLng(41.35, 2.08333);\nvar browserSupportFlag;\nvar map;\nvar infowindow = new google.maps.InfoWindow();\n\nvar myOptions = {\n    zoom: 17,\n    mapTypeId: google.maps.MapTypeId.ROADMAP\n};\nmap = new google.maps.Map(document.getElementById(\"map\"), myOptions);\n\n// Variables globales\nvar map, geocoder;\n\n// Instancia del geocodificador\ngeocoder = new google.maps.Geocoder();\n\n// Try W3C Geolocation method (Preferred)\nif(navigator.geolocation) {\n    browserSupportFlag = true;\n    navigator.geolocation.getCurrentPosition(function(position) {\n        initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);\n        //contentString = \"Estamos aqui\";\n        map.setCenter(initialLocation);\n\n        var marker = new google.maps.Marker({map: map, \n            position: map.getCenter(),\n            draggable: true\n        });\n\n        processReverseGeocoding(map.getCenter(), showMarkerInfo);\n\n        google.maps.event.addListener(marker, 'mouseup', function(event) {\n            //infowindow.open(map, marker);     \n            processReverseGeocoding(event.latLng, showMarkerInfo);\n            console.log('evento');\n\n        });      \n\n        //infowindow.setContent(contentString);        \n        infowindow.setPosition(initialLocation);\n        infowindow.open(map);\n    }, function() {\n        handleNoGeolocation(browserSupportFlag);\n    });\n} else {\n    // El navegador no soporta la Geolocalización\n    browserSupportFlag = false;\n    handleNoGeolocation(browserSupportFlag);\n}\n\nfunction handleNoGeolocation(errorFlag) {\n    if (errorFlag === true) {\n        initialLocation = cornella;\n        contentString = \"Error: El servicio de geolocalización ha fallado.\";\n    } else {\n        initialLocation = cornella;\n        contentString = \"Error: Tu navegador no soporta la geolocalización. Estas en Cornellà?\";\n    }\n    map.setCenter(initialLocation);    \n    infowindow.setContent(contentString);\n    infowindow.setPosition(initialLocation);\n    infowindow.open(map);\n}\n\nfunction processReverseGeocoding(location, callback)\n{\n    // Propiedades de la georreferenciación\n\n    var request = {\n        latLng: location\n    };\n\n    // Invocación a la georreferenciación (proceso asíncrono)\n\n    geocoder.geocode(request, function(results, status) {\n\n        /*\n        * OK\n        * ZERO_RESULTS\n        * OVER_QUERY_LIMIT\n        * REQUEST_DENIED\n        * INVALID_REQUEST \n        */\n\n        // Notifica al usuario el resultado obtenido\n\n        //document.getElementById('message').innerHTML = \"Respuesta obtenida: \" + status;\n\n        // En caso de terminarse exitosamente el proyecto ...\n\n        if(status == google.maps.GeocoderStatus.OK)\n        {\n            // Invoca la función de callback\n\n            callback (results);            \n            // Retorna los resultados obtenidos\n\n            return results;\n        }\n\n        // En caso de error retorna el estado        \n        return status;\n    });\n}\n\nfunction showMarkerInfo(locations)\n{\n    // Centra el mapa en la ubicación especificada\n    map.setCenter(locations[0].geometry.location);\n\n    Ext.ComponentQuery.query('#adreca')[0].setHtml(locations[0].formatted_address);\n    Ext.ComponentQuery.query('#adrecaMap')[0].setValue(locations[0].formatted_address);\n\n    // Crea el mensaje para mostrar la información georreferenciada\n    /*    var infoWindow = new google.maps.InfoWindow();\n    infoWindow.setPosition(locations[0].geometry.location);\n\n    // Prepara el mensaje con la información obtenida del proceso\n    // de georreferenciación inversa\n    var content = 'Latitud:  ' + locations[0].geometry.location.lat() + '<br />' +\n    'Longitud:  ' + locations[0].geometry.location.lng() + '<br />' +\n    '<br />Topónimos:<br /><ul>';\n\n    for (var i=0; i<locations.length; i++)\n    {\n        if (locations[i].formatted_address)\n        content += '<li>' + locations[i].formatted_address + '</li>';\n        else\n        content += '<li>No se encontró información.</li>';\n    }\n\n    content += \"</ul>\";\n    infoWindow.setContent(content);\n    // Muestra el mensaje sobre el mapa\n    infoWindow.open(map);    */\n\n}",
                         "name": "show",
                         "designer|userClassName": "onTabLocalitzacioShow"
                     },

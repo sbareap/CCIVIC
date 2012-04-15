@@ -20,6 +20,12 @@ Ext.define('CCIVIC.view.Dades', {
         modal: false,
         items: [
             {
+                xtype: 'titlebar',
+                docked: 'top',
+                itemId: 'DadesTitleBar',
+                title: 'Dades Personals'
+            },
+            {
                 xtype: 'list',
                 height: 400,
                 id: 'prefList',
@@ -29,7 +35,6 @@ Ext.define('CCIVIC.view.Dades', {
                     '<p>{CodiPref}&nbsp;{Req}</p><p><small>{ValorPref}</small></p>'
                 ],
                 store: 'PrefStore',
-                grouped: false,
                 onItemDisclosure: true
             },
             {
@@ -68,9 +73,8 @@ Ext.define('CCIVIC.view.Dades', {
                         Ext.Msg.alert('Avís:', 'Adreça electrònica incorrecta. Torna a introduir-la.');
                     }
                 } 
-
                 // Validació del NIF o NIE
-                if (record.get('IdPref') == 'NUMDOC'){
+                else if (record.get('IdPref') == 'NUMDOC'){
                     console.log('Estoy en numdoc');
                     var res = valNumDoc(text);
                     if (res == 1 || res == 2){
@@ -80,9 +84,8 @@ Ext.define('CCIVIC.view.Dades', {
                         Ext.Msg.alert('Avís:', 'Número de document incorrecte. Torna a introduir-lo.');
                     }
                 }
-
                 // Validació del mòvil
-                if (record.get('IdPref') == 'TEL'){
+                else if (record.get('IdPref') == 'TEL'){
                     console.log('Estoy en TEL');
                     if (valMovil(text)){
                         record.set('ValorPref', text);

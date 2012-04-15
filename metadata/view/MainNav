@@ -20,6 +20,25 @@
     "expanded": true,
     "cn": [
         {
+            "id": "ExtBox1-ext-gen12258",
+            "type": "navigationbar",
+            "reference": {
+                "name": "navigationBar",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "id": null,
+                "itemId": "NavBar",
+                "designer|userClassName": "MyNavigationBar",
+                "title": ""
+            },
+            "customConfigs": [],
+            "iconCls": "icon-navbar",
+            "expanded": true
+        },
+        {
             "id": "ExtBox1-ext-gen5474",
             "type": "nestedlist",
             "reference": {
@@ -28,7 +47,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|initialView": false,
                 "id": "temesList",
                 "itemId": "temesList",
                 "displayField": "nom",
@@ -37,7 +55,7 @@
                 "designer|userClassName": "temesList"
             },
             "customConfigs": [],
-            "expanded": false,
+            "expanded": true,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen7308",
@@ -49,7 +67,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "fn": "onTemesListLeafItemTap",
-                        "implHandler": "var tabPanel = Ext.create('CCIVIC.view.Incidencia',{fullscreen: true});\n\n//Es modifica el titol amb el leaf seleccionat.\nExt.ComponentQuery.query('#descIncid')[0].setTitle('Descripció '+record.get('nom'));\n\nthis.push(tabPanel);",
+                        "implHandler": "var tabPanel = Ext.create('CCIVIC.view.Incidencia',{fullscreen: true});\n\n//Es modifica el titol amb el leaf seleccionat.\nExt.ComponentQuery.query('#descIncid')[0].setTitle('Descripció '+record.get('nom'));\n\nthis.setActiveItem(tabPanel, {type:'slide',direction:'left'});\n//this.push(tabPanel);",
                         "name": "leafitemtap",
                         "designer|userClassName": "onTemesListLeafItemTap"
                     },
@@ -83,29 +101,11 @@
             "codeClass": null,
             "userConfig": {
                 "fn": "onNavigationviewShow",
-                "implHandler": "var store = Ext.data.StoreManager.lookup('PrefStore');\n\nif (store.getCount() === 0){\n    Ext.Msg.alert('Avís:', 'Es necessari introduir les dades personals.');\n    store.add(\n    {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: '*'},\n    {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: '*'},\n    {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: '*'},\n    {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:''},\n    {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: '*'});\n\n    var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});\n    this.push(Panel);\n}\n  \n",
+                "implHandler": "var store = Ext.data.StoreManager.lookup('PrefStore');\n\nif (store.getCount() === 0){\n    Ext.Msg.alert('Avís:', 'Es necessari introduir les dades personals.');\n    store.add(\n    {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: '*'},\n    {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: '*'},\n    {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: '*'},\n    {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:''},\n    {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: '*'});\n\n    var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});\n    this.push(Panel);\n}\n\n",
                 "name": "show",
                 "designer|userClassName": "onNavigationviewShow"
             },
             "customConfigs": [],
-            "expanded": true
-        },
-        {
-            "id": "ExtBox1-ext-gen12258",
-            "type": "navigationbar",
-            "reference": {
-                "name": "navigationBar",
-                "type": "object"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "id": null,
-                "itemId": "NavBar",
-                "designer|userClassName": "MyNavigationBar",
-                "title": ""
-            },
-            "customConfigs": [],
-            "iconCls": "icon-navbar",
             "expanded": true
         }
     ]

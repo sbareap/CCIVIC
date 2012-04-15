@@ -24,6 +24,11 @@ Ext.define('CCIVIC.view.MainNav', {
             animation: false,
             type: 'card'
         },
+        navigationBar: {
+            hidden: true,
+            itemId: 'NavBar',
+            title: ''
+        },
         items: [
             {
                 xtype: 'nestedlist',
@@ -48,11 +53,7 @@ Ext.define('CCIVIC.view.MainNav', {
                 fn: 'onNavigationviewShow',
                 event: 'show'
             }
-        ],
-        navigationBar: {
-            itemId: 'NavBar',
-            title: ''
-        }
+        ]
     },
 
     onTemesListLeafItemTap: function(nestedlist, list, index, target, record, e, options) {
@@ -61,7 +62,8 @@ Ext.define('CCIVIC.view.MainNav', {
         //Es modifica el titol amb el leaf seleccionat.
         Ext.ComponentQuery.query('#descIncid')[0].setTitle('Descripció '+record.get('nom'));
 
-        this.push(tabPanel);
+        this.setActiveItem(tabPanel, {type:'slide',direction:'left'});
+        //this.push(tabPanel);
     },
 
     onNavigationviewShow: function(component, options) {

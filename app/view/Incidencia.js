@@ -18,20 +18,25 @@ Ext.define('CCIVIC.view.Incidencia', {
 
     config: {
         tabBar: {
-            docked: 'bottom'
+            docked: 'top'
         },
         items: [
             {
                 xtype: 'formpanel',
                 itemId: 'tabIncidencia',
                 title: 'Incidencia',
-                iconCls: 'info',
                 items: [
                     {
                         xtype: 'fieldset',
                         id: 'descIncid',
                         itemId: 'descIncid',
                         items: [
+                            {
+                                xtype: 'textfield',
+                                itemId: 'adrecaMap',
+                                label: 'Adreça',
+                                labelAlign: 'top'
+                            },
                             {
                                 xtype: 'textareafield',
                                 itemId: 'observacions',
@@ -60,7 +65,6 @@ Ext.define('CCIVIC.view.Incidencia', {
                 id: 'tabLocalitzacio',
                 itemId: 'tabLocalitzacio',
                 title: 'Localització',
-                iconCls: 'search',
                 items: [
                     {
                         xtype: 'map',
@@ -98,6 +102,12 @@ Ext.define('CCIVIC.view.Incidencia', {
         };
         map = new google.maps.Map(document.getElementById("map"), myOptions);
 
+        // Variables globales
+        var map, geocoder;
+
+        // Instancia del geocodificador
+        geocoder = new google.maps.Geocoder();
+
         // Try W3C Geolocation method (Preferred)
         if(navigator.geolocation) {
             browserSupportFlag = true;
@@ -111,8 +121,12 @@ Ext.define('CCIVIC.view.Incidencia', {
                     draggable: true
                 });
 
-                google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.open(map, marker);     
+                processReverseGeocoding(map.getCenter(), showMarkerInfo);
+
+                google.maps.event.addListener(marker, 'mouseup', function(event) {
+                    //infowindow.open(map, marker);     
+                    processReverseGeocoding(event.latLng, showMarkerInfo);
+                    console.log('evento');
 
                 });      
 
@@ -136,12 +150,85 @@ Ext.define('CCIVIC.view.Incidencia', {
                 initialLocation = cornella;
                 contentString = "Error: Tu navegador no soporta la geolocalización. Estas en Cornellà?";
             }
-            map.setCenter(initialLocation);
+            map.setCenter(initialLocation);    
             infowindow.setContent(contentString);
             infowindow.setPosition(initialLocation);
             infowindow.open(map);
         }
 
+        function processReverseGeocoding(location, callback)
+        {
+            // Propiedades de la georreferenciación
+
+            var request = {
+                latLng: location
+            };
+
+            // Invocación a la georreferenciación (proceso asíncrono)
+
+            geocoder.geocode(request, function(results, status) {
+
+                /*
+                * OK
+                * ZERO_RESULTS
+                * OVER_QUERY_LIMIT
+                * REQUEST_DENIED
+                * INVALID_REQUEST 
+                */
+
+                // Notifica al usuario el resultado obtenido
+
+                //document.getElementById('message').innerHTML = "Respuesta obtenida: " + status;
+
+                // En caso de terminarse exitosamente el proyecto ...
+
+                if(status == google.maps.GeocoderStatus.OK)
+                {
+                    // Invoca la función de callback
+
+                    callback (results);            
+                    // Retorna los resultados obtenidos
+
+                    return results;
+                }
+
+                // En caso de error retorna el estado        
+                return status;
+            });
+        }
+
+        function showMarkerInfo(locations)
+        {
+            // Centra el mapa en la ubicación especificada
+            map.setCenter(locations[0].geometry.location);
+
+            Ext.ComponentQuery.query('#adreca')[0].setHtml(locations[0].formatted_address);
+            Ext.ComponentQuery.query('#adrecaMap')[0].setValue(locations[0].formatted_address);
+
+            // Crea el mensaje para mostrar la información georreferenciada
+            /*    var infoWindow = new google.maps.InfoWindow();
+            infoWindow.setPosition(locations[0].geometry.location);
+
+            // Prepara el mensaje con la información obtenida del proceso
+            // de georreferenciación inversa
+            var content = 'Latitud:  ' + locations[0].geometry.location.lat() + '<br />' +
+            'Longitud:  ' + locations[0].geometry.location.lng() + '<br />' +
+            '<br />Topónimos:<br /><ul>';
+
+            for (var i=0; i<locations.length; i++)
+            {
+                if (locations[i].formatted_address)
+                content += '<li>' + locations[i].formatted_address + '</li>';
+                else
+                content += '<li>No se encontró información.</li>';
+            }
+
+            content += "</ul>";
+            infoWindow.setContent(content);
+            // Muestra el mensaje sobre el mapa
+            infoWindow.open(map);    */
+
+        }
     }
 
 });

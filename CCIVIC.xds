@@ -19,7 +19,7 @@
         "cssPath": ""
     },
     "xdsVersion": "2.0.0",
-    "xdsBuild": "363",
+    "xdsBuild": "374",
     "framework": "touch20",
     "topInstanceFileMap": {
         "5f1163a2-88f7-46d1-a34b-0cb32651a065": {
@@ -80,7 +80,7 @@
         }
     },
     "expandedState": {
-        "data": false,
+        "data": true,
         "model": false,
         "component": true,
         "controller": true
