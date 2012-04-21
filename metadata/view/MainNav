@@ -8,7 +8,7 @@
     "codeClass": null,
     "userConfig": {
         "designer|initialView": true,
-        "defaultBackButtonText": "",
+        "defaultBackButtonText": null,
         "useTitleForBackButtonText": true,
         "designer|userClassName": "MainNav",
         "designer|userAlias": "mainNav",
@@ -17,7 +17,7 @@
     "customConfigs": [],
     "designerId": "e27ac681-9788-44df-8ff3-5c8441776606",
     "$viewOrder": 0,
-    "expanded": true,
+    "expanded": false,
     "cn": [
         {
             "id": "ExtBox1-ext-gen12258",
@@ -28,6 +28,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "hidden": true,
                 "id": null,
                 "itemId": "NavBar",
                 "designer|userClassName": "MyNavigationBar",
@@ -54,7 +55,7 @@
                 "designer|userClassName": "temesList"
             },
             "customConfigs": [],
-            "expanded": true,
+            "expanded": false,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen7308",
@@ -66,7 +67,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "fn": "onTemesListLeafItemTap",
-                        "implHandler": "var tabPanel = Ext.create('CCIVIC.view.Incidencia',{fullscreen: true});\r\n\r\n//Es modifica el titol amb el leaf seleccionat.\r\n//Ext.ComponentQuery.query('#descIncid')[0].setTitle('Descripció '+record.get('nom'));\r\n\r\nthis.setActiveItem(tabPanel, {type:'slide',direction:'left'});\r\n",
+                        "implHandler": "var cmp = Ext.getCmp('Incidencia');\r\nvar Panel;\r\n\r\nif (cmp){\r\n    Ext.getCmp('Incidencia').destroy();\r\n}\r\n\r\nPanel = Ext.create('CCIVIC.view.Incidencia',{title:'Dades Incidència',fullscreen: true});\r\n\r\n//Es modifica el titol amb el leaf seleccionat.\r\nExt.ComponentQuery.query('#descIncid')[0].setTitle('Descripció '+record.get('nom'));\r\nExt.ComponentQuery.query('#NavBar')[0].setHidden(false);\r\n\r\nthis.push(Panel);\r\n",
                         "name": "leafitemtap",
                         "designer|userClassName": "onTemesListLeafItemTap"
                     },
@@ -87,6 +88,23 @@
                     },
                     "customConfigs": [],
                     "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen20720",
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onTemesListShow",
+                        "implHandler": "Ext.ComponentQuery.query('#NavBar')[0].setHidden(true);",
+                        "name": "show",
+                        "designer|userClassName": "onTemesListShow"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
                 }
             ]
         },
@@ -100,7 +118,7 @@
             "codeClass": null,
             "userConfig": {
                 "fn": "onNavigationviewShow",
-                "implHandler": "var storeIncid = Ext.data.StoreManager.lookup('IncidStore');\r\n\r\nconsole.log('estoy en show');\r\nif (storeIncid.getCount() === 0){\r\n    storeIncid.add(\r\n    {IdCamp:'LOC', CodiCamp: 'Localització', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: '*'},\r\n    {IdCamp:'OBS', CodiCamp: 'Observacions', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: ''},\r\n    {IdCamp:'RISC', CodiCamp: 'Comporta risc', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: ''},\r\n    {IdCamp:'FOTO', CodiCamp: 'Fotografia', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req:''}\r\n    );\r\n\r\n    storeIncid.sync();\r\n}\r\n\r\nvar storePref = Ext.data.StoreManager.lookup('PrefStore');\r\n\r\nif (storePref.getCount() === 0){\r\n    Ext.Msg.alert('Avís:', 'Es necessari introduir les dades personals.');\r\n    storePref.add(\r\n    {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: '*'},\r\n    {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: '*'},\r\n    {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: '*'},\r\n    {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:''},\r\n    {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: '*'});\r\n\r\n    var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});\r\n    this.push(Panel);\r\n}\r\n\r\n",
+                "implHandler": "var storeIncid = Ext.data.StoreManager.lookup('IncidStore');\r\n\r\nconsole.log('estoy en show');\r\nExt.ComponentQuery.query('#NavBar')[0].setHidden(true);\r\n\r\nif (storeIncid.getCount() === 0){\r\n    storeIncid.add(\r\n    {IdCamp:'LOC', CodiCamp: 'Localització', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: '*'},\r\n    {IdCamp:'OBS', CodiCamp: 'Observacions', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: ''},\r\n    {IdCamp:'RISC', CodiCamp: 'Comporta risc', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: ''},\r\n    {IdCamp:'FOTO', CodiCamp: 'Fotografia', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req:''}\r\n    );\r\n\r\n    storeIncid.sync();\r\n}\r\n\r\nvar storePref = Ext.data.StoreManager.lookup('PrefStore');\r\n\r\nif (storePref.getCount() === 0){\r\n    Ext.Msg.alert('Avís:', 'Es necessari introduir les dades personals.');\r\n    storePref.add(\r\n    {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: '*'},\r\n    {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: '*'},\r\n    {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: '*'},\r\n    {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:''},\r\n    {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: '*'});\r\n\r\n    var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});\r\n    this.push(Panel);\r\n}\r\n\r\n",
                 "name": "show",
                 "designer|userClassName": "onNavigationviewShow"
             },

@@ -26,11 +26,6 @@ Ext.define('CCIVIC.view.Localitzacio', {
                 ui: ''
             },
             {
-                xtype: 'titlebar',
-                docked: 'top',
-                title: 'Localització'
-            },
-            {
                 xtype: 'container',
                 itemId: 'adrecaContainer',
                 ui: '',
@@ -39,32 +34,33 @@ Ext.define('CCIVIC.view.Localitzacio', {
                 },
                 items: [
                     {
-                        xtype: 'textfield',
-                        itemId: 'adreca',
-                        width: 272,
-                        name: 'adreca',
-                        readOnly: true
-                    },
-                    {
-                        xtype: 'spacer',
-                        itemId: 'separadorAdreca',
-                        width: 5
-                    },
-                    {
-                        xtype: 'button',
-                        itemId: 'adrecaButton',
-                        ui: 'confirm',
-                        width: 40,
-                        iconCls: 'compose',
-                        iconMask: true
-                    },
-                    {
                         xtype: 'hiddenfield',
                         itemId: 'latHidden'
                     },
                     {
                         xtype: 'hiddenfield',
                         itemId: 'lngHidden'
+                    }
+                ]
+            },
+            {
+                xtype: 'textfield',
+                itemId: 'adreca',
+                readOnly: true
+            },
+            {
+                xtype: 'toolbar',
+                docked: 'bottom',
+                itemId: 'incidBar',
+                items: [
+                    {
+                        xtype: 'button',
+                        docked: 'left',
+                        itemId: 'btnAdreca',
+                        ui: 'round',
+                        iconAlign: 'center',
+                        iconCls: 'reply',
+                        iconMask: true
                     }
                 ]
             }
@@ -77,7 +73,7 @@ Ext.define('CCIVIC.view.Localitzacio', {
             {
                 fn: 'onAdrecaButtonTap',
                 event: 'tap',
-                delegate: '#adrecaButton'
+                delegate: '#btnAdreca'
             }
         ]
     },
@@ -113,8 +109,7 @@ Ext.define('CCIVIC.view.Localitzacio', {
             }
         }
 
-        if (Lat || Lng){
-            console.log('Lat i Lng != blanco --'+Lat+' '+Lng);
+        if (Lat || Lng){    
             initialLocation = new google.maps.LatLng(Lat, Lng);
         }    
 

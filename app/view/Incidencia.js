@@ -19,29 +19,36 @@ Ext.define('CCIVIC.view.Incidencia', {
     config: {
         items: [
             {
-                xtype: 'titlebar',
-                docked: 'top',
-                itemId: 'IncidTitleBar',
-                title: 'Dades Incidencia'
+                xtype: 'fieldset',
+                itemId: 'descIncid',
+                items: [
+                    {
+                        xtype: 'list',
+                        height: 400,
+                        id: 'incidList',
+                        itemId: 'IncidList',
+                        ui: 'round',
+                        itemTpl: [
+                            '<p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small></p>'
+                        ],
+                        store: 'IncidStore',
+                        onItemDisclosure: true
+                    }
+                ]
             },
             {
-                xtype: 'list',
-                height: 400,
-                id: 'incidList',
-                itemId: 'IncidList',
-                ui: 'round',
-                itemTpl: [
-                    '<p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small></p>'
-                ],
-                store: 'IncidStore',
-                onItemDisclosure: true
-            },
-            {
-                xtype: 'button',
-                id: 'btnEnviar',
-                itemId: 'BtnEnviar',
-                ui: 'round',
-                text: 'Enviar'
+                xtype: 'toolbar',
+                docked: 'bottom',
+                itemId: 'IncidBar',
+                items: [
+                    {
+                        xtype: 'button',
+                        id: 'btnEnviar',
+                        itemId: 'BtnEnviar',
+                        ui: 'round',
+                        text: 'Enviar'
+                    }
+                ]
             }
         ],
         listeners: [
@@ -83,7 +90,7 @@ Ext.define('CCIVIC.view.Incidencia', {
                     clearIcon : false
                 });
 
-                Ext.getCmp('textObs').focus();
+                //Ext.getCmp('textObs').focus();
 
                 var textObs = record.get('ValorCamp').toString();                   
                 Ext.ComponentQuery.query('#textObs')[0].setValue(textObs);        
@@ -103,7 +110,7 @@ Ext.define('CCIVIC.view.Incidencia', {
         }
 
         if (record.get('IdCamp') == 'LOC'){        
-            var Panel = Ext.create('CCIVIC.view.Localitzacio',{fullscreen: true});
+            var Panel = Ext.create('CCIVIC.view.Localitzacio',{title:'Localització', fullscreen: true});
             this.getParent().push(Panel);
         }
     },

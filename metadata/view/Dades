@@ -17,7 +17,7 @@
     "expanded": true,
     "cn": [
         {
-            "id": "ExtBox1-ext-gen10624",
+            "id": "ExtBox1-ext-gen19942",
             "type": "titlebar",
             "reference": {
                 "name": "items",
@@ -26,7 +26,7 @@
             "codeClass": null,
             "userConfig": {
                 "docked": "top",
-                "itemId": "DadesTitleBar",
+                "itemId": "dadesBar",
                 "title": "Dades Personals",
                 "designer|userClassName": "MyTitleBar"
             },
@@ -43,10 +43,11 @@
             "codeClass": null,
             "userConfig": {
                 "docked": null,
-                "height": 400,
+                "height": 370,
                 "id": "prefList",
                 "itemId": "PrefList",
                 "ui": "round",
+                "width": null,
                 "layout": null,
                 "itemTpl": "<p>{CodiPref}&nbsp;{Req}</p><p><small>{ValorPref}</small></p>",
                 "store": "PrefStore",
@@ -54,7 +55,7 @@
                 "designer|userClassName": "MyList"
             },
             "customConfigs": [],
-            "expanded": true,
+            "expanded": false,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen4332",
@@ -76,8 +77,8 @@
             ]
         },
         {
-            "id": "ExtBox1-ext-gen6568",
-            "type": "button",
+            "id": "ExtBox1-ext-gen32738",
+            "type": "toolbar",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -85,32 +86,51 @@
             "codeClass": null,
             "userConfig": {
                 "docked": "bottom",
-                "id": "btnGrabar",
-                "itemId": "BtnGrabar",
-                "ui": "round",
-                "width": null,
-                "text": "Grabar",
-                "designer|userClassName": "MyButton"
+                "itemId": "dadesBar",
+                "designer|userClassName": "MyToolbar2",
+                "container|align": null
             },
             "customConfigs": [],
             "expanded": true,
             "cn": [
                 {
-                    "id": "ExtBox1-ext-gen6980",
-                    "type": "basiceventbinding",
+                    "id": "ExtBox1-ext-gen6568",
+                    "type": "button",
                     "reference": {
-                        "name": "listeners",
+                        "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fn": "onBtnGrabarTap",
-                        "implHandler": "var store = Ext.data.StoreManager.lookup('PrefStore'),\r\nlist = Ext.getCmp('prefList'),\r\ncorrecte = 1,\r\nListStore = list.getStore();\r\n\r\nfor(var i = 0; i < ListStore.getCount(); i++) {   \r\n    if ((ListStore.getAt(i).get('Req') == '*') && (ListStore.getAt(i).get('ValorPref').length === 0)){        \r\n        Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       \r\n        correcte = 0;\r\n    }\r\n}\r\n\r\nif (correcte == 1) {\r\n    store.sync();\r\n    Ext.Msg.alert('Avís:', 'Dades gravades correctament.');\r\n    this.getParent().pop();\r\n}",
-                        "name": "tap",
-                        "designer|userClassName": "onBtnGrabarTap"
+                        "docked": null,
+                        "id": "btnGravar",
+                        "itemId": "BtnGravar",
+                        "ui": "round",
+                        "width": 70,
+                        "text": "Gravar",
+                        "designer|userClassName": "MyButton"
                     },
                     "customConfigs": [],
-                    "expanded": true
+                    "expanded": false,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen6980",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onBtnGrabarTap",
+                                "implHandler": "var store = Ext.data.StoreManager.lookup('PrefStore'),\r\nlist = Ext.getCmp('prefList'),\r\ncorrecte = 1,\r\nListStore = list.getStore();\r\n\r\nfor(var i = 0; i < ListStore.getCount(); i++) {   \r\n    if ((ListStore.getAt(i).get('Req') == '*') && (ListStore.getAt(i).get('ValorPref').length === 0)){        \r\n        Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       \r\n        correcte = 0;\r\n    }\r\n}\r\n\r\nif (correcte == 1) {\r\n    store.sync();\r\n    Ext.Msg.alert('Avís:', 'Dades gravades correctament.');\r\n    this.getParent().pop();\r\n}",
+                                "name": "tap",
+                                "designer|userClassName": "onBtnGrabarTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
                 }
             ]
         }

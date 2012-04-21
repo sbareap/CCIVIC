@@ -22,12 +22,12 @@ Ext.define('CCIVIC.view.Dades', {
             {
                 xtype: 'titlebar',
                 docked: 'top',
-                itemId: 'DadesTitleBar',
+                itemId: 'dadesBar',
                 title: 'Dades Personals'
             },
             {
                 xtype: 'list',
-                height: 400,
+                height: 370,
                 id: 'prefList',
                 itemId: 'PrefList',
                 ui: 'round',
@@ -38,12 +38,19 @@ Ext.define('CCIVIC.view.Dades', {
                 onItemDisclosure: true
             },
             {
-                xtype: 'button',
+                xtype: 'toolbar',
                 docked: 'bottom',
-                id: 'btnGrabar',
-                itemId: 'BtnGrabar',
-                ui: 'round',
-                text: 'Grabar'
+                itemId: 'dadesBar',
+                items: [
+                    {
+                        xtype: 'button',
+                        id: 'btnGravar',
+                        itemId: 'BtnGravar',
+                        ui: 'round',
+                        width: 70,
+                        text: 'Gravar'
+                    }
+                ]
             }
         ],
         listeners: [
@@ -55,7 +62,7 @@ Ext.define('CCIVIC.view.Dades', {
             {
                 fn: 'onBtnGrabarTap',
                 event: 'tap',
-                delegate: '#btnGrabar'
+                delegate: '#btnGravar'
             }
         ]
     },

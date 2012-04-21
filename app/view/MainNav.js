@@ -18,13 +18,13 @@ Ext.define('CCIVIC.view.MainNav', {
     alias: 'widget.mainNav',
 
     config: {
-        defaultBackButtonText: '',
         useTitleForBackButtonText: true,
         layout: {
             animation: false,
             type: 'card'
         },
         navigationBar: {
+            hidden: true,
             itemId: 'NavBar',
             title: ''
         },
@@ -49,6 +49,11 @@ Ext.define('CCIVIC.view.MainNav', {
                 delegate: '#temesList'
             },
             {
+                fn: 'onTemesListShow',
+                event: 'show',
+                delegate: '#temesList'
+            },
+            {
                 fn: 'onNavigationviewShow',
                 event: 'show'
             }
@@ -56,19 +61,33 @@ Ext.define('CCIVIC.view.MainNav', {
     },
 
     onTemesListLeafItemTap: function(nestedlist, list, index, target, record, e, options) {
-        var tabPanel = Ext.create('CCIVIC.view.Incidencia',{fullscreen: true});
+        var cmp = Ext.getCmp('Incidencia');
+        var Panel;
+
+        if (cmp){
+            Ext.getCmp('Incidencia').destroy();
+        }
+
+        Panel = Ext.create('CCIVIC.view.Incidencia',{title:'Dades Incidència',fullscreen: true});
 
         //Es modifica el titol amb el leaf seleccionat.
-        //Ext.ComponentQuery.query('#descIncid')[0].setTitle('Descripció '+record.get('nom'));
+        Ext.ComponentQuery.query('#descIncid')[0].setTitle('Descripció '+record.get('nom'));
+        Ext.ComponentQuery.query('#NavBar')[0].setHidden(false);
 
-        this.setActiveItem(tabPanel, {type:'slide',direction:'left'});
+        this.push(Panel);
 
+    },
+
+    onTemesListShow: function(component, options) {
+        Ext.ComponentQuery.query('#NavBar')[0].setHidden(true);
     },
 
     onNavigationviewShow: function(component, options) {
         var storeIncid = Ext.data.StoreManager.lookup('IncidStore');
 
         console.log('estoy en show');
+        Ext.ComponentQuery.query('#NavBar')[0].setHidden(true);
+
         if (storeIncid.getCount() === 0){
             storeIncid.add(
             {IdCamp:'LOC', CodiCamp: 'Localització', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: '*'},
