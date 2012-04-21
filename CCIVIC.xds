@@ -15,11 +15,10 @@
         "saveOnDeploy": false,
         "appName": "MyApp",
         "mapsAPI": "https://maps.google.com/maps/api/js?sensor=true",
-        "resources": [],
         "cssPath": ""
     },
     "xdsVersion": "2.0.0",
-    "xdsBuild": "374",
+    "xdsBuild": "412",
     "framework": "touch20",
     "topInstanceFileMap": {
         "5f1163a2-88f7-46d1-a34b-0cb32651a065": {
@@ -70,19 +69,44 @@
             ],
             "className": "Dades"
         },
-        "e67f8aa9-a1eb-483d-9e34-0cbecb977dbe": {
+        "f5974e70-2a8d-4c08-81ec-963569b9855d": {
+            "paths": [
+                "metadata/store/incidStore",
+                "app/store/override/incidStore.js",
+                "app/store/incidStore.js"
+            ],
+            "className": "incidStore"
+        },
+        "017dbc97-3f18-4041-ae0a-95335a24b60a": {
             "paths": [
                 "metadata/view/Incidencia",
                 "app/view/override/Incidencia.js",
                 "app/view/Incidencia.js"
             ],
             "className": "Incidencia"
+        },
+        "1f1d7000-8ddc-48e2-b342-18c77759c275": {
+            "paths": [
+                "metadata/view/Localitzacio",
+                "app/view/override/Localitzacio.js",
+                "app/view/Localitzacio.js"
+            ],
+            "className": "Localitzacio"
+        },
+        "241c7b1d-2c02-4316-bc6d-9ce07a2c98d8": {
+            "paths": [
+                "metadata/model/IncidList",
+                "app/model/override/IncidList.js",
+                "app/model/IncidList.js"
+            ],
+            "className": "IncidList"
         }
     },
     "expandedState": {
         "data": true,
-        "model": false,
+        "model": true,
         "component": true,
-        "controller": true
+        "controller": true,
+        "resource": false
     }
 }

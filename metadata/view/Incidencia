@@ -1,177 +1,62 @@
 {
-    "id": "ExtBox1-ext-gen6459",
-    "type": "tabpanel",
+    "id": "ExtBox1-ext-gen4488",
+    "type": "panel",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
+        "id": null,
+        "itemId": null,
         "designer|userClassName": "Incidencia"
     },
     "customConfigs": [],
-    "designerId": "e67f8aa9-a1eb-483d-9e34-0cbecb977dbe",
+    "designerId": "017dbc97-3f18-4041-ae0a-95335a24b60a",
     "$viewOrder": 2,
     "expanded": true,
     "cn": [
         {
-            "id": "ExtBox1-ext-gen10967",
-            "type": "tabbar",
+            "id": "ExtBox1-ext-gen8218",
+            "type": "titlebar",
             "reference": {
-                "name": "tabBar",
-                "type": "object"
+                "name": "items",
+                "type": "array"
             },
             "codeClass": null,
             "userConfig": {
                 "docked": "top",
-                "designer|userClassName": "MyTabBar"
+                "itemId": "IncidTitleBar",
+                "title": "Dades Incidencia",
+                "designer|userClassName": "MyTitleBar2"
             },
             "customConfigs": [],
-            "iconCls": "icon-tab-bar",
             "expanded": true
         },
         {
-            "id": "ExtBox1-ext-gen4488",
-            "type": "formpanel",
+            "id": "ExtBox1-ext-gen9788",
+            "type": "list",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "itemId": "tabIncidencia",
-                "designer|userClassName": "MyFormPanel",
-                "title": "Incidencia"
+                "height": 400,
+                "id": "incidList",
+                "itemId": "IncidList",
+                "ui": "round",
+                "modal": null,
+                "itemTpl": "<p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small></p>",
+                "store": "IncidStore",
+                "onItemDisclosure": true,
+                "designer|userClassName": "MyList1"
             },
             "customConfigs": [],
             "expanded": true,
             "cn": [
                 {
-                    "id": "ExtBox1-ext-gen6010",
-                    "type": "fieldset",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "id": "descIncid",
-                        "itemId": "descIncid",
-                        "title": null,
-                        "designer|userClassName": "MyFieldSet"
-                    },
-                    "customConfigs": [],
-                    "expanded": true,
-                    "cn": [
-                        {
-                            "id": "ExtBox1-ext-gen3615",
-                            "type": "textfield",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": "adrecaMap",
-                                "label": "Adreça",
-                                "labelAlign": "top",
-                                "designer|userClassName": "MyTextField"
-                            },
-                            "customConfigs": [],
-                            "expanded": true
-                        },
-                        {
-                            "id": "ExtBox1-ext-gen7658",
-                            "type": "textareafield",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": "observacions",
-                                "label": "Observacions",
-                                "labelAlign": "top",
-                                "designer|userClassName": "MyTextArea"
-                            },
-                            "customConfigs": [],
-                            "expanded": true
-                        },
-                        {
-                            "id": "ExtBox1-ext-gen10671",
-                            "type": "togglefield",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "label": "Comporta un risc?",
-                                "labelWidth": 160,
-                                "name": "risc",
-                                "designer|userClassName": "MyToggleField"
-                            },
-                            "customConfigs": [],
-                            "expanded": true
-                        },
-                        {
-                            "id": "ExtBox1-ext-gen12297",
-                            "type": "button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "id": "btnEnviar",
-                                "itemId": "BtnEnviar",
-                                "ui": "round",
-                                "text": "Enviar",
-                                "designer|userClassName": "MyButton1"
-                            },
-                            "customConfigs": [],
-                            "expanded": true
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "ExtBox1-ext-gen9668",
-            "type": "container",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "id": "tabLocalitzacio",
-                "itemId": "tabLocalitzacio",
-                "designer|userClassName": "MyContainer",
-                "title": "Localització"
-            },
-            "customConfigs": [],
-            "expanded": true,
-            "cn": [
-                {
-                    "id": "ExtBox1-ext-gen15574",
-                    "type": "map",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "height": 400,
-                        "id": "map",
-                        "itemId": "Map",
-                        "designer|userClassName": "MyMap"
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen3332",
+                    "id": "ExtBox1-ext-gen7122",
                     "type": "basiceventbinding",
                     "reference": {
                         "name": "listeners",
@@ -179,27 +64,47 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fn": "onTabLocalitzacioShow",
-                        "implHandler": "var initialLocation;\nvar cornella = new google.maps.LatLng(41.35, 2.08333);\nvar browserSupportFlag;\nvar map;\nvar infowindow = new google.maps.InfoWindow();\n\nvar myOptions = {\n    zoom: 17,\n    mapTypeId: google.maps.MapTypeId.ROADMAP\n};\nmap = new google.maps.Map(document.getElementById(\"map\"), myOptions);\n\n// Variables globales\nvar map, geocoder;\n\n// Instancia del geocodificador\ngeocoder = new google.maps.Geocoder();\n\n// Try W3C Geolocation method (Preferred)\nif(navigator.geolocation) {\n    browserSupportFlag = true;\n    navigator.geolocation.getCurrentPosition(function(position) {\n        initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);\n        //contentString = \"Estamos aqui\";\n        map.setCenter(initialLocation);\n\n        var marker = new google.maps.Marker({map: map, \n            position: map.getCenter(),\n            draggable: true\n        });\n\n        processReverseGeocoding(map.getCenter(), showMarkerInfo);\n\n        google.maps.event.addListener(marker, 'mouseup', function(event) {\n            //infowindow.open(map, marker);     \n            processReverseGeocoding(event.latLng, showMarkerInfo);\n            console.log('evento');\n\n        });      \n\n        //infowindow.setContent(contentString);        \n        infowindow.setPosition(initialLocation);\n        infowindow.open(map);\n    }, function() {\n        handleNoGeolocation(browserSupportFlag);\n    });\n} else {\n    // El navegador no soporta la Geolocalización\n    browserSupportFlag = false;\n    handleNoGeolocation(browserSupportFlag);\n}\n\nfunction handleNoGeolocation(errorFlag) {\n    if (errorFlag === true) {\n        initialLocation = cornella;\n        contentString = \"Error: El servicio de geolocalización ha fallado.\";\n    } else {\n        initialLocation = cornella;\n        contentString = \"Error: Tu navegador no soporta la geolocalización. Estas en Cornellà?\";\n    }\n    map.setCenter(initialLocation);    \n    infowindow.setContent(contentString);\n    infowindow.setPosition(initialLocation);\n    infowindow.open(map);\n}\n\nfunction processReverseGeocoding(location, callback)\n{\n    // Propiedades de la georreferenciación\n\n    var request = {\n        latLng: location\n    };\n\n    // Invocación a la georreferenciación (proceso asíncrono)\n\n    geocoder.geocode(request, function(results, status) {\n\n        /*\n        * OK\n        * ZERO_RESULTS\n        * OVER_QUERY_LIMIT\n        * REQUEST_DENIED\n        * INVALID_REQUEST \n        */\n\n        // Notifica al usuario el resultado obtenido\n\n        //document.getElementById('message').innerHTML = \"Respuesta obtenida: \" + status;\n\n        // En caso de terminarse exitosamente el proyecto ...\n\n        if(status == google.maps.GeocoderStatus.OK)\n        {\n            // Invoca la función de callback\n\n            callback (results);            \n            // Retorna los resultados obtenidos\n\n            return results;\n        }\n\n        // En caso de error retorna el estado        \n        return status;\n    });\n}\n\nfunction showMarkerInfo(locations)\n{\n    // Centra el mapa en la ubicación especificada\n    map.setCenter(locations[0].geometry.location);\n\n    Ext.ComponentQuery.query('#adreca')[0].setHtml(locations[0].formatted_address);\n    Ext.ComponentQuery.query('#adrecaMap')[0].setValue(locations[0].formatted_address);\n\n    // Crea el mensaje para mostrar la información georreferenciada\n    /*    var infoWindow = new google.maps.InfoWindow();\n    infoWindow.setPosition(locations[0].geometry.location);\n\n    // Prepara el mensaje con la información obtenida del proceso\n    // de georreferenciación inversa\n    var content = 'Latitud:  ' + locations[0].geometry.location.lat() + '<br />' +\n    'Longitud:  ' + locations[0].geometry.location.lng() + '<br />' +\n    '<br />Topónimos:<br /><ul>';\n\n    for (var i=0; i<locations.length; i++)\n    {\n        if (locations[i].formatted_address)\n        content += '<li>' + locations[i].formatted_address + '</li>';\n        else\n        content += '<li>No se encontró información.</li>';\n    }\n\n    content += \"</ul>\";\n    infoWindow.setContent(content);\n    // Muestra el mensaje sobre el mapa\n    infoWindow.open(map);    */\n\n}",
-                        "name": "show",
-                        "designer|userClassName": "onTabLocalitzacioShow"
+                        "fn": "onIncidListItemTap",
+                        "implHandler": "var textObsCmp = Ext.getCmp('textObs');\r\nvar textSiNo;\r\n\r\nif (textObsCmp){\r\n    Ext.getCmp('textObs').destroy();\r\n}\r\nelse{\r\n    if (record.get('IdCamp') == 'OBS'){ \r\n      Ext.Msg.prompt('Dades incidencia', \r\n        record.get('CodiCamp')+':', \r\n        function(btn,text) {    \r\n            if (btn == 'ok'){                                             \r\n                record.set('ValorCamp', text);         \r\n            } \r\n        },\r\n        this,\r\n        true,\r\n        null,\r\n        {xtype : 'textareafield',\r\n            id : 'textObs',\r\n            height: 350,\r\n            clearIcon : false\r\n        });\r\n\r\n        Ext.getCmp('textObs').focus();\r\n\r\n        var textObs = record.get('ValorCamp').toString();                   \r\n        Ext.ComponentQuery.query('#textObs')[0].setValue(textObs);        \r\n    }\r\n}\r\n\r\nif (record.get('IdCamp') == 'RISC'){\r\n    Ext.Msg.confirm(null,'Comporta un risc pel ciutadà?', function(btn) {                                    \r\n        if (btn == 'yes'){\r\n          textSiNo = 'Si';\r\n        }\r\n        else {\r\n            textSiNo = 'No';\r\n        }\r\n        record.set('ValorCamp', textSiNo);               \r\n    }); \r\n}\r\n\r\nif (record.get('IdCamp') == 'LOC'){        \r\n    var Panel = Ext.create('CCIVIC.view.Localitzacio',{fullscreen: true});\r\n    this.getParent().push(Panel);\r\n}",
+                        "name": "itemtap",
+                        "designer|userClassName": "onIncidListItemTap"
                     },
                     "customConfigs": [],
                     "expanded": true
-                },
+                }
+            ]
+        },
+        {
+            "id": "ExtBox1-ext-gen12297",
+            "type": "button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "btnEnviar",
+                "itemId": "BtnEnviar",
+                "ui": "round",
+                "text": "Enviar",
+                "designer|userClassName": "MyButton1"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
                 {
-                    "id": "ExtBox1-ext-gen7417",
-                    "type": "label",
+                    "id": "ExtBox1-ext-gen3989",
+                    "type": "basiceventbinding",
                     "reference": {
-                        "name": "items",
+                        "name": "listeners",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "itemId": "adreca",
-                        "padding": 12,
-                        "width": null,
-                        "designer|userClassName": "MyLabel"
+                        "fn": "onBtnEnviarTap",
+                        "implHandler": "var store = Ext.data.StoreManager.lookup('IncidStore'),\r\nlist = Ext.getCmp('incidList'),\r\ncorrecte = 1,\r\nListStore = list.getStore();\r\n\r\nfor(var i = 0; i < ListStore.getCount(); i++) {   \r\n    if ((ListStore.getAt(i).get('Req') == '*') && (ListStore.getAt(i).get('ValorCamp').length === 0)){        \r\n        Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       \r\n        correcte = 0;\r\n    }\r\n}\r\n\r\nif (correcte == 1) {\r\n    store.sync();\r\n    Ext.Msg.alert('Avís:', 'Dades gravades correctament.');\r\n    this.getParent().pop();\r\n}",
+                        "name": "tap",
+                        "designer|userClassName": "onBtnEnviarTap"
                     },
                     "customConfigs": [],
                     "expanded": true
