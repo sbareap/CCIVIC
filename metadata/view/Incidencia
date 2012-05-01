@@ -30,7 +30,7 @@
                 "designer|userClassName": "MyFieldSet"
             },
             "customConfigs": [],
-            "expanded": false,
+            "expanded": true,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen9788",
@@ -64,7 +64,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onIncidListItemTap",
-                                "implHandler": "var textObsCmp = Ext.getCmp('textObs');\r\nvar textSiNo;\r\n\r\nif (textObsCmp){\r\n    Ext.getCmp('textObs').destroy();\r\n}\r\nelse{\r\n    if (record.get('IdCamp') == 'OBS'){ \r\n        Ext.Msg.prompt('Dades incidencia', \r\n        record.get('CodiCamp')+':', \r\n        function(btn,text) {    \r\n            if (btn == 'ok'){                                             \r\n                record.set('ValorCamp', text);         \r\n            } \r\n        },\r\n        this,\r\n        true,\r\n        null,\r\n        {xtype : 'textareafield',\r\n            id : 'textObs',\r\n            height: 350,\r\n            clearIcon : false\r\n        });\r\n\r\n        //Ext.getCmp('textObs').focus();\r\n\r\n        var textObs = record.get('ValorCamp').toString();                   \r\n        Ext.ComponentQuery.query('#textObs')[0].setValue(textObs);        \r\n    }\r\n}\r\n\r\nif (record.get('IdCamp') == 'RISC'){\r\n    Ext.Msg.confirm(null,'Comporta un risc pel ciutadà?', function(btn) {                                    \r\n        if (btn == 'yes'){\r\n            textSiNo = 'Si';\r\n        }\r\n        else {\r\n            textSiNo = 'No';\r\n        }\r\n        record.set('ValorCamp', textSiNo);               \r\n    }); \r\n}\r\n\r\nif (record.get('IdCamp') == 'LOC'){        \r\n    var Panel = Ext.create('CCIVIC.view.Localitzacio',{title:'Localització', fullscreen: true});\r\n    this.getParent().push(Panel);\r\n}",
+                                "implHandler": "var textObsCmp = Ext.getCmp('textObs');\r\nvar textSiNo;\r\nvar store = Ext.data.StoreManager.lookup('IncidStore');\r\n\r\nif (textObsCmp){\r\n    Ext.getCmp('textObs').destroy();\r\n}\r\nelse{\r\n    if (record.get('IdCamp') == 'OBS'){ \r\n        Ext.Msg.prompt('Dades incidencia', \r\n        record.get('CodiCamp')+':', \r\n        function(btn,text) {    \r\n            if (btn == 'ok'){                                             \r\n                record.set('ValorCamp', text);         \r\n            } \r\n        },\r\n        this,\r\n        true,\r\n        null,\r\n        {xtype : 'textareafield',\r\n            id : 'textObs',\r\n            height: 350,\r\n            clearIcon : false\r\n        });\r\n\r\n        //Ext.getCmp('textObs').focus();\r\n\r\n        var textObs = record.get('ValorCamp').toString();                   \r\n        Ext.ComponentQuery.query('#textObs')[0].setValue(textObs);        \r\n    }\r\n}\r\n\r\nif (record.get('IdCamp') == 'RISC'){\r\n    Ext.Msg.confirm(null,'Comporta un risc pel ciutadà?', function(btn) {                                    \r\n        if (btn == 'yes'){\r\n            textSiNo = 'Si';\r\n        }\r\n        else {\r\n            textSiNo = 'No';\r\n        }\r\n        record.set('ValorCamp', textSiNo);               \r\n    }); \r\n}\r\n\r\nif (record.get('IdCamp') == 'LOC'){        \r\n    var Panel = Ext.create('CCIVIC.view.Localitzacio',{title:'Localització', fullscreen: true});\r\n    this.getParent().push(Panel);\r\n}\r\n\r\nif (record.get('IdCamp') == 'FOTO'){        \r\n    var Panel = Ext.create('CCIVIC.view.Foto',{title:'Fotografia', fullscreen: true});\r\n    this.getParent().push(Panel);    \r\n}\r\n\r\nconsole.log(dataview.getId());\r\ndataview.refresh();",
                                 "name": "itemtap",
                                 "designer|userClassName": "onIncidListItemTap"
                             },
@@ -107,7 +107,7 @@
                         "designer|userClassName": "MyButton1"
                     },
                     "customConfigs": [],
-                    "expanded": false,
+                    "expanded": true,
                     "cn": [
                         {
                             "id": "ExtBox1-ext-gen3989",
@@ -119,7 +119,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onBtnEnviarTap",
-                                "implHandler": "var store = Ext.data.StoreManager.lookup('IncidStore'),\r\nlist = Ext.getCmp('incidList'),\r\ncorrecte = 1,\r\nListStore = list.getStore();\r\n\r\nfor(var i = 0; i < ListStore.getCount(); i++) {   \r\n    if ((ListStore.getAt(i).get('Req') == '*') && (ListStore.getAt(i).get('ValorCamp').length === 0)){        \r\n        Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       \r\n        correcte = 0;\r\n    }\r\n}\r\n\r\nif (correcte == 1) {\r\n    store.sync();\r\n    Ext.Msg.alert('Avís:', 'Dades gravades correctament.');\r\n    this.getParent().pop();\r\n}",
+                                "implHandler": "console.log('Inici');\r\nvar store = Ext.data.StoreManager.lookup('IncidStore'),\r\n//JSONStore = Ext.data.StoreManager.lookup('IncidJsonStore'),\r\nlist = Ext.getCmp('incidList'),\r\ncorrecte = 1,\r\nListStore = list.getStore();\r\n\r\n//console.log('Creo record');\r\n//var rIncid = Ext.data.Record.create(['nom', 'cognoms', 'nif', 'email','telefon','inc_Adreca', 'inc_Lat', 'inc_Lng', 'inc_Obsercacions', 'inc_Risc', 'inc_Foto', 'inc_Tipus']);\r\n//console.log('Creo record');\r\n\r\nfor(var i = 0; i < ListStore.getCount(); i++) {   \r\n    if ((ListStore.getAt(i).get('Req') == '*') && (ListStore.getAt(i).get('ValorCamp').length === 0)){        \r\n        Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       \r\n        correcte = 0;\r\n    }\r\n}\r\n\r\n/*console.log('inserto record');\r\nvar nr = new rIncid({\r\nnom: 'Silvia',\r\ncognoms: 'Barea',\r\nnif: '52624910j',\r\nemail: 'sbarea@uoc.edu',\r\ntelefon: '',\r\ninc_Adreca: '',\r\ninc_Lat: '',\r\ninc_Lng: '',\r\ninc_Observacions: '',\r\ninc_Risc: '',\r\ninc_Foto: '',\r\ninc_Tipus: ''\r\n});*/\r\n\r\nif (correcte == 1) {\r\n    //JSONStore.add(nr);\r\n    //JSONStore.save();\r\n    //es graven les dades a local\r\n    store.sync();\r\n    Ext.Msg.alert('Avís:', 'Dades gravades correctament.');\r\n    this.getParent().pop();\r\n}",
                                 "name": "tap",
                                 "designer|userClassName": "onBtnEnviarTap"
                             },

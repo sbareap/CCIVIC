@@ -1,0 +1,183 @@
+{
+    "id": "ExtBox1-ext-gen4172",
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "ui": "",
+        "layout": "vbox",
+        "designer|userClassName": "Foto"
+    },
+    "customConfigs": [],
+    "designerId": "34843441-4adf-4405-ab41-ba90ee8afcac",
+    "$viewOrder": 4,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen24996",
+            "type": "container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "FotoContainer",
+                "designer|userClassName": "MyContainer1"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen24544",
+                    "type": "image",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "centered": true,
+                        "height": 201,
+                        "itemId": "imgFoto",
+                        "width": 201,
+                        "designer|userClassName": "MyImage"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        },
+        {
+            "id": "ExtBox1-ext-gen4744",
+            "type": "toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "bottom",
+                "itemId": "fotoBar",
+                "designer|userClassName": "MyToolbar4"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen5229",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "btnOk",
+                        "ui": "round",
+                        "iconCls": null,
+                        "iconMask": true,
+                        "text": "Acceptar",
+                        "designer|userClassName": "MyButton3"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen6592",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onBtnOkTap",
+                                "implHandler": "this.getParent().pop();",
+                                "name": "tap",
+                                "designer|userClassName": "onBtnOkTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen9802",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "btnCapturar",
+                        "ui": "round",
+                        "text": "Capturar",
+                        "designer|userClassName": "MyButton4"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen15579",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onBtnCapturarTap",
+                                "implHandler": " Ext.device.Camera.capture({\r\n     success: function(uri){\r\n         // Ext.getStore('Image').add({src: uri});\r\n         console.log(uri);           \r\n         Ext.ComponentQuery.query('#imgFoto')[0].setSrc(uri);\r\n         \r\n     },\r\n     scope: this,\r\n     source: 'camera',\r\n     destination: 'file'\r\n });",
+                                "name": "tap",
+                                "designer|userClassName": "onBtnCapturarTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen21553",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "btnSeleccionar",
+                        "ui": "round",
+                        "text": "Seleccionar",
+                        "designer|userClassName": "MyButton4"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen22141",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onBtnSeleccionarTap",
+                                "implHandler": "Ext.device.Camera.capture({\r\n            success: function(uri){\r\n                //Ext.getStore('Image').add({src: uri});         \r\n                Ext.ComponentQuery.query('#imgFoto')[0].setSrc(uri);        \r\n            },\r\n            scope: this,\r\n            source: 'library',\r\n            destination: 'file'\r\n        });",
+                                "name": "tap",
+                                "designer|userClassName": "onBtnSeleccionarTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -18,7 +18,7 @@ Ext.define('CCIVIC.view.MainNav', {
     alias: 'widget.mainNav',
 
     config: {
-        useTitleForBackButtonText: true,
+        defaultBackButtonText: 'Tornar',
         layout: {
             animation: false,
             type: 'card'
@@ -33,9 +33,11 @@ Ext.define('CCIVIC.view.MainNav', {
                 xtype: 'nestedlist',
                 id: 'temesList',
                 itemId: 'temesList',
+                backText: 'Tornar',
                 displayField: 'nom',
                 store: 'temesTreeStore',
                 title: 'Tipologia incidència',
+                useTitleAsBackText: false,
                 toolbar: {
                     xtype: 'toolbar',
                     itemId: 'temesToolbar'
@@ -96,7 +98,7 @@ Ext.define('CCIVIC.view.MainNav', {
             {IdCamp:'FOTO', CodiCamp: 'Fotografia', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req:''}
             );
 
-            storeIncid.sync();
+            //storeIncid.sync();
         }
 
         var storePref = Ext.data.StoreManager.lookup('PrefStore');

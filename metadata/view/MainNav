@@ -8,8 +8,8 @@
     "codeClass": null,
     "userConfig": {
         "designer|initialView": true,
-        "defaultBackButtonText": null,
-        "useTitleForBackButtonText": true,
+        "defaultBackButtonText": "Tornar",
+        "useTitleForBackButtonText": null,
         "designer|userClassName": "MainNav",
         "designer|userAlias": "mainNav",
         "container|animation": false
@@ -17,7 +17,7 @@
     "customConfigs": [],
     "designerId": "e27ac681-9788-44df-8ff3-5c8441776606",
     "$viewOrder": 0,
-    "expanded": false,
+    "expanded": true,
     "cn": [
         {
             "id": "ExtBox1-ext-gen12258",
@@ -49,9 +49,11 @@
             "userConfig": {
                 "id": "temesList",
                 "itemId": "temesList",
+                "backText": "Tornar",
                 "displayField": "nom",
                 "store": "temesTreeStore",
                 "title": "Tipologia incidència",
+                "useTitleAsBackText": false,
                 "designer|userClassName": "temesList"
             },
             "customConfigs": [],
@@ -118,7 +120,7 @@
             "codeClass": null,
             "userConfig": {
                 "fn": "onNavigationviewShow",
-                "implHandler": "var storeIncid = Ext.data.StoreManager.lookup('IncidStore');\r\n\r\nconsole.log('estoy en show');\r\nExt.ComponentQuery.query('#NavBar')[0].setHidden(true);\r\n\r\nif (storeIncid.getCount() === 0){\r\n    storeIncid.add(\r\n    {IdCamp:'LOC', CodiCamp: 'Localització', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: '*'},\r\n    {IdCamp:'OBS', CodiCamp: 'Observacions', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: ''},\r\n    {IdCamp:'RISC', CodiCamp: 'Comporta risc', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: ''},\r\n    {IdCamp:'FOTO', CodiCamp: 'Fotografia', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req:''}\r\n    );\r\n\r\n    storeIncid.sync();\r\n}\r\n\r\nvar storePref = Ext.data.StoreManager.lookup('PrefStore');\r\n\r\nif (storePref.getCount() === 0){\r\n    Ext.Msg.alert('Avís:', 'Es necessari introduir les dades personals.');\r\n    storePref.add(\r\n    {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: '*'},\r\n    {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: '*'},\r\n    {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: '*'},\r\n    {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:''},\r\n    {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: '*'});\r\n\r\n    var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});\r\n    this.push(Panel);\r\n}\r\n\r\n",
+                "implHandler": "var storeIncid = Ext.data.StoreManager.lookup('IncidStore');\r\n\r\nconsole.log('estoy en show');\r\nExt.ComponentQuery.query('#NavBar')[0].setHidden(true);\r\n\r\nif (storeIncid.getCount() === 0){\r\n    storeIncid.add(\r\n    {IdCamp:'LOC', CodiCamp: 'Localització', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: '*'},\r\n    {IdCamp:'OBS', CodiCamp: 'Observacions', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: ''},\r\n    {IdCamp:'RISC', CodiCamp: 'Comporta risc', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: ''},\r\n    {IdCamp:'FOTO', CodiCamp: 'Fotografia', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req:''}\r\n    );\r\n\r\n    //storeIncid.sync();\r\n}\r\n\r\nvar storePref = Ext.data.StoreManager.lookup('PrefStore');\r\n\r\nif (storePref.getCount() === 0){\r\n    Ext.Msg.alert('Avís:', 'Es necessari introduir les dades personals.');\r\n    storePref.add(\r\n    {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: '*'},\r\n    {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: '*'},\r\n    {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: '*'},\r\n    {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:''},\r\n    {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: '*'});\r\n\r\n    var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});\r\n    this.push(Panel);\r\n}\r\n\r\n",
                 "name": "show",
                 "designer|userClassName": "onNavigationviewShow"
             },

@@ -100,6 +100,30 @@
                 "app/model/IncidList.js"
             ],
             "className": "IncidList"
+        },
+        "34843441-4adf-4405-ab41-ba90ee8afcac": {
+            "paths": [
+                "metadata/view/Foto",
+                "app/view/override/Foto.js",
+                "app/view/Foto.js"
+            ],
+            "className": "Foto"
+        },
+        "003f254b-89a8-490e-9103-741e34cb3531": {
+            "paths": [
+                "metadata/model/Incidencia",
+                "app/model/override/Incidencia.js",
+                "app/model/Incidencia.js"
+            ],
+            "className": "Incidencia"
+        },
+        "0c4cd2cc-30eb-4588-9e63-74a28945d7ef": {
+            "paths": [
+                "metadata/store/incidJsonStore",
+                "app/store/override/incidJsonStore.js",
+                "app/store/incidJsonStore.js"
+            ],
+            "className": "incidJsonStore"
         }
     },
     "expandedState": {

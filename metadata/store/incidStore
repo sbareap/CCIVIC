@@ -8,6 +8,7 @@
     "codeClass": null,
     "userConfig": {
         "autoLoad": true,
+        "autoSync": null,
         "model": "IncidList",
         "storeId": "IncidStore",
         "designer|userClassName": "incidStore"

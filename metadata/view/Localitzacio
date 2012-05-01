@@ -14,27 +14,8 @@
     "customConfigs": [],
     "designerId": "1f1d7000-8ddc-48e2-b342-18c77759c275",
     "$viewOrder": 3,
-    "expanded": false,
+    "expanded": true,
     "cn": [
-        {
-            "id": "ExtBox1-ext-gen15574",
-            "type": "map",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "height": 395,
-                "id": "map",
-                "itemId": "Map",
-                "padding": null,
-                "ui": "",
-                "designer|userClassName": "MyMap"
-            },
-            "customConfigs": [],
-            "expanded": true
-        },
         {
             "id": "ExtBox1-ext-gen3332",
             "type": "basiceventbinding",
@@ -45,7 +26,7 @@
             "codeClass": null,
             "userConfig": {
                 "fn": "onLocalitzacioShow",
-                "implHandler": "var initialLocation;\r\nvar cornella = new google.maps.LatLng(41.3556405, 2.070240300000023);\r\nvar Lat, Lng;\r\nvar map, geocoder;\r\nvar browserSupportFlag;\r\nvar infowindow = new google.maps.InfoWindow();\r\n\r\nvar myOptions = {\r\n    zoom: 17,\r\n    mapTypeId: google.maps.MapTypeId.ROADMAP\r\n};\r\nmap = new google.maps.Map(document.getElementById(\"map\"), myOptions);       \r\n\r\n// Instancia del geocodificador\r\ngeocoder = new google.maps.Geocoder();\r\n\r\n//Comprovo si tinc una posició gravada a la llista de dades de la incidència\r\n//si la tinc l'agafo com a localitació inicial\r\nvar store = Ext.data.StoreManager.lookup('IncidStore'),\r\nlist = Ext.getCmp('incidList');\r\n\r\nListStore = list.getStore();\r\n\r\nfor(var i = 0; i < ListStore.getCount(); i++) {   \r\n    if (ListStore.getAt(i).get('IdCamp') === 'LOC'){        \r\n        Lat = ListStore.getAt(i).get('ValorCamp1');\r\n        Lng = ListStore.getAt(i).get('ValorCamp2');\r\n    }\r\n}\r\n\r\nif (Lat || Lng){    \r\n    initialLocation = new google.maps.LatLng(Lat, Lng);\r\n}    \r\n\r\nlocalitza(initialLocation);\r\n\r\nfunction localitza(initialLocation){\r\n    // Metodo de Geolocalización de W3C\r\n    if(navigator.geolocation) {\r\n        browserSupportFlag = true;\r\n        navigator.geolocation.getCurrentPosition(function(position) {                                \r\n            console.log(initialLocation);\r\n            if (!initialLocation){                        \r\n                initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);                                                        \r\n            }\r\n\r\n            map.setCenter(initialLocation);\r\n\r\n            var marker = new google.maps.Marker({map: map, position: map.getCenter(), draggable: true});\r\n\r\n            processReverseGeocoding(map.getCenter(), showMarkerInfo);\r\n\r\n            google.maps.event.addListener(marker, 'mouseup', function(event) {             \r\n                processReverseGeocoding(event.latLng, showMarkerInfo);           \r\n            });      \r\n\r\n            infowindow.setPosition(initialLocation);\r\n            infowindow.open(map);\r\n        }, function() {\r\n            handleNoGeolocation(browserSupportFlag);\r\n        });\r\n    } \r\n    else {\r\n        // El navegador no soporta la Geolocalización\r\n        browserSupportFlag = false;\r\n        handleNoGeolocation(browserSupportFlag);\r\n    }\r\n}\r\n\r\nfunction handleNoGeolocation(errorFlag) {\r\n    if (errorFlag === true) {\r\n        initialLocation = cornella;\r\n        contentString = \"Error: El servicio de geolocalización ha fallado.\";\r\n    } else {\r\n        initialLocation = cornella;\r\n        contentString = \"Error: Tu navegador no soporta la geolocalización. Estas en Cornellà?\";\r\n    }\r\n    map.setCenter(initialLocation);    \r\n    infowindow.setContent(contentString);\r\n    infowindow.setPosition(initialLocation);\r\n    infowindow.open(map);\r\n}\r\n\r\nfunction processReverseGeocoding(location, callback)\r\n{\r\n    // Propiedades de la georreferenciación\r\n    var request = {\r\n        latLng: location\r\n    };\r\n\r\n    // Invocación a la georreferenciación (proceso asíncrono)\r\n    geocoder.geocode(request, function(results, status) {\r\n\r\n        /*\r\n        * OK\r\n        * ZERO_RESULTS\r\n        * OVER_QUERY_LIMIT\r\n        * REQUEST_DENIED\r\n        * INVALID_REQUEST \r\n        */\r\n\r\n        if(status == google.maps.GeocoderStatus.OK)\r\n        { \r\n            callback (results);                       \r\n            return results;\r\n        }\r\n\r\n        // En caso de error retorna el estado        \r\n        return status;\r\n    });\r\n}\r\n\r\nfunction showMarkerInfo(locations)\r\n{    \r\n    var poblacio, cpostal, pais;\r\n\r\n    // Centra el mapa a la ubicació específica\r\n    map.setCenter(locations[0].geometry.location);\r\n\r\n    for (i=0;i<locations[0].address_components.length;i++){\r\n        for (j=0;j<locations[0].address_components[i].types.length;j++){\r\n            if(locations[0].address_components[i].types[j]==\"locality\"){\r\n                poblacio = locations[0].address_components[i].long_name;\r\n            }\r\n            if(locations[0].address_components[i].types[j]==\"postal_code\"){\r\n                cpostal = locations[0].address_components[i].long_name;\r\n            }\r\n            if(locations[0].address_components[i].types[j]==\"country\"){\r\n                pais = locations[0].address_components[i].long_name;\r\n            }                \r\n        }\r\n    }\r\n    var poblacioPais = ', '+cpostal+' '+poblacio+', '+pais;    \r\n    var adrecaComplerta = locations[0].formatted_address.replace(poblacioPais,'');\r\n\r\n    //Emmagatzemo la longitud i latitud en camps ocults    \r\n    var Lat = locations[0].geometry.location.lat();\r\n    var Lng = locations[0].geometry.location.lng();\r\n\r\n    console.log(Lat);\r\n    console.log(Lng);\r\n    Ext.ComponentQuery.query('#latHidden')[0].setValue(Lat);\r\n    Ext.ComponentQuery.query('#lngHidden')[0].setValue(Lng);\r\n\r\n    //Comprova que l'adreça estigui dins els limits de Cornellà\r\n    if (cpostal != '08940'){\r\n        Ext.Msg.confirm('Avís:','L\\'adreça actual està fora de Cornellà de Llobregat. Vols situar-te?',                        \r\n        function(btn){                            \r\n            if (btn == 'yes'){\r\n                console.log('localitza cornella '+ cornella);\r\n                localitza(cornella);\r\n            }\r\n        });\r\n        Ext.ComponentQuery.query('#adreca')[0].setValue('');\r\n        Ext.ComponentQuery.query('#latHidden')[0].setValue('');\r\n        Ext.ComponentQuery.query('#lngHidden')[0].setValue('');\r\n    }\r\n    else {\r\n        console.log(adrecaComplerta);\r\n        Ext.ComponentQuery.query('#adreca')[0].setValue(adrecaComplerta); \r\n        Ext.ComponentQuery.query('#latHidden')[0].setValue(Lat);\r\n        Ext.ComponentQuery.query('#lngHidden')[0].setValue(Lng);\r\n    }\r\n}",
+                "implHandler": "var initialLocation;\r\nvar cornella = new google.maps.LatLng(41.3556405, 2.070240300000023);\r\nvar Lat, Lng;\r\nvar map, geocoder;\r\nvar browserSupportFlag;\r\nvar infowindow = new google.maps.InfoWindow();\r\n\r\nvar myOptions = {\r\n    zoom: 17,\r\n    mapTypeId: google.maps.MapTypeId.ROADMAP\r\n};\r\nmap = new google.maps.Map(document.getElementById(\"map\"), myOptions);       \r\n\r\n// Instancia del geocodificador\r\ngeocoder = new google.maps.Geocoder();\r\n\r\n//Comprovo si tinc una posició gravada a la llista de dades de la incidència\r\n//si la tinc l'agafo com a localitació inicial\r\nvar store = Ext.data.StoreManager.lookup('IncidStore'),\r\nlist = Ext.getCmp('incidList');\r\n\r\nListStore = list.getStore();\r\n\r\nfor(var i = 0; i < ListStore.getCount(); i++) {   \r\n    if (ListStore.getAt(i).get('IdCamp') === 'LOC'){        \r\n        Lat = ListStore.getAt(i).get('ValorCamp1');\r\n        Lng = ListStore.getAt(i).get('ValorCamp2');\r\n    }\r\n}\r\n\r\nif (Lat || Lng){    \r\n    initialLocation = new google.maps.LatLng(Lat, Lng);\r\n}    \r\n\r\nlocalitza(initialLocation);\r\n\r\nfunction localitza(initialLocation){\r\n    // Metodo de Geolocalización de W3C\r\n    if(navigator.geolocation) {\r\n        browserSupportFlag = true;\r\n        navigator.geolocation.getCurrentPosition(function(position) {                                \r\n            console.log(initialLocation);\r\n            if (!initialLocation){                        \r\n                initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);                                                        \r\n            }\r\n\r\n            map.setCenter(initialLocation);\r\n\r\n            var marker = new google.maps.Marker({map: map, position: map.getCenter(), draggable: true});\r\n\r\n            processReverseGeocoding(map.getCenter(), showMarkerInfo);\r\n\r\n            google.maps.event.addListener(marker, 'mouseup', function(event) {             \r\n                processReverseGeocoding(event.latLng, showMarkerInfo);           \r\n            });      \r\n\r\n            infowindow.setPosition(initialLocation);\r\n            infowindow.open(map);\r\n        }, function() {\r\n            handleNoGeolocation(browserSupportFlag);\r\n        });\r\n    } \r\n    else {\r\n        // El navegador no soporta la Geolocalización\r\n        browserSupportFlag = false;\r\n        handleNoGeolocation(browserSupportFlag);        \r\n    }\r\n}\r\n\r\nfunction handleNoGeolocation(errorFlag) {\r\n    if (errorFlag === true) {\r\n        initialLocation = cornella;\r\n        contentString = \"Error: El servicio de geolocalización ha fallado.\";\r\n\r\n    } else {\r\n        initialLocation = cornella;\r\n        contentString = \"Error: Tu navegador no soporta la geolocalización. Estas en Cornellà?\";\r\n    }\r\n    map.setCenter(initialLocation);\r\n\r\n    var marker = new google.maps.Marker({map: map, position: map.getCenter(), draggable: true});\r\n\r\n    processReverseGeocoding(map.getCenter(), showMarkerInfo);\r\n\r\n    google.maps.event.addListener(marker, 'mouseup', function(event) {             \r\n        processReverseGeocoding(event.latLng, showMarkerInfo);           \r\n    });      \r\n\r\n    infowindow.setContent(contentString);\r\n    infowindow.setPosition(initialLocation);\r\n    infowindow.open(map);\r\n}\r\n\r\nfunction processReverseGeocoding(location, callback)\r\n{\r\n    // Propiedades de la georreferenciación\r\n    var request = {\r\n        latLng: location\r\n    };\r\n\r\n    // Invocación a la georreferenciación (proceso asíncrono)\r\n    geocoder.geocode(request, function(results, status) {\r\n\r\n        /*\r\n        * OK\r\n        * ZERO_RESULTS\r\n        * OVER_QUERY_LIMIT\r\n        * REQUEST_DENIED\r\n        * INVALID_REQUEST \r\n        */\r\n\r\n        if(status == google.maps.GeocoderStatus.OK)\r\n        { \r\n            callback (results);                       \r\n            return results;\r\n        }\r\n\r\n        // En caso de error retorna el estado        \r\n        return status;\r\n    });\r\n}\r\n\r\nfunction showMarkerInfo(locations)\r\n{    \r\n    var poblacio, cpostal, pais;\r\n\r\n    // Centra el mapa a la ubicació específica\r\n    map.setCenter(locations[0].geometry.location);\r\n\r\n    for (i=0;i<locations[0].address_components.length;i++){\r\n        for (j=0;j<locations[0].address_components[i].types.length;j++){\r\n            if(locations[0].address_components[i].types[j]==\"locality\"){\r\n                poblacio = locations[0].address_components[i].long_name;\r\n            }\r\n            if(locations[0].address_components[i].types[j]==\"postal_code\"){\r\n                cpostal = locations[0].address_components[i].long_name;\r\n            }\r\n            if(locations[0].address_components[i].types[j]==\"country\"){\r\n                pais = locations[0].address_components[i].long_name;\r\n            }                \r\n        }\r\n    }\r\n    var poblacioPais = ', '+cpostal+' '+poblacio+', '+pais;    \r\n    var adrecaComplerta = locations[0].formatted_address.replace(poblacioPais,'');\r\n\r\n    //Emmagatzemo la longitud i latitud en camps ocults    \r\n    var Lat = locations[0].geometry.location.lat();\r\n    var Lng = locations[0].geometry.location.lng();\r\n\r\n    console.log(Lat);\r\n    console.log(Lng);\r\n    Ext.ComponentQuery.query('#latHidden')[0].setValue(Lat);\r\n    Ext.ComponentQuery.query('#lngHidden')[0].setValue(Lng);\r\n\r\n    //Comprova que l'adreça estigui dins els limits de Cornellà\r\n    if (cpostal != '08940'){\r\n        Ext.Msg.confirm('Avís:','L\\'adreça actual està fora de Cornellà de Llobregat. Vols situar-te?',                        \r\n        function(btn){                            \r\n            if (btn == 'yes'){\r\n                console.log('localitza cornella '+ cornella);\r\n                localitza(cornella);\r\n            }\r\n        });\r\n        Ext.ComponentQuery.query('#adreca')[0].setValue('');\r\n        Ext.ComponentQuery.query('#latHidden')[0].setValue('');\r\n        Ext.ComponentQuery.query('#lngHidden')[0].setValue('');\r\n    }\r\n    else {\r\n        console.log(adrecaComplerta);\r\n        Ext.ComponentQuery.query('#adreca')[0].setValue(adrecaComplerta); \r\n        Ext.ComponentQuery.query('#latHidden')[0].setValue(Lat);\r\n        Ext.ComponentQuery.query('#lngHidden')[0].setValue(Lng);\r\n    }\r\n}",
                 "name": "show",
                 "designer|userClassName": "onLocalitzacioShow"
             },
@@ -67,7 +48,7 @@
                 "designer|userClassName": "MyContainer"
             },
             "customConfigs": [],
-            "expanded": true,
+            "expanded": false,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen23004",
@@ -102,21 +83,57 @@
             ]
         },
         {
-            "id": "ExtBox1-ext-gen27078",
-            "type": "textfield",
+            "id": "ExtBox1-ext-gen9757",
+            "type": "container",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "itemId": "adreca",
-                "label": null,
-                "readOnly": true,
-                "designer|userClassName": "MyTextField"
+                "itemId": "mapContainer",
+                "designer|userClassName": "MyContainer2"
             },
             "customConfigs": [],
-            "expanded": true
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen15574",
+                    "type": "map",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 340,
+                        "id": "map",
+                        "itemId": "Map",
+                        "padding": null,
+                        "ui": "",
+                        "designer|userClassName": "MyMap"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen27078",
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "adreca",
+                        "label": null,
+                        "readOnly": true,
+                        "designer|userClassName": "MyTextField"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
         },
         {
             "id": "ExtBox1-ext-gen24333",
@@ -143,16 +160,16 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "docked": "left",
+                        "docked": null,
                         "height": null,
                         "itemId": "btnAdreca",
                         "ui": "round",
                         "width": null,
                         "icon": null,
                         "iconAlign": "center",
-                        "iconCls": "reply",
+                        "iconCls": null,
                         "iconMask": true,
-                        "text": null,
+                        "text": "Acceptar",
                         "designer|userClassName": "MyButton2"
                     },
                     "customConfigs": [],
@@ -168,7 +185,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onAdrecaButtonTap",
-                                "implHandler": "var adreca = Ext.ComponentQuery.query('#adreca')[0].getValue();\r\nvar Lat = Ext.ComponentQuery.query('#latHidden')[0].getValue();\r\nvar Lng = Ext.ComponentQuery.query('#lngHidden')[0].getValue();\r\n\r\n//Gravar l'adreça a listIncid\r\nvar store = Ext.data.StoreManager.lookup('IncidStore'),\r\nlist = Ext.getCmp('incidList');\r\n\r\nListStore = list.getStore();\r\n\r\nfor(var i = 0; i < ListStore.getCount(); i++) {   \r\n    if (ListStore.getAt(i).get('IdCamp') === 'LOC'){        \r\n        ListStore.getAt(i).set('ValorCamp', adreca);\r\n        ListStore.getAt(i).set('ValorCamp1', Lat);\r\n        ListStore.getAt(i).set('ValorCamp2', Lng);        \r\n    }\r\n}\r\n\r\nthis.getParent().pop();",
+                                "implHandler": "var adreca = Ext.ComponentQuery.query('#adreca')[0].getValue();\r\nvar Lat = Ext.ComponentQuery.query('#latHidden')[0].getValue();\r\nvar Lng = Ext.ComponentQuery.query('#lngHidden')[0].getValue();\r\n\r\n//Gravar l'adreça a listIncid\r\nvar store = Ext.data.StoreManager.lookup('IncidStore'),\r\nlist = Ext.getCmp('incidList');\r\n\r\nListStore = list.getStore();\r\n\r\nfor(var i = 0; i < ListStore.getCount(); i++) {   \r\n    if (ListStore.getAt(i).get('IdCamp') === 'LOC'){        \r\n        ListStore.getAt(i).set('ValorCamp', adreca);\r\n        ListStore.getAt(i).set('ValorCamp1', Lat);\r\n        ListStore.getAt(i).set('ValorCamp2', Lng);    \r\n\r\n    }\r\n}\r\n\r\n//store.sync();\r\nlist.refresh();\r\nthis.getParent().pop();",
                                 "name": "tap",
                                 "designer|userClassName": "onAdrecaButtonTap"
                             },

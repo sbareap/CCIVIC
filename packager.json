@@ -1,0 +1,15 @@
+{
+    "applicationName": "CCIVIC",
+    "applicationId": "com.mycompany.myAppID",
+    "versionString": "1.0",
+    "iconName": "icon.png",
+    "inputPath": "C:\\xampp\\htdocs\\CCIVIC",
+    "outputPath": "C:\\ccivic_build",
+    "configuration": "Debug",
+    "platform": "Android",
+    "deviceType": "Universal",
+    "certificatePath": "C:\\sil.keystroke",
+    "certificateAlias": "sbareap",
+    "sdkPath": "C:\\Android\\android-sdk",
+    "androidAPILevel": "15"
+}

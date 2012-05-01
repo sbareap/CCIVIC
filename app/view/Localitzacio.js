@@ -17,14 +17,18 @@ Ext.define('CCIVIC.view.Localitzacio', {
     extend: 'Ext.Panel',
 
     config: {
-        items: [
+        listeners: [
             {
-                xtype: 'map',
-                height: 395,
-                id: 'map',
-                itemId: 'Map',
-                ui: ''
+                fn: 'onLocalitzacioShow',
+                event: 'show'
             },
+            {
+                fn: 'onAdrecaButtonTap',
+                event: 'tap',
+                delegate: '#btnAdreca'
+            }
+        ],
+        items: [
             {
                 xtype: 'container',
                 itemId: 'adrecaContainer',
@@ -44,9 +48,22 @@ Ext.define('CCIVIC.view.Localitzacio', {
                 ]
             },
             {
-                xtype: 'textfield',
-                itemId: 'adreca',
-                readOnly: true
+                xtype: 'container',
+                itemId: 'mapContainer',
+                items: [
+                    {
+                        xtype: 'map',
+                        height: 340,
+                        id: 'map',
+                        itemId: 'Map',
+                        ui: ''
+                    },
+                    {
+                        xtype: 'textfield',
+                        itemId: 'adreca',
+                        readOnly: true
+                    }
+                ]
             },
             {
                 xtype: 'toolbar',
@@ -55,25 +72,13 @@ Ext.define('CCIVIC.view.Localitzacio', {
                 items: [
                     {
                         xtype: 'button',
-                        docked: 'left',
                         itemId: 'btnAdreca',
                         ui: 'round',
                         iconAlign: 'center',
-                        iconCls: 'reply',
-                        iconMask: true
+                        iconMask: true,
+                        text: 'Acceptar'
                     }
                 ]
-            }
-        ],
-        listeners: [
-            {
-                fn: 'onLocalitzacioShow',
-                event: 'show'
-            },
-            {
-                fn: 'onAdrecaButtonTap',
-                event: 'tap',
-                delegate: '#btnAdreca'
             }
         ]
     },
@@ -144,7 +149,7 @@ Ext.define('CCIVIC.view.Localitzacio', {
             else {
                 // El navegador no soporta la Geolocalización
                 browserSupportFlag = false;
-                handleNoGeolocation(browserSupportFlag);
+                handleNoGeolocation(browserSupportFlag);        
             }
         }
 
@@ -152,11 +157,21 @@ Ext.define('CCIVIC.view.Localitzacio', {
             if (errorFlag === true) {
                 initialLocation = cornella;
                 contentString = "Error: El servicio de geolocalización ha fallado.";
+
             } else {
                 initialLocation = cornella;
                 contentString = "Error: Tu navegador no soporta la geolocalización. Estas en Cornellà?";
             }
-            map.setCenter(initialLocation);    
+            map.setCenter(initialLocation);
+
+            var marker = new google.maps.Marker({map: map, position: map.getCenter(), draggable: true});
+
+            processReverseGeocoding(map.getCenter(), showMarkerInfo);
+
+            google.maps.event.addListener(marker, 'mouseup', function(event) {             
+                processReverseGeocoding(event.latLng, showMarkerInfo);           
+            });      
+
             infowindow.setContent(contentString);
             infowindow.setPosition(initialLocation);
             infowindow.open(map);
@@ -260,10 +275,13 @@ Ext.define('CCIVIC.view.Localitzacio', {
             if (ListStore.getAt(i).get('IdCamp') === 'LOC'){        
                 ListStore.getAt(i).set('ValorCamp', adreca);
                 ListStore.getAt(i).set('ValorCamp1', Lat);
-                ListStore.getAt(i).set('ValorCamp2', Lng);        
+                ListStore.getAt(i).set('ValorCamp2', Lng);    
+
             }
         }
 
+        //store.sync();
+        list.refresh();
         this.getParent().pop();
     }
 

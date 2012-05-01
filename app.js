@@ -17,22 +17,27 @@ Ext.Loader.setConfig({
     enabled: true
 });
 
+Ext.require('Ext.device.*');
+
 Ext.application({
     models: [
         'Preferencies',
         'Temes',
-        'IncidList'
+        'IncidList',
+        'Incidencia'
     ],
     stores: [
         'prefStore',
         'temesTreeStore',
-        'incidStore'
+        'incidStore',
+        'incidJsonStore'
     ],
     views: [
         'MainNav',
         'Dades',
         'Incidencia',
-        'Localitzacio'
+        'Localitzacio',
+        'Foto'
     ],
     name: 'CCIVIC',
 

@@ -10,20 +10,25 @@
         "models": [
             "Preferencies",
             "Temes",
-            "IncidList"
+            "IncidList",
+            "Incidencia"
         ],
         "stores": [
             "prefStore",
             "temesTreeStore",
-            "incidStore"
+            "incidStore",
+            "incidJsonStore"
         ],
         "views": [
             "MainNav",
             "Dades",
             "Incidencia",
-            "Localitzacio"
+            "Localitzacio",
+            "Foto"
         ],
-        "name": "CCIVIC"
+        "appFolder": null,
+        "name": "CCIVIC",
+        "phoneStartupScreen": null
     },
     "customConfigs": [],
     "designerId": "application",

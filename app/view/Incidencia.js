@@ -68,6 +68,7 @@ Ext.define('CCIVIC.view.Incidencia', {
     onIncidListItemTap: function(dataview, index, target, record, e, options) {
         var textObsCmp = Ext.getCmp('textObs');
         var textSiNo;
+        var store = Ext.data.StoreManager.lookup('IncidStore');
 
         if (textObsCmp){
             Ext.getCmp('textObs').destroy();
@@ -113,13 +114,27 @@ Ext.define('CCIVIC.view.Incidencia', {
             var Panel = Ext.create('CCIVIC.view.Localitzacio',{title:'Localització', fullscreen: true});
             this.getParent().push(Panel);
         }
+
+        if (record.get('IdCamp') == 'FOTO'){        
+            var Panel = Ext.create('CCIVIC.view.Foto',{title:'Fotografia', fullscreen: true});
+            this.getParent().push(Panel);    
+        }
+
+        console.log(dataview.getId());
+        dataview.refresh();
     },
 
     onBtnEnviarTap: function(button, e, options) {
+        console.log('Inici');
         var store = Ext.data.StoreManager.lookup('IncidStore'),
+        //JSONStore = Ext.data.StoreManager.lookup('IncidJsonStore'),
         list = Ext.getCmp('incidList'),
         correcte = 1,
         ListStore = list.getStore();
+
+        //console.log('Creo record');
+        //var rIncid = Ext.data.Record.create(['nom', 'cognoms', 'nif', 'email','telefon','inc_Adreca', 'inc_Lat', 'inc_Lng', 'inc_Obsercacions', 'inc_Risc', 'inc_Foto', 'inc_Tipus']);
+        //console.log('Creo record');
 
         for(var i = 0; i < ListStore.getCount(); i++) {   
             if ((ListStore.getAt(i).get('Req') == '*') && (ListStore.getAt(i).get('ValorCamp').length === 0)){        
@@ -128,7 +143,26 @@ Ext.define('CCIVIC.view.Incidencia', {
             }
         }
 
+        /*console.log('inserto record');
+        var nr = new rIncid({
+        nom: 'Silvia',
+        cognoms: 'Barea',
+        nif: '52624910j',
+        email: 'sbarea@uoc.edu',
+        telefon: '',
+        inc_Adreca: '',
+        inc_Lat: '',
+        inc_Lng: '',
+        inc_Observacions: '',
+        inc_Risc: '',
+        inc_Foto: '',
+        inc_Tipus: ''
+        });*/
+
         if (correcte == 1) {
+            //JSONStore.add(nr);
+            //JSONStore.save();
+            //es graven les dades a local
             store.sync();
             Ext.Msg.alert('Avís:', 'Dades gravades correctament.');
             this.getParent().pop();
