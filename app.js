@@ -17,20 +17,22 @@ Ext.Loader.setConfig({
     enabled: true
 });
 
-Ext.require('Ext.device.*');
+Ext.require('Ext.device.Camera');
 
 Ext.application({
     models: [
         'Preferencies',
         'Temes',
         'IncidList',
-        'Incidencia'
+        'Incidencia',
+        'Image'
     ],
     stores: [
         'prefStore',
         'temesTreeStore',
         'incidStore',
-        'incidJsonStore'
+        'incidJsonStore',
+        'image'
     ],
     views: [
         'MainNav',

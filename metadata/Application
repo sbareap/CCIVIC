@@ -11,13 +11,15 @@
             "Preferencies",
             "Temes",
             "IncidList",
-            "Incidencia"
+            "Incidencia",
+            "Image"
         ],
         "stores": [
             "prefStore",
             "temesTreeStore",
             "incidStore",
-            "incidJsonStore"
+            "incidJsonStore",
+            "image"
         ],
         "views": [
             "MainNav",

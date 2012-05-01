@@ -11,5 +11,5 @@
     "certificatePath": "C:\\sil.keystroke",
     "certificateAlias": "sbareap",
     "sdkPath": "C:\\Android\\android-sdk",
-    "androidAPILevel": "10"
+    "androidAPILevel": "15"
 }

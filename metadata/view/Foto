@@ -96,7 +96,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onBtnOkTap",
-                                "implHandler": "this.getParent().pop();",
+                                "implHandler": "var foto = Ext.ComponentQuery.query('#imgFoto')[0].getSrc();\r\n\r\n//Gravar la foto a listIncid\r\nvar store = Ext.data.StoreManager.lookup('IncidStore'),\r\nlist = Ext.getCmp('incidList');\r\n\r\nListStore = list.getStore();\r\n\r\nfor(var i = 0; i < ListStore.getCount(); i++) {   \r\n    if (ListStore.getAt(i).get('IdCamp') === 'FOTO'){        \r\n        ListStore.getAt(i).set('ValorCamp', foto);          \r\n    }\r\n}\r\n\r\n\r\n\r\nlist.refresh();\r\nthis.getParent().pop();\r\n\r\n\r\n",
                                 "name": "tap",
                                 "designer|userClassName": "onBtnOkTap"
                             },
@@ -132,7 +132,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onBtnCapturarTap",
-                                "implHandler": " Ext.device.Camera.capture({\r\n     success: function(uri){\r\n         // Ext.getStore('Image').add({src: uri});\r\n         console.log(uri);           \r\n         Ext.ComponentQuery.query('#imgFoto')[0].setSrc(uri);\r\n         \r\n     },\r\n     scope: this,\r\n     source: 'camera',\r\n     destination: 'file'\r\n });",
+                                "implHandler": "var storeImage = Ext.data.StoreManager.lookup('Image');\r\n\r\nExt.device.Camera.capture({\r\n    success: function(img){        \r\n        if (storeImage.getCount() === 0){\r\n              storeImage.add({src:img});              \r\n        }\r\n        else{\r\n              storeImage.getAt(0).set('src', img);\r\n        }        \r\n        Ext.ComponentQuery.query('#imgFoto')[0].setSrc(img);\r\n\r\n    },\r\n    scope: this,\r\n    source: 'camera',\r\n    destination: 'file'\r\n});\r\n\r\nstoreImage.sync();",
                                 "name": "tap",
                                 "designer|userClassName": "onBtnCapturarTap"
                             },
@@ -168,7 +168,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onBtnSeleccionarTap",
-                                "implHandler": "Ext.device.Camera.capture({\r\n            success: function(uri){\r\n                //Ext.getStore('Image').add({src: uri});         \r\n                Ext.ComponentQuery.query('#imgFoto')[0].setSrc(uri);        \r\n            },\r\n            scope: this,\r\n            source: 'library',\r\n            destination: 'file'\r\n        });",
+                                "implHandler": "var storeImage = Ext.data.StoreManager.lookup('Image');\r\n\r\nExt.device.Camera.capture({\r\n    success: function(img){        \r\n        if (storeImage.getCount() === 0){\r\n              storeImage.add({src:img});              \r\n        }\r\n        else{\r\n              storeImage.getAt(0).set('src', img);\r\n        }        \r\n        Ext.ComponentQuery.query('#imgFoto')[0].setSrc(img);\r\n\r\n    },\r\n    scope: this,\r\n    source: 'library',\r\n    destination: 'file'\r\n});\r\n\r\nstoreImage.sync();",
                                 "name": "tap",
                                 "designer|userClassName": "onBtnSeleccionarTap"
                             },
@@ -178,6 +178,23 @@
                     ]
                 }
             ]
+        },
+        {
+            "id": "ExtBox1-ext-gen10217",
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelShow",
+                "implHandler": "var storeImage = Ext.data.StoreManager.lookup('Image');\r\n\r\nif (storeImage.getCount() > 0){\r\n   var uri = storeImage.getAt(0).get('src');\r\n   Ext.ComponentQuery.query('#imgFoto')[0].setSrc(uri);    \r\n}\r\n",
+                "name": "show",
+                "designer|userClassName": "onPanelShow"
+            },
+            "customConfigs": [],
+            "expanded": true
         }
     ]
 }

@@ -77,38 +77,90 @@ Ext.define('CCIVIC.view.Foto', {
                 fn: 'onBtnSeleccionarTap',
                 event: 'tap',
                 delegate: '#btnSeleccionar'
+            },
+            {
+                fn: 'onPanelShow',
+                event: 'show'
             }
         ]
     },
 
     onBtnOkTap: function(button, e, options) {
+        var foto = Ext.ComponentQuery.query('#imgFoto')[0].getSrc();
+
+        //Gravar la foto a listIncid
+        var store = Ext.data.StoreManager.lookup('IncidStore'),
+        list = Ext.getCmp('incidList');
+
+        ListStore = list.getStore();
+
+        for(var i = 0; i < ListStore.getCount(); i++) {   
+            if (ListStore.getAt(i).get('IdCamp') === 'FOTO'){        
+                ListStore.getAt(i).set('ValorCamp', foto);          
+            }
+        }
+
+
+
+        list.refresh();
         this.getParent().pop();
+
+
+
     },
 
     onBtnCapturarTap: function(button, e, options) {
+        var storeImage = Ext.data.StoreManager.lookup('Image');
+
         Ext.device.Camera.capture({
-            success: function(uri){
-                // Ext.getStore('Image').add({src: uri});
-                console.log(uri);           
-                Ext.ComponentQuery.query('#imgFoto')[0].setSrc(uri);
+            success: function(img){        
+                if (storeImage.getCount() === 0){
+                    storeImage.add({src:img});              
+                }
+                else{
+                    storeImage.getAt(0).set('src', img);
+                }        
+                Ext.ComponentQuery.query('#imgFoto')[0].setSrc(img);
 
             },
             scope: this,
             source: 'camera',
             destination: 'file'
         });
+
+        storeImage.sync();
     },
 
     onBtnSeleccionarTap: function(button, e, options) {
+        var storeImage = Ext.data.StoreManager.lookup('Image');
+
         Ext.device.Camera.capture({
-            success: function(uri){
-                //Ext.getStore('Image').add({src: uri});         
-                Ext.ComponentQuery.query('#imgFoto')[0].setSrc(uri);        
+            success: function(img){        
+                if (storeImage.getCount() === 0){
+                    storeImage.add({src:img});              
+                }
+                else{
+                    storeImage.getAt(0).set('src', img);
+                }        
+                Ext.ComponentQuery.query('#imgFoto')[0].setSrc(img);
+
             },
             scope: this,
             source: 'library',
             destination: 'file'
         });
+
+        storeImage.sync();
+    },
+
+    onPanelShow: function(component, options) {
+        var storeImage = Ext.data.StoreManager.lookup('Image');
+
+        if (storeImage.getCount() > 0){
+            var uri = storeImage.getAt(0).get('src');
+            Ext.ComponentQuery.query('#imgFoto')[0].setSrc(uri);    
+        }
+
     }
 
 });

@@ -280,7 +280,6 @@ Ext.define('CCIVIC.view.Localitzacio', {
             }
         }
 
-        //store.sync();
         list.refresh();
         this.getParent().pop();
     }
