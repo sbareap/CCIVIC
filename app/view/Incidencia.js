@@ -24,10 +24,13 @@ Ext.define('CCIVIC.view.Incidencia', {
                 items: [
                     {
                         xtype: 'list',
-                        height: 400,
+                        height: 350,
                         id: 'incidList',
                         itemId: 'IncidList',
                         ui: 'round',
+                        layout: {
+                            type: 'fit'
+                        },
                         itemTpl: [
                             '<p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small></p>'
                         ],
@@ -120,21 +123,13 @@ Ext.define('CCIVIC.view.Incidencia', {
             this.getParent().push(Panel);    
         }
 
-        console.log(dataview.getId());
         dataview.refresh();
+        store.sync();
     },
 
     onBtnEnviarTap: function(button, e, options) {
-        console.log('Inici');
-        var store = Ext.data.StoreManager.lookup('IncidStore'),
-        //JSONStore = Ext.data.StoreManager.lookup('IncidJsonStore'),
-        list = Ext.getCmp('incidList'),
-        correcte = 1,
-        ListStore = list.getStore();
-
-        //console.log('Creo record');
-        //var rIncid = Ext.data.Record.create(['nom', 'cognoms', 'nif', 'email','telefon','inc_Adreca', 'inc_Lat', 'inc_Lng', 'inc_Obsercacions', 'inc_Risc', 'inc_Foto', 'inc_Tipus']);
-        //console.log('Creo record');
+        var ListStore = Ext.data.StoreManager.lookup('IncidStore'),       
+        correcte = 1;
 
         for(var i = 0; i < ListStore.getCount(); i++) {   
             if ((ListStore.getAt(i).get('Req') == '*') && (ListStore.getAt(i).get('ValorCamp').length === 0)){        
@@ -143,28 +138,19 @@ Ext.define('CCIVIC.view.Incidencia', {
             }
         }
 
-        /*console.log('inserto record');
-        var nr = new rIncid({
-        nom: 'Silvia',
-        cognoms: 'Barea',
-        nif: '52624910j',
-        email: 'sbarea@uoc.edu',
-        telefon: '',
-        inc_Adreca: '',
-        inc_Lat: '',
-        inc_Lng: '',
-        inc_Observacions: '',
-        inc_Risc: '',
-        inc_Foto: '',
-        inc_Tipus: ''
-        });*/
+        if (correcte == 1) {    
+            // generar registro para enviar al ajunt.
 
-        if (correcte == 1) {
-            //JSONStore.add(nr);
-            //JSONStore.save();
-            //es graven les dades a local
-            store.sync();
-            Ext.Msg.alert('Avís:', 'Dades gravades correctament.');
+            // borrar pantalla de entrada de datos de incidencia
+            for(var i = 0; i < ListStore.getCount(); i++) {   
+                ListStore.getAt(i).set('ValorCamp','');
+                ListStore.getAt(i).set('ValorCamp1','');        
+                ListStore.getAt(i).set('ValorCamp2','');                      
+            }   
+
+            ListStore.sync();
+
+            Ext.Msg.alert('Avís:', 'Dades enviades correctament.');
             this.getParent().pop();
         }
     }

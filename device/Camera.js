@@ -46,13 +46,16 @@ Ext.define('Ext.device.Camera', {
 
         if (browserEnv.WebView) {
             if (browserEnv.PhoneGap) {
-                return Ext.create('Ext.device.camera.PhoneGap');
+                console.log('PhoneGap');
+				return Ext.create('Ext.device.camera.PhoneGap');
             }
             else {
+			    console.log('Sencha');
                 return Ext.create('Ext.device.camera.Sencha');
             }
         }
         else {
+		    console.log('Simulator');
             return Ext.create('Ext.device.camera.Simulator');
         }
     }

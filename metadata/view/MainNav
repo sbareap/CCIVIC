@@ -17,7 +17,7 @@
     "customConfigs": [],
     "designerId": "e27ac681-9788-44df-8ff3-5c8441776606",
     "$viewOrder": 0,
-    "expanded": true,
+    "expanded": false,
     "cn": [
         {
             "id": "ExtBox1-ext-gen12258",
@@ -52,7 +52,7 @@
                 "backText": "Tornar",
                 "displayField": "nom",
                 "store": "temesTreeStore",
-                "title": "Tipologia incidència",
+                "title": "Tipus incidència",
                 "useTitleAsBackText": false,
                 "designer|userClassName": "temesList"
             },
@@ -85,11 +85,53 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "docked": "top",
                         "itemId": "temesToolbar",
                         "designer|userClassName": "MyToolbar"
                     },
                     "customConfigs": [],
-                    "expanded": true
+                    "expanded": false,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen6300",
+                            "type": "button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "right",
+                                "itemId": "btnDades",
+                                "ui": "round",
+                                "iconCls": "settings",
+                                "iconMask": true,
+                                "text": null,
+                                "designer|userClassName": "MyButton6"
+                            },
+                            "customConfigs": [],
+                            "expanded": true,
+                            "cn": [
+                                {
+                                    "id": "ExtBox1-ext-gen7305",
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onBtnDadesTap",
+                                        "implHandler": "var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});\r\nthis.push(Panel);",
+                                        "name": "tap",
+                                        "designer|userClassName": "onBtnDadesTap"
+                                    },
+                                    "customConfigs": [],
+                                    "expanded": true
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "id": "ExtBox1-ext-gen20720",

@@ -36,11 +36,22 @@ Ext.define('CCIVIC.view.MainNav', {
                 backText: 'Tornar',
                 displayField: 'nom',
                 store: 'temesTreeStore',
-                title: 'Tipologia incidència',
+                title: 'Tipus incidència',
                 useTitleAsBackText: false,
                 toolbar: {
                     xtype: 'toolbar',
-                    itemId: 'temesToolbar'
+                    docked: 'top',
+                    itemId: 'temesToolbar',
+                    items: [
+                        {
+                            xtype: 'button',
+                            docked: 'right',
+                            itemId: 'btnDades',
+                            ui: 'round',
+                            iconCls: 'settings',
+                            iconMask: true
+                        }
+                    ]
                 }
             }
         ],
@@ -49,6 +60,11 @@ Ext.define('CCIVIC.view.MainNav', {
                 fn: 'onTemesListLeafItemTap',
                 event: 'leafitemtap',
                 delegate: '#temesList'
+            },
+            {
+                fn: 'onBtnDadesTap',
+                event: 'tap',
+                delegate: '#btnDades'
             },
             {
                 fn: 'onTemesListShow',
@@ -78,6 +94,11 @@ Ext.define('CCIVIC.view.MainNav', {
 
         this.push(Panel);
 
+    },
+
+    onBtnDadesTap: function(button, e, options) {
+        var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});
+        this.push(Panel);
     },
 
     onTemesListShow: function(component, options) {

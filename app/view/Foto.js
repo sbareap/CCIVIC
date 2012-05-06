@@ -17,10 +17,6 @@ Ext.define('CCIVIC.view.Foto', {
     extend: 'Ext.Panel',
 
     config: {
-        ui: '',
-        layout: {
-            type: 'vbox'
-        },
         items: [
             {
                 xtype: 'container',
@@ -29,9 +25,10 @@ Ext.define('CCIVIC.view.Foto', {
                     {
                         xtype: 'image',
                         centered: true,
-                        height: 201,
+                        height: 320,
                         itemId: 'imgFoto',
-                        width: 201
+                        width: 320,
+                        src: 'img/fotoBlanc.png'
                     }
                 ]
             },
@@ -86,21 +83,7 @@ Ext.define('CCIVIC.view.Foto', {
     },
 
     onBtnOkTap: function(button, e, options) {
-        var foto = Ext.ComponentQuery.query('#imgFoto')[0].getSrc();
-
-        //Gravar la foto a listIncid
-        var store = Ext.data.StoreManager.lookup('IncidStore'),
-        list = Ext.getCmp('incidList');
-
-        ListStore = list.getStore();
-
-        for(var i = 0; i < ListStore.getCount(); i++) {   
-            if (ListStore.getAt(i).get('IdCamp') === 'FOTO'){        
-                ListStore.getAt(i).set('ValorCamp', foto);          
-            }
-        }
-
-
+        var list = Ext.getCmp('incidList');
 
         list.refresh();
         this.getParent().pop();
@@ -110,25 +93,24 @@ Ext.define('CCIVIC.view.Foto', {
     },
 
     onBtnCapturarTap: function(button, e, options) {
-        var storeImage = Ext.data.StoreManager.lookup('Image');
+        var storeIncid = Ext.data.StoreManager.lookup('IncidStore');
 
         Ext.device.Camera.capture({
             success: function(img){        
-                if (storeImage.getCount() === 0){
-                    storeImage.add({src:img});              
+                for(var i = 0; i < storeIncid.getCount(); i++) {          
+                    if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){
+                        storeIncid.getAt(i).set('ValorCamp', img);           
+                    } 
                 }
-                else{
-                    storeImage.getAt(0).set('src', img);
-                }        
-                Ext.ComponentQuery.query('#imgFoto')[0].setSrc(img);
-
+                Ext.ComponentQuery.query('#imgFoto')[0].setSrc(img);       
             },
             scope: this,
             source: 'camera',
-            destination: 'file'
+            destination: 'file',
+            encoding: 'jpg'
         });
 
-        storeImage.sync();
+        storeIncid.sync();
     },
 
     onBtnSeleccionarTap: function(button, e, options) {
@@ -136,18 +118,18 @@ Ext.define('CCIVIC.view.Foto', {
 
         Ext.device.Camera.capture({
             success: function(img){        
-                if (storeImage.getCount() === 0){
-                    storeImage.add({src:img});              
-                }
-                else{
-                    storeImage.getAt(0).set('src', img);
-                }        
+                for(var i = 0; i < storeIncid.getCount(); i++) {          
+                    if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){
+                        storeIncid.getAt(i).set('ValorCamp', img);           
+                    } 
+                }  
                 Ext.ComponentQuery.query('#imgFoto')[0].setSrc(img);
 
             },
             scope: this,
             source: 'library',
-            destination: 'file'
+            destination: 'file',
+            encoding: 'jpg'
         });
 
         storeImage.sync();

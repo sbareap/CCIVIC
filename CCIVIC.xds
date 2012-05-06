@@ -124,22 +124,6 @@
                 "app/store/incidJsonStore.js"
             ],
             "className": "incidJsonStore"
-        },
-        "efba37bb-e889-48d3-aa49-320e70fdde60": {
-            "paths": [
-                "metadata/store/image",
-                "app/store/override/image.js",
-                "app/store/image.js"
-            ],
-            "className": "image"
-        },
-        "398b4aea-fdff-442c-a2ab-cd4a1910b396": {
-            "paths": [
-                "metadata/model/Image",
-                "app/model/override/Image.js",
-                "app/model/Image.js"
-            ],
-            "className": "Image"
         }
     },
     "expandedState": {
@@ -147,6 +131,6 @@
         "model": true,
         "component": true,
         "controller": true,
-        "resource": false
+        "resource": true
     }
 }

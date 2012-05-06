@@ -24,15 +24,13 @@ Ext.application({
         'Preferencies',
         'Temes',
         'IncidList',
-        'Incidencia',
-        'Image'
+        'Incidencia'
     ],
     stores: [
         'prefStore',
         'temesTreeStore',
         'incidStore',
-        'incidJsonStore',
-        'image'
+        'incidJsonStore'
     ],
     views: [
         'MainNav',
