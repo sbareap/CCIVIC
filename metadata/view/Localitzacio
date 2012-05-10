@@ -9,6 +9,7 @@
     "userConfig": {
         "id": null,
         "itemId": null,
+        "layout": "fit",
         "designer|userClassName": "Localitzacio"
     },
     "customConfigs": [],
@@ -44,7 +45,6 @@
             "userConfig": {
                 "itemId": "adrecaContainer",
                 "ui": "",
-                "layout": "hbox",
                 "designer|userClassName": "MyContainer"
             },
             "customConfigs": [],
@@ -98,25 +98,6 @@
             "expanded": true,
             "cn": [
                 {
-                    "id": "ExtBox1-ext-gen15574",
-                    "type": "map",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "height": 340,
-                        "id": "map",
-                        "itemId": "Map",
-                        "padding": null,
-                        "ui": "",
-                        "designer|userClassName": "MyMap"
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
                     "id": "ExtBox1-ext-gen27078",
                     "type": "textfield",
                     "reference": {
@@ -125,10 +106,32 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "docked": "bottom",
                         "itemId": "adreca",
                         "label": null,
                         "readOnly": true,
                         "designer|userClassName": "MyTextField"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen15574",
+                    "type": "map",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "left",
+                        "height": null,
+                        "id": "map",
+                        "itemId": "Map",
+                        "padding": null,
+                        "ui": "",
+                        "width": "100%",
+                        "designer|userClassName": "MyMap"
                     },
                     "customConfigs": [],
                     "expanded": true

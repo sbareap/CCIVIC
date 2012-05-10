@@ -8,6 +8,7 @@
     "codeClass": null,
     "userConfig": {
         "width": null,
+        "layout": "fit",
         "modal": false,
         "designer|userClassName": "Dades"
     },
@@ -43,19 +44,18 @@
             "codeClass": null,
             "userConfig": {
                 "docked": null,
-                "height": 370,
+                "height": null,
                 "id": "prefList",
                 "itemId": "PrefList",
                 "ui": "round",
                 "width": null,
-                "layout": null,
-                "itemTpl": "<p>{CodiPref}&nbsp;{Req}</p><p><small>{ValorPref}</small></p>",
+                "itemTpl": "<div><p>{CodiPref}&nbsp;{Req}</p><p><small>{ValorPref}</small></p></div>",
                 "store": "PrefStore",
                 "onItemDisclosure": true,
                 "designer|userClassName": "MyList"
             },
             "customConfigs": [],
-            "expanded": true,
+            "expanded": false,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen4332",

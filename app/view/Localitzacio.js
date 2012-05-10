@@ -17,6 +17,9 @@ Ext.define('CCIVIC.view.Localitzacio', {
     extend: 'Ext.Panel',
 
     config: {
+        layout: {
+            type: 'fit'
+        },
         listeners: [
             {
                 fn: 'onLocalitzacioShow',
@@ -33,9 +36,6 @@ Ext.define('CCIVIC.view.Localitzacio', {
                 xtype: 'container',
                 itemId: 'adrecaContainer',
                 ui: '',
-                layout: {
-                    type: 'hbox'
-                },
                 items: [
                     {
                         xtype: 'hiddenfield',
@@ -52,16 +52,18 @@ Ext.define('CCIVIC.view.Localitzacio', {
                 itemId: 'mapContainer',
                 items: [
                     {
-                        xtype: 'map',
-                        height: 340,
-                        id: 'map',
-                        itemId: 'Map',
-                        ui: ''
-                    },
-                    {
                         xtype: 'textfield',
+                        docked: 'bottom',
                         itemId: 'adreca',
                         readOnly: true
+                    },
+                    {
+                        xtype: 'map',
+                        docked: 'left',
+                        id: 'map',
+                        itemId: 'Map',
+                        ui: '',
+                        width: '100%'
                     }
                 ]
             },

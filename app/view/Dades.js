@@ -17,6 +17,9 @@ Ext.define('CCIVIC.view.Dades', {
     extend: 'Ext.Panel',
 
     config: {
+        layout: {
+            type: 'fit'
+        },
         modal: false,
         items: [
             {
@@ -27,12 +30,11 @@ Ext.define('CCIVIC.view.Dades', {
             },
             {
                 xtype: 'list',
-                height: 370,
                 id: 'prefList',
                 itemId: 'PrefList',
                 ui: 'round',
                 itemTpl: [
-                    '<p>{CodiPref}&nbsp;{Req}</p><p><small>{ValorPref}</small></p>'
+                    '<div><p>{CodiPref}&nbsp;{Req}</p><p><small>{ValorPref}</small></p></div>'
                 ],
                 store: 'PrefStore',
                 onItemDisclosure: true

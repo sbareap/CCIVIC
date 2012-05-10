@@ -17,22 +17,24 @@ Ext.define('CCIVIC.view.Incidencia', {
     extend: 'Ext.Panel',
 
     config: {
+        layout: {
+            type: 'fit'
+        },
         items: [
             {
                 xtype: 'fieldset',
                 itemId: 'descIncid',
+                layout: {
+                    type: 'fit'
+                },
                 items: [
                     {
                         xtype: 'list',
-                        height: 350,
                         id: 'incidList',
                         itemId: 'IncidList',
                         ui: 'round',
-                        layout: {
-                            type: 'fit'
-                        },
                         itemTpl: [
-                            '<p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small></p>'
+                            '<div><p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small></p></div>'
                         ],
                         store: 'IncidStore',
                         onItemDisclosure: true
@@ -119,8 +121,8 @@ Ext.define('CCIVIC.view.Incidencia', {
         }
 
         if (record.get('IdCamp') == 'FOTO'){        
-            var Panel = Ext.create('CCIVIC.view.Foto',{title:'Fotografia', fullscreen: true});
-            this.getParent().push(Panel);    
+            var Panelf = Ext.create('CCIVIC.view.Foto',{title:'Fotografia', fullscreen: true});
+            this.getParent().push(Panelf);    
         }
 
         dataview.refresh();
@@ -131,8 +133,8 @@ Ext.define('CCIVIC.view.Incidencia', {
         var ListStore = Ext.data.StoreManager.lookup('IncidStore'),       
         correcte = 1;
 
-        for(var i = 0; i < ListStore.getCount(); i++) {   
-            if ((ListStore.getAt(i).get('Req') == '*') && (ListStore.getAt(i).get('ValorCamp').length === 0)){        
+        for(var j = 0; j < ListStore.getCount(); j++) {   
+            if ((ListStore.getAt(j).get('Req') == '*') && (ListStore.getAt(j).get('ValorCamp').length === 0)){        
                 Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       
                 correcte = 0;
             }

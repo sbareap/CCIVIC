@@ -9,12 +9,13 @@
     "userConfig": {
         "id": null,
         "itemId": null,
+        "layout": "fit",
         "designer|userClassName": "Incidencia"
     },
     "customConfigs": [],
     "designerId": "017dbc97-3f18-4041-ae0a-95335a24b60a",
     "$viewOrder": 2,
-    "expanded": true,
+    "expanded": false,
     "cn": [
         {
             "id": "ExtBox1-ext-gen5496",
@@ -26,7 +27,7 @@
             "codeClass": null,
             "userConfig": {
                 "itemId": "descIncid",
-                "layout": null,
+                "layout": "fit",
                 "title": null,
                 "designer|userClassName": "MyFieldSet"
             },
@@ -42,13 +43,12 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "height": 350,
+                        "height": null,
                         "id": "incidList",
                         "itemId": "IncidList",
                         "ui": "round",
-                        "layout": "fit",
                         "modal": null,
-                        "itemTpl": "<p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small></p>",
+                        "itemTpl": "<div><p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small></p></div>",
                         "store": "IncidStore",
                         "onItemDisclosure": true,
                         "designer|userClassName": "MyList1"
@@ -66,7 +66,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onIncidListItemTap",
-                                "implHandler": "var textObsCmp = Ext.getCmp('textObs');\r\nvar textSiNo;\r\nvar store = Ext.data.StoreManager.lookup('IncidStore');\r\n\r\nif (textObsCmp){\r\n    Ext.getCmp('textObs').destroy();\r\n}\r\nelse{\r\n    if (record.get('IdCamp') == 'OBS'){ \r\n        Ext.Msg.prompt('Dades incidencia', \r\n        record.get('CodiCamp')+':', \r\n        function(btn,text) {    \r\n            if (btn == 'ok'){                                             \r\n                record.set('ValorCamp', text);         \r\n            } \r\n        },\r\n        this,\r\n        true,\r\n        null,\r\n        {xtype : 'textareafield',\r\n            id : 'textObs',\r\n            height: 350,\r\n            clearIcon : false\r\n        });\r\n\r\n        //Ext.getCmp('textObs').focus();\r\n\r\n        var textObs = record.get('ValorCamp').toString();                   \r\n        Ext.ComponentQuery.query('#textObs')[0].setValue(textObs);        \r\n    }\r\n}\r\n\r\nif (record.get('IdCamp') == 'RISC'){\r\n    Ext.Msg.confirm(null,'Comporta un risc pel ciutadà?', function(btn) {                                    \r\n        if (btn == 'yes'){\r\n            textSiNo = 'Si';\r\n        }\r\n        else {\r\n            textSiNo = 'No';\r\n        }\r\n        record.set('ValorCamp', textSiNo);               \r\n    }); \r\n}\r\n\r\nif (record.get('IdCamp') == 'LOC'){        \r\n    var Panel = Ext.create('CCIVIC.view.Localitzacio',{title:'Localització', fullscreen: true});\r\n    this.getParent().push(Panel);\r\n}\r\n\r\nif (record.get('IdCamp') == 'FOTO'){        \r\n    var Panel = Ext.create('CCIVIC.view.Foto',{title:'Fotografia', fullscreen: true});\r\n    this.getParent().push(Panel);    \r\n}\r\n\r\ndataview.refresh();\r\nstore.sync();",
+                                "implHandler": "var textObsCmp = Ext.getCmp('textObs');\r\nvar textSiNo;\r\nvar store = Ext.data.StoreManager.lookup('IncidStore');\r\n\r\nif (textObsCmp){\r\n    Ext.getCmp('textObs').destroy();\r\n}\r\nelse{\r\n    if (record.get('IdCamp') == 'OBS'){ \r\n        Ext.Msg.prompt('Dades incidencia', \r\n        record.get('CodiCamp')+':', \r\n        function(btn,text) {    \r\n            if (btn == 'ok'){                                             \r\n                record.set('ValorCamp', text);         \r\n            } \r\n        },\r\n        this,\r\n        true,\r\n        null,\r\n        {xtype : 'textareafield',\r\n            id : 'textObs',\r\n            height: 350,\r\n            clearIcon : false\r\n        });\r\n\r\n        //Ext.getCmp('textObs').focus();\r\n\r\n        var textObs = record.get('ValorCamp').toString();                   \r\n        Ext.ComponentQuery.query('#textObs')[0].setValue(textObs);        \r\n    }\r\n}\r\n\r\nif (record.get('IdCamp') == 'RISC'){\r\n    Ext.Msg.confirm(null,'Comporta un risc pel ciutadà?', function(btn) {                                    \r\n        if (btn == 'yes'){\r\n            textSiNo = 'Si';\r\n        }\r\n        else {\r\n            textSiNo = 'No';\r\n        }\r\n        record.set('ValorCamp', textSiNo);               \r\n    }); \r\n}\r\n\r\nif (record.get('IdCamp') == 'LOC'){        \r\n    var Panel = Ext.create('CCIVIC.view.Localitzacio',{title:'Localització', fullscreen: true});\r\n    this.getParent().push(Panel);\r\n}\r\n\r\nif (record.get('IdCamp') == 'FOTO'){        \r\n    var Panelf = Ext.create('CCIVIC.view.Foto',{title:'Fotografia', fullscreen: true});\r\n    this.getParent().push(Panelf);    \r\n}\r\n\r\ndataview.refresh();\r\nstore.sync();",
                                 "name": "itemtap",
                                 "designer|userClassName": "onIncidListItemTap"
                             },
@@ -121,7 +121,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onBtnEnviarTap",
-                                "implHandler": "var ListStore = Ext.data.StoreManager.lookup('IncidStore'),       \r\n    correcte = 1;\r\n\r\nfor(var i = 0; i < ListStore.getCount(); i++) {   \r\n    if ((ListStore.getAt(i).get('Req') == '*') && (ListStore.getAt(i).get('ValorCamp').length === 0)){        \r\n        Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       \r\n        correcte = 0;\r\n    }\r\n}\r\n\r\nif (correcte == 1) {    \r\n    // generar registro para enviar al ajunt.\r\n    \r\n    // borrar pantalla de entrada de datos de incidencia\r\n    for(var i = 0; i < ListStore.getCount(); i++) {   \r\n       ListStore.getAt(i).set('ValorCamp','');\r\n       ListStore.getAt(i).set('ValorCamp1','');        \r\n       ListStore.getAt(i).set('ValorCamp2','');                      \r\n    }   \r\n    \r\n    ListStore.sync();\r\n    \r\n    Ext.Msg.alert('Avís:', 'Dades enviades correctament.');\r\n    this.getParent().pop();\r\n}",
+                                "implHandler": "var ListStore = Ext.data.StoreManager.lookup('IncidStore'),       \r\ncorrecte = 1;\r\n\r\nfor(var j = 0; j < ListStore.getCount(); j++) {   \r\n    if ((ListStore.getAt(j).get('Req') == '*') && (ListStore.getAt(j).get('ValorCamp').length === 0)){        \r\n        Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       \r\n        correcte = 0;\r\n    }\r\n}\r\n\r\nif (correcte == 1) {    \r\n    // generar registro para enviar al ajunt.\r\n\r\n    // borrar pantalla de entrada de datos de incidencia\r\n    for(var i = 0; i < ListStore.getCount(); i++) {   \r\n        ListStore.getAt(i).set('ValorCamp','');\r\n        ListStore.getAt(i).set('ValorCamp1','');        \r\n        ListStore.getAt(i).set('ValorCamp2','');                      \r\n    }   \r\n\r\n    ListStore.sync();\r\n\r\n    Ext.Msg.alert('Avís:', 'Dades enviades correctament.');\r\n    this.getParent().pop();\r\n}",
                                 "name": "tap",
                                 "designer|userClassName": "onBtnEnviarTap"
                             },
