@@ -17,7 +17,7 @@
     "customConfigs": [],
     "designerId": "e27ac681-9788-44df-8ff3-5c8441776606",
     "$viewOrder": 0,
-    "expanded": false,
+    "expanded": true,
     "cn": [
         {
             "id": "ExtBox1-ext-gen12258",
@@ -31,8 +31,7 @@
                 "hidden": true,
                 "id": null,
                 "itemId": "NavBar",
-                "designer|userClassName": "MyNavigationBar",
-                "title": ""
+                "designer|userClassName": "MyNavigationBar"
             },
             "customConfigs": [],
             "iconCls": "icon-navbar",
@@ -69,7 +68,24 @@
                     "codeClass": null,
                     "userConfig": {
                         "fn": "onTemesListLeafItemTap",
-                        "implHandler": "var cmp = Ext.getCmp('Incidencia');\r\nvar Panel;\r\n\r\nif (cmp){\r\n    Ext.getCmp('Incidencia').destroy();\r\n}\r\n\r\nPanel = Ext.create('CCIVIC.view.Incidencia',{title:'Dades Incidència',fullscreen: true});\r\n\r\n//Es modifica el titol amb el leaf seleccionat.\r\nExt.ComponentQuery.query('#descIncid')[0].setTitle('Descripció '+record.get('nom'));\r\nExt.ComponentQuery.query('#NavBar')[0].setHidden(false);\r\n\r\nthis.push(Panel);\r\n",
+                        "implHandler": [
+                            "var cmp = Ext.getCmp('Incidencia');\r",
+                            "var Panel;\r",
+                            "\r",
+                            "if (cmp){\r",
+                            "    Ext.getCmp('Incidencia').destroy();\r",
+                            "}\r",
+                            "\r",
+                            "Panel = Ext.create('CCIVIC.view.Incidencia',{title:'Dades Incidència',fullscreen: true});\r",
+                            "\r",
+                            "//Es modifica el titol amb el leaf seleccionat.\r",
+                            "Ext.ComponentQuery.query('#descIncid')[0].setTitle('Descripció '+record.get('nom'));\r",
+                            "Ext.ComponentQuery.query('#temaHidden')[0].setValue(record.get('nom'));\r",
+                            "Ext.ComponentQuery.query('#NavBar')[0].setHidden(false);\r",
+                            "\r",
+                            "this.push(Panel);\r",
+                            ""
+                        ],
                         "name": "leafitemtap",
                         "designer|userClassName": "onTemesListLeafItemTap"
                     },
@@ -122,7 +138,10 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "fn": "onBtnDadesTap",
-                                        "implHandler": "var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});\r\nthis.push(Panel);",
+                                        "implHandler": [
+                                            "var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});\r",
+                                            "this.push(Panel);"
+                                        ],
                                         "name": "tap",
                                         "designer|userClassName": "onBtnDadesTap"
                                     },
@@ -143,7 +162,9 @@
                     "codeClass": null,
                     "userConfig": {
                         "fn": "onTemesListShow",
-                        "implHandler": "Ext.ComponentQuery.query('#NavBar')[0].setHidden(true);",
+                        "implHandler": [
+                            "Ext.ComponentQuery.query('#NavBar')[0].setHidden(true);"
+                        ],
                         "name": "show",
                         "designer|userClassName": "onTemesListShow"
                     },
@@ -162,7 +183,37 @@
             "codeClass": null,
             "userConfig": {
                 "fn": "onNavigationviewShow",
-                "implHandler": "var storeIncid = Ext.data.StoreManager.lookup('IncidStore');\r\n\r\nconsole.log('estoy en show');\r\nExt.ComponentQuery.query('#NavBar')[0].setHidden(true);\r\n\r\nif (storeIncid.getCount() === 0){\r\n    storeIncid.add(\r\n    {IdCamp:'LOC', CodiCamp: 'Localització', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: '*'},\r\n    {IdCamp:'OBS', CodiCamp: 'Observacions', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: ''},\r\n    {IdCamp:'RISC', CodiCamp: 'Comporta risc', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: ''},\r\n    {IdCamp:'FOTO', CodiCamp: 'Fotografia', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req:''}\r\n    );\r\n\r\n    //storeIncid.sync();\r\n}\r\n\r\nvar storePref = Ext.data.StoreManager.lookup('PrefStore');\r\n\r\nif (storePref.getCount() === 0){\r\n    Ext.Msg.alert('Avís:', 'Es necessari introduir les dades personals.');\r\n    storePref.add(\r\n    {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: '*'},\r\n    {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: '*'},\r\n    {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: '*'},\r\n    {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:''},\r\n    {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: '*'});\r\n\r\n    var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});\r\n    this.push(Panel);\r\n}\r\n\r\n",
+                "implHandler": [
+                    "var storeIncid = Ext.data.StoreManager.lookup('IncidStore');\r",
+                    "\r",
+                    "Ext.ComponentQuery.query('#NavBar')[0].setHidden(true);\r",
+                    "\r",
+                    "if (storeIncid.getCount() === 0){\r",
+                    "    storeIncid.add(\r",
+                    "    {IdCamp:'LOC', CodiCamp: 'Localització', ValorCamp: '', ValorCamp1: '',ValorCamp2: '',ValorImg:'', Req: '*'},\r",
+                    "    {IdCamp:'OBS', CodiCamp: 'Observacions', ValorCamp: '', ValorCamp1: '',ValorCamp2: '',ValorImg:'', Req: ''},\r",
+                    "    {IdCamp:'RISC', CodiCamp: 'Comporta risc', ValorCamp: '', ValorCamp1: '',ValorCamp2: '',ValorImg:'', Req: ''},\r",
+                    "    {IdCamp:'FOTO', CodiCamp: 'Fotografia', ValorCamp: '', ValorCamp1: '',ValorCamp2: '',ValorImg:'', Req:''}\r",
+                    "    );\r",
+                    "\r",
+                    "    //storeIncid.sync();\r",
+                    "}\r",
+                    "\r",
+                    "var storePref = Ext.data.StoreManager.lookup('PrefStore');\r",
+                    "\r",
+                    "if (storePref.getCount() === 0){\r",
+                    "    Ext.Msg.alert('Avís:', 'Es necessari introduir les dades personals.');\r",
+                    "    storePref.add(\r",
+                    "    {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: ''},\r",
+                    "    {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: ''},\r",
+                    "    {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: ''},\r",
+                    "    {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:''},\r",
+                    "    {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: ''});\r",
+                    "\r",
+                    "    var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});\r",
+                    "    this.push(Panel);\r",
+                    "}"
+                ],
                 "name": "show",
                 "designer|userClassName": "onNavigationviewShow"
             },

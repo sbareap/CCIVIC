@@ -216,7 +216,7 @@
             "codeClass": null,
             "userConfig": {
                 "name": "inc_Data",
-                "type": "date",
+                "type": "string",
                 "designer|userClassName": "MyField24"
             },
             "customConfigs": [],

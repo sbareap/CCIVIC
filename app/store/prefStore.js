@@ -25,7 +25,7 @@ Ext.define('CCIVIC.store.prefStore', {
         storeId: 'PrefStore',
         proxy: {
             type: 'localstorage',
-            id: 'proxyPref'
+            id: 'prefStoreProxy'
         }
     }
 });

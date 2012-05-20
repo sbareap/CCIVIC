@@ -40,6 +40,9 @@ Ext.define('CCIVIC.model.IncidList', {
             {
                 name: 'Req',
                 type: 'string'
+            },
+            {
+                name: 'ValorImg'
             }
         ]
     }

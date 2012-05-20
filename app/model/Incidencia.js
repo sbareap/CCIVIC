@@ -67,7 +67,7 @@ Ext.define('CCIVIC.model.Incidencia', {
             },
             {
                 name: 'inc_Data',
-                type: 'date'
+                type: 'string'
             }
         ]
     }

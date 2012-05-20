@@ -30,7 +30,7 @@ Ext.application({
         'prefStore',
         'temesTreeStore',
         'incidStore',
-        'incidJsonStore'
+        'IncidJSONStore'
     ],
     views: [
         'MainNav',

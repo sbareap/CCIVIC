@@ -274,7 +274,7 @@ Ext.define('CCIVIC.view.Localitzacio', {
         ListStore = list.getStore();
 
         for(var i = 0; i < ListStore.getCount(); i++) {   
-            if (ListStore.getAt(i).get('IdCamp') === 'LOC'){        
+            if (ListStore.getAt(i).get('IdCamp') == 'LOC'){        
                 ListStore.getAt(i).set('ValorCamp', adreca);
                 ListStore.getAt(i).set('ValorCamp1', Lat);
                 ListStore.getAt(i).set('ValorCamp2', Lng);    

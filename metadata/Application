@@ -17,7 +17,7 @@
             "prefStore",
             "temesTreeStore",
             "incidStore",
-            "incidJsonStore"
+            "IncidJSONStore"
         ],
         "views": [
             "MainNav",
@@ -46,7 +46,9 @@
             "codeClass": null,
             "userConfig": {
                 "fn": "launch",
-                "implHandler": "",
+                "implHandler": [
+                    ""
+                ],
                 "designer|userClassName": "launch"
             },
             "customConfigs": [],

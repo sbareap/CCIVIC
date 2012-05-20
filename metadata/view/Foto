@@ -43,6 +43,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "centered": true,
+                        "draggable": true,
                         "height": 320,
                         "itemId": "imgFoto",
                         "width": 320,
@@ -99,7 +100,15 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onBtnOkTap",
-                                "implHandler": "var list = Ext.getCmp('incidList');\r\n\r\nlist.refresh();\r\nthis.getParent().pop();\r\n\r\n\r\n",
+                                "implHandler": [
+                                    "var list = Ext.getCmp('incidList');\r",
+                                    "\r",
+                                    "list.refresh();\r",
+                                    "this.getParent().pop();\r",
+                                    "\r",
+                                    "\r",
+                                    ""
+                                ],
                                 "name": "tap",
                                 "designer|userClassName": "onBtnOkTap"
                             },
@@ -135,7 +144,31 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onBtnCapturarTap",
-                                "implHandler": "var storeIncid = Ext.data.StoreManager.lookup('IncidStore');\r\n\r\nExt.device.Camera.capture({\r\n    success: function(img){        \r\n        for(var i = 0; i < storeIncid.getCount(); i++) {          \r\n            if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){\r\n                storeIncid.getAt(i).set('ValorCamp1', img);           \r\n            } \r\n        }\r\n        Ext.ComponentQuery.query('#imgFoto')[0].setSrc(img);       \r\n        Ext.ComponentQuery.query('#imgFoto')[0].setHeight(320);       \r\n        Ext.ComponentQuery.query('#imgFoto')[0].setWidth(320);       \r\n    },\r\n    scope: this,\r\n    source: 'camera',\r\n    destination: 'file',\r\n    encoding: 'jpg'\r\n});\r\n\r\nstoreIncid.sync();",
+                                "implHandler": [
+                                    "var storeIncid = Ext.data.StoreManager.lookup('IncidStore');\r",
+                                    "\r",
+                                    "Ext.device.Camera.capture({\r",
+                                    "    success: function(img){               \r",
+                                    "        var src = 'data:image/jpg;base64,' + img;\r",
+                                    "\r",
+                                    "        for(var i = 0; i < storeIncid.getCount(); i++) {          \r",
+                                    "            if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){\r",
+                                    "                storeIncid.getAt(i).set('ValorImg', src);           \r",
+                                    "            } \r",
+                                    "        }\r",
+                                    "\r",
+                                    "        //Ext.ComponentQuery.query('#imgFoto')[0].setSrc(src);                      \r",
+                                    "    },\r",
+                                    "    scope: this,\r",
+                                    "    source: 'camera',\r",
+                                    "    destination: 'data',\r",
+                                    "    encoding: 'jpg',   \r",
+                                    "    width: 320,\r",
+                                    "    height: 320\r",
+                                    "});\r",
+                                    "\r",
+                                    "storeIncid.sync();"
+                                ],
                                 "name": "tap",
                                 "designer|userClassName": "onBtnCapturarTap"
                             },
@@ -171,7 +204,31 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onBtnSeleccionarTap",
-                                "implHandler": "var storeIncid = Ext.data.StoreManager.lookup('IncidStore');\r\n\r\nExt.device.Camera.capture({\r\n    success: function(img){        \r\n        for(var i = 0; i < storeIncid.getCount(); i++) {          \r\n            if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){\r\n                storeIncid.getAt(i).set('ValorCamp1', img);           \r\n            } \r\n        }  \r\n        Ext.ComponentQuery.query('#imgFoto')[0].setSrc(img);\r\n        Ext.ComponentQuery.query('#imgFoto')[0].setHeight(320);       \r\n        Ext.ComponentQuery.query('#imgFoto')[0].setWidth(320);       \r\n    },\r\n    scope: this,\r\n    source: 'library',\r\n    destination: 'file',\r\n    encoding: 'jpg'\r\n});\r\n\r\nstoreIncid.sync();",
+                                "implHandler": [
+                                    "var storeIncid = Ext.data.StoreManager.lookup('IncidStore');\r",
+                                    "\r",
+                                    "Ext.device.Camera.capture({\r",
+                                    "    success: function(img){               \r",
+                                    "        var src = 'data:image/jpg;base64,' + img;\r",
+                                    "\r",
+                                    "        for(var i = 0; i < storeIncid.getCount(); i++) {          \r",
+                                    "            if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){\r",
+                                    "                storeIncid.getAt(i).set('ValorImg', src);           \r",
+                                    "            } \r",
+                                    "        }\r",
+                                    "\r",
+                                    "        //Ext.ComponentQuery.query('#imgFoto')[0].setSrc(src);                       \r",
+                                    "    },\r",
+                                    "    scope: this,\r",
+                                    "    source: 'library',\r",
+                                    "    destination: 'data',\r",
+                                    "    encoding: 'jpg',   \r",
+                                    "    width: 320,\r",
+                                    "    height: 320\r",
+                                    "});\r",
+                                    "\r",
+                                    "storeIncid.sync();"
+                                ],
                                 "name": "tap",
                                 "designer|userClassName": "onBtnSeleccionarTap"
                             },
@@ -192,7 +249,21 @@
             "codeClass": null,
             "userConfig": {
                 "fn": "onPanelShow",
-                "implHandler": "var storeIncid = Ext.data.StoreManager.lookup('IncidStore'), uri;\r\n\r\nfor(var i = 0; i < storeIncid.getCount(); i++) {          \r\n    if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){\r\n        uri = storeIncid.getAt(i).get('ValorCamp1');           \r\n    } \r\n}\r\n   \r\nExt.ComponentQuery.query('#imgFoto')[0].setSrc(uri);    \r\n\r\n",
+                "implHandler": [
+                    "var storeIncid = Ext.data.StoreManager.lookup('IncidStore'), uri;\r",
+                    "\r",
+                    "for(var i = 0; i < storeIncid.getCount(); i++) {          \r",
+                    "    if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){\r",
+                    "        uri = storeIncid.getAt(i).get('ValorImg');           \r",
+                    "    } \r",
+                    "}\r",
+                    "\r",
+                    "Ext.ComponentQuery.query('#imgFoto')[0].setSrc(uri);\r",
+                    "Ext.ComponentQuery.query('#imgFoto')[0].setWidth(320); \r",
+                    "Ext.ComponentQuery.query('#imgFoto')[0].setHeight(320);\r",
+                    "\r",
+                    ""
+                ],
                 "name": "show",
                 "designer|userClassName": "onPanelShow"
             },

@@ -19,7 +19,7 @@
     "expanded": false,
     "cn": [
         {
-            "id": "ExtBox1-ext-gen10742",
+            "id": "ExtBox1-ext-gen3240",
             "type": "localstorageproxy",
             "reference": {
                 "name": "proxy",
@@ -27,7 +27,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "id": "proxyPref",
+                "id": "prefStoreProxy",
                 "designer|userClassName": "MyLocalStorageProxy1"
             },
             "customConfigs": [],

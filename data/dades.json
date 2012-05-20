@@ -1,0 +1,7 @@
+{"dades":[
+    {"IdPref":"NOM", "CodiPref": "Nom", "ValorPref": "", "Req": "*"},
+    {"IdPref":"COGNOM", "CodiPref": "Cognoms", "ValorPref": "", "Req": ""},
+    {"IdPref":"NUMDOC", "CodiPref": "N&uacute;mero de document", "ValorPref": "", "Req": ""},
+    {"IdPref":"TEL", "CodiPref": "M&ograve;bil", "ValorPref": "", "Req":""},
+    {"IdPref":"EMAIL", "CodiPref": "Adre&ccedil;a electr&ograve;nica", "ValorPref": "", "Req": ""}
+]}

@@ -25,8 +25,7 @@ Ext.define('CCIVIC.view.MainNav', {
         },
         navigationBar: {
             hidden: true,
-            itemId: 'NavBar',
-            title: ''
+            itemId: 'NavBar'
         },
         items: [
             {
@@ -90,6 +89,7 @@ Ext.define('CCIVIC.view.MainNav', {
 
         //Es modifica el titol amb el leaf seleccionat.
         Ext.ComponentQuery.query('#descIncid')[0].setTitle('Descripció '+record.get('nom'));
+        Ext.ComponentQuery.query('#temaHidden')[0].setValue(record.get('nom'));
         Ext.ComponentQuery.query('#NavBar')[0].setHidden(false);
 
         this.push(Panel);
@@ -108,15 +108,14 @@ Ext.define('CCIVIC.view.MainNav', {
     onNavigationviewShow: function(component, options) {
         var storeIncid = Ext.data.StoreManager.lookup('IncidStore');
 
-        console.log('estoy en show');
         Ext.ComponentQuery.query('#NavBar')[0].setHidden(true);
 
         if (storeIncid.getCount() === 0){
             storeIncid.add(
-            {IdCamp:'LOC', CodiCamp: 'Localització', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: '*'},
-            {IdCamp:'OBS', CodiCamp: 'Observacions', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: ''},
-            {IdCamp:'RISC', CodiCamp: 'Comporta risc', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req: ''},
-            {IdCamp:'FOTO', CodiCamp: 'Fotografia', ValorCamp: '', ValorCamp1: '',ValorCamp2: '', Req:''}
+            {IdCamp:'LOC', CodiCamp: 'Localització', ValorCamp: '', ValorCamp1: '',ValorCamp2: '',ValorImg:'', Req: '*'},
+            {IdCamp:'OBS', CodiCamp: 'Observacions', ValorCamp: '', ValorCamp1: '',ValorCamp2: '',ValorImg:'', Req: ''},
+            {IdCamp:'RISC', CodiCamp: 'Comporta risc', ValorCamp: '', ValorCamp1: '',ValorCamp2: '',ValorImg:'', Req: ''},
+            {IdCamp:'FOTO', CodiCamp: 'Fotografia', ValorCamp: '', ValorCamp1: '',ValorCamp2: '',ValorImg:'', Req:''}
             );
 
             //storeIncid.sync();
@@ -127,17 +126,15 @@ Ext.define('CCIVIC.view.MainNav', {
         if (storePref.getCount() === 0){
             Ext.Msg.alert('Avís:', 'Es necessari introduir les dades personals.');
             storePref.add(
-            {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: '*'},
-            {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: '*'},
-            {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: '*'},
+            {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: ''},
+            {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: ''},
+            {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: ''},
             {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:''},
-            {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: '*'});
+            {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: ''});
 
             var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});
             this.push(Panel);
         }
-
-
     }
 
 });

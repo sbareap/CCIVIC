@@ -34,7 +34,7 @@ Ext.define('CCIVIC.view.Incidencia', {
                         itemId: 'IncidList',
                         ui: 'round',
                         itemTpl: [
-                            '<div><p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small></p></div>'
+                            '<div><p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small><img src="{ValorImg}" /></p></div>'
                         ],
                         store: 'IncidStore',
                         onItemDisclosure: true
@@ -54,6 +54,10 @@ Ext.define('CCIVIC.view.Incidencia', {
                         text: 'Enviar'
                     }
                 ]
+            },
+            {
+                xtype: 'hiddenfield',
+                itemId: 'temaHidden'
             }
         ],
         listeners: [
@@ -130,10 +134,23 @@ Ext.define('CCIVIC.view.Incidencia', {
     },
 
     onBtnEnviarTap: function(button, e, options) {
-        var ListStore = Ext.data.StoreManager.lookup('IncidStore'),       
-        correcte = 1;
+        var ListStore = Ext.data.StoreManager.lookup('IncidStore'),    
+        storeJSONIncid = Ext.data.StoreManager.lookup('IncidJSONStore'),
+        storeDades = Ext.data.StoreManager.lookup('PrefStore'),
+        correcte = 1, vNom, vCognom, vNif, vEmail, vTelefon, vAdreca, 
+        vLat, vLng, vObserva, vRisc, vFoto, vTipus, 
+        vData = new Date();
 
         for(var j = 0; j < ListStore.getCount(); j++) {   
+            if (ListStore.getAt(j).get('IdCamp') == 'LOC') {
+                vAdreca = ListStore.getAt(j).get('ValorCamp');
+                vLat = ListStore.getAt(j).get('ValorCamp1');
+                vLng = ListStore.getAt(j).get('ValorCamp2');
+            }
+            if (ListStore.getAt(j).get('IdCamp') == 'OBS') vObserva = ListStore.getAt(j).get('ValorCamp');
+            if (ListStore.getAt(j).get('IdCamp') == 'RISC') vRisc = ListStore.getAt(j).get('ValorCamp');
+            if (ListStore.getAt(j).get('IdCamp') == 'FOTO') vFoto = ListStore.getAt(j).get('ValorImg');
+
             if ((ListStore.getAt(j).get('Req') == '*') && (ListStore.getAt(j).get('ValorCamp').length === 0)){        
                 Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       
                 correcte = 0;
@@ -141,13 +158,38 @@ Ext.define('CCIVIC.view.Incidencia', {
         }
 
         if (correcte == 1) {    
-            // generar registro para enviar al ajunt.
+            // generar registro para enviar a l'Ajuntament.
+            for(var i = 0; i < storeDades.getCount(); i++) {   
+                if (storeDades.getAt(i).get('IdPref') == 'NOM') vNom = storeDades.getAt(i).get('ValorPref');                  
+                if (storeDades.getAt(i).get('IdPref') == 'COGNOM') vCognom = storeDades.getAt(i).get('ValorPref');              
+                if (storeDades.getAt(i).get('IdPref') == 'NUMDOC') vNif = storeDades.getAt(i).get('ValorPref');
+                if (storeDades.getAt(i).get('IdPref') == 'EMAIL') vEmail = storeDades.getAt(i).get('ValorPref');        
+                if (storeDades.getAt(i).get('IdPref') == 'TEL') vTelefon = storeDades.getAt(i).get('ValorPref');              
+            }                 
+
+            storeJSONIncid.add(
+            {nom: vNom, 
+                cognoms: vCognom, 
+                nif: vNif, 
+                email: vEmail,
+                telefon: vTelefon,
+                inc_Adreca: vAdreca, 
+                inc_Lat: vLat,
+                inc_Lng: vLng,
+                inc_Observacions: vObserva,
+                inc_Risc: vRisc,
+                inc_Foto: vFoto,
+                inc_Tipus: Ext.ComponentQuery.query('#temaHidden')[0].getValue(),
+            inc_Data: vData.toUTCString()});
+
+            storeJSONIncid.sync();   
 
             // borrar pantalla de entrada de datos de incidencia
             for(var i = 0; i < ListStore.getCount(); i++) {   
                 ListStore.getAt(i).set('ValorCamp','');
                 ListStore.getAt(i).set('ValorCamp1','');        
                 ListStore.getAt(i).set('ValorCamp2','');                      
+                ListStore.getAt(i).set('ValorImg','');                      
             }   
 
             ListStore.sync();

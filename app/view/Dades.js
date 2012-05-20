@@ -34,7 +34,7 @@ Ext.define('CCIVIC.view.Dades', {
                 itemId: 'PrefList',
                 ui: 'round',
                 itemTpl: [
-                    '<div><p>{CodiPref}&nbsp;{Req}</p><p><small>{ValorPref}</small></p></div>'
+                    '<div>{CodiPref}&nbsp;{Req}</div><div><small>{ValorPref}</small></div>'
                 ],
                 store: 'PrefStore',
                 onItemDisclosure: true
@@ -237,10 +237,8 @@ Ext.define('CCIVIC.view.Dades', {
     },
 
     onBtnGrabarTap: function(button, e, options) {
-        var store = Ext.data.StoreManager.lookup('PrefStore'),
-        list = Ext.getCmp('prefList'),
-        correcte = 1,
-        ListStore = list.getStore();
+        var ListStore = Ext.data.StoreManager.lookup('PrefStore'),
+        correcte = 1;
 
         for(var i = 0; i < ListStore.getCount(); i++) {   
             if ((ListStore.getAt(i).get('Req') == '*') && (ListStore.getAt(i).get('ValorPref').length === 0)){        
@@ -250,7 +248,7 @@ Ext.define('CCIVIC.view.Dades', {
         }
 
         if (correcte == 1) {
-            store.sync();
+            ListStore.sync();    
             Ext.Msg.alert('Avís:', 'Dades gravades correctament.');
             this.getParent().pop();
         }

@@ -28,6 +28,7 @@ Ext.define('CCIVIC.view.Foto', {
                     {
                         xtype: 'image',
                         centered: true,
+                        draggable: true,
                         height: 320,
                         itemId: 'imgFoto',
                         width: 320
@@ -98,20 +99,23 @@ Ext.define('CCIVIC.view.Foto', {
         var storeIncid = Ext.data.StoreManager.lookup('IncidStore');
 
         Ext.device.Camera.capture({
-            success: function(img){        
+            success: function(img){               
+                var src = 'data:image/jpg;base64,' + img;
+
                 for(var i = 0; i < storeIncid.getCount(); i++) {          
                     if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){
-                        storeIncid.getAt(i).set('ValorCamp1', img);           
+                        storeIncid.getAt(i).set('ValorImg', src);           
                     } 
                 }
-                Ext.ComponentQuery.query('#imgFoto')[0].setSrc(img);       
-                Ext.ComponentQuery.query('#imgFoto')[0].setHeight(320);       
-                Ext.ComponentQuery.query('#imgFoto')[0].setWidth(320);       
+
+                //Ext.ComponentQuery.query('#imgFoto')[0].setSrc(src);                      
             },
             scope: this,
             source: 'camera',
-            destination: 'file',
-            encoding: 'jpg'
+            destination: 'data',
+            encoding: 'jpg',   
+            width: 320,
+            height: 320
         });
 
         storeIncid.sync();
@@ -121,20 +125,23 @@ Ext.define('CCIVIC.view.Foto', {
         var storeIncid = Ext.data.StoreManager.lookup('IncidStore');
 
         Ext.device.Camera.capture({
-            success: function(img){        
+            success: function(img){               
+                var src = 'data:image/jpg;base64,' + img;
+
                 for(var i = 0; i < storeIncid.getCount(); i++) {          
                     if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){
-                        storeIncid.getAt(i).set('ValorCamp1', img);           
+                        storeIncid.getAt(i).set('ValorImg', src);           
                     } 
-                }  
-                Ext.ComponentQuery.query('#imgFoto')[0].setSrc(img);
-                Ext.ComponentQuery.query('#imgFoto')[0].setHeight(320);       
-                Ext.ComponentQuery.query('#imgFoto')[0].setWidth(320);       
+                }
+
+                //Ext.ComponentQuery.query('#imgFoto')[0].setSrc(src);                       
             },
             scope: this,
             source: 'library',
-            destination: 'file',
-            encoding: 'jpg'
+            destination: 'data',
+            encoding: 'jpg',   
+            width: 320,
+            height: 320
         });
 
         storeIncid.sync();
@@ -145,11 +152,13 @@ Ext.define('CCIVIC.view.Foto', {
 
         for(var i = 0; i < storeIncid.getCount(); i++) {          
             if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){
-                uri = storeIncid.getAt(i).get('ValorCamp1');           
+                uri = storeIncid.getAt(i).get('ValorImg');           
             } 
         }
 
-        Ext.ComponentQuery.query('#imgFoto')[0].setSrc(uri);    
+        Ext.ComponentQuery.query('#imgFoto')[0].setSrc(uri);
+        Ext.ComponentQuery.query('#imgFoto')[0].setWidth(320); 
+        Ext.ComponentQuery.query('#imgFoto')[0].setHeight(320);
 
 
     }

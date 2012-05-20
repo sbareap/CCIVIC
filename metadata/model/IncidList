@@ -109,6 +109,21 @@
             },
             "customConfigs": [],
             "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen5970",
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "ValorImg",
+                "designer|userClassName": "MyField25"
+            },
+            "customConfigs": [],
+            "expanded": true
         }
     ]
 }

@@ -1,5 +1,5 @@
 {
-    "id": "ExtBox1-ext-gen10196",
+    "id": "ExtBox1-ext-gen16103",
     "type": "jsonstore",
     "reference": {
         "name": "items",
@@ -8,16 +8,16 @@
     "codeClass": null,
     "userConfig": {
         "model": "Incidencia",
-        "storeId": "incidJsonStore",
-        "designer|userClassName": "incidJsonStore"
+        "storeId": "IncidJSONStore",
+        "designer|userClassName": "IncidJSONStore"
     },
     "customConfigs": [],
-    "designerId": "0c4cd2cc-30eb-4588-9e63-74a28945d7ef",
+    "designerId": "7b126c96-9c25-4f4a-a1f5-d7abeb257425",
     "$viewOrder": 3,
-    "expanded": false,
+    "expanded": true,
     "cn": [
         {
-            "id": "ExtBox1-ext-gen10203",
+            "id": "ExtBox1-ext-gen16110",
             "type": "ajaxproxy",
             "reference": {
                 "name": "proxy",
@@ -32,7 +32,22 @@
             "expanded": true,
             "cn": [
                 {
-                    "id": "ExtBox1-ext-gen10867",
+                    "id": "ExtBox1-ext-gen16117",
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "rootProperty": "incidencia",
+                        "designer|userClassName": "MyJsonReader1"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen16904",
                     "type": "jsonwriter",
                     "reference": {
                         "name": "writer",
@@ -40,7 +55,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "root": "incidencia",
+                        "rootProperty": "incidencia",
                         "designer|userClassName": "MyJsonWriter"
                     },
                     "customConfigs": [],

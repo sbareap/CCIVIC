@@ -2,11 +2,10 @@
     "name": "CCIVIC",
     "settings": {
         "urlPrefix": "http://localhost/ccivic/",
-        "directAPI": "",
         "spacesToIndent": 4,
         "codeGenFormat": "Class",
         "exportPath": "C:/xampp/htdocs/ccivic/",
-        "extPath": "http://extjs.cachefly.net/touch/sencha-touch-2.0.0/",
+        "extPath": "http://extjs.cachefly.net/touch/sencha-touch-2.0.1/",
         "senchaIoKey": "",
         "senchaIoPath": "http://extjs.cachefly.net/designer/IO/",
         "lineEnding": "CRLF",
@@ -18,7 +17,7 @@
         "cssPath": ""
     },
     "xdsVersion": "2.0.0",
-    "xdsBuild": "412",
+    "xdsBuild": "442",
     "framework": "touch20",
     "topInstanceFileMap": {
         "5f1163a2-88f7-46d1-a34b-0cb32651a065": {
@@ -117,17 +116,17 @@
             ],
             "className": "Incidencia"
         },
-        "0c4cd2cc-30eb-4588-9e63-74a28945d7ef": {
+        "7b126c96-9c25-4f4a-a1f5-d7abeb257425": {
             "paths": [
-                "metadata/store/incidJsonStore",
-                "app/store/override/incidJsonStore.js",
-                "app/store/incidJsonStore.js"
+                "metadata/store/IncidJSONStore",
+                "app/store/override/IncidJSONStore.js",
+                "app/store/IncidJSONStore.js"
             ],
-            "className": "incidJsonStore"
+            "className": "IncidJSONStore"
         }
     },
     "expandedState": {
-        "data": true,
+        "data": false,
         "model": true,
         "component": true,
         "controller": true,
