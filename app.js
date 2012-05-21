@@ -17,9 +17,11 @@ Ext.Loader.setConfig({
     enabled: true
 });
 
-Ext.require('Ext.device.Camera');
-
 Ext.application({
+    requires: [
+        'Ext.device.Camera'
+    ],
+
     models: [
         'Preferencies',
         'Temes',

@@ -34,7 +34,7 @@ Ext.define('CCIVIC.view.Incidencia', {
                         itemId: 'IncidList',
                         ui: 'round',
                         itemTpl: [
-                            '<div><p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small><img src="{ValorImg}" /></p></div>'
+                            '<div><p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small>{ValorImg}</p></div>'
                         ],
                         store: 'IncidStore',
                         onItemDisclosure: true
@@ -149,7 +149,7 @@ Ext.define('CCIVIC.view.Incidencia', {
             }
             if (ListStore.getAt(j).get('IdCamp') == 'OBS') vObserva = ListStore.getAt(j).get('ValorCamp');
             if (ListStore.getAt(j).get('IdCamp') == 'RISC') vRisc = ListStore.getAt(j).get('ValorCamp');
-            if (ListStore.getAt(j).get('IdCamp') == 'FOTO') vFoto = ListStore.getAt(j).get('ValorImg');
+            if (ListStore.getAt(j).get('IdCamp') == 'FOTO') vFoto = ListStore.getAt(j).get('ValorCamp1');
 
             if ((ListStore.getAt(j).get('Req') == '*') && (ListStore.getAt(j).get('ValorCamp').length === 0)){        
                 Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       

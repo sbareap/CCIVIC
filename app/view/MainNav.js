@@ -126,11 +126,11 @@ Ext.define('CCIVIC.view.MainNav', {
         if (storePref.getCount() === 0){
             Ext.Msg.alert('Avís:', 'Es necessari introduir les dades personals.');
             storePref.add(
-            {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: ''},
-            {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: ''},
-            {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: ''},
+            {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: '*'},
+            {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: '*'},
+            {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: '*'},
             {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:''},
-            {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: ''});
+            {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: '*'});
 
             var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});
             this.push(Panel);

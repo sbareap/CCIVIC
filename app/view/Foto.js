@@ -23,17 +23,7 @@ Ext.define('CCIVIC.view.Foto', {
         items: [
             {
                 xtype: 'container',
-                itemId: 'FotoContainer',
-                items: [
-                    {
-                        xtype: 'image',
-                        centered: true,
-                        draggable: true,
-                        height: 320,
-                        itemId: 'imgFoto',
-                        width: 320
-                    }
-                ]
+                itemId: 'FotoContainer'
             },
             {
                 xtype: 'toolbar',
@@ -99,23 +89,22 @@ Ext.define('CCIVIC.view.Foto', {
         var storeIncid = Ext.data.StoreManager.lookup('IncidStore');
 
         Ext.device.Camera.capture({
-            success: function(img){               
+            success: function(img){                       
                 var src = 'data:image/jpg;base64,' + img;
+                var image = '<div align="center"><img src="' + src + '" vspace="10" height="65%" /></div>';
 
                 for(var i = 0; i < storeIncid.getCount(); i++) {          
-                    if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){
-                        storeIncid.getAt(i).set('ValorImg', src);           
+                    if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){                          
+                        storeIncid.getAt(i).set('ValorCamp1', img);    
+                        storeIncid.getAt(i).set('ValorImg', image);           
                     } 
-                }
-
-                //Ext.ComponentQuery.query('#imgFoto')[0].setSrc(src);                      
+                }                           
+                Ext.ComponentQuery.query('#FotoContainer')[0].setHtml(image);
             },
             scope: this,
             source: 'camera',
             destination: 'data',
-            encoding: 'jpg',   
-            width: 320,
-            height: 320
+            encoding: 'jpg'       
         });
 
         storeIncid.sync();
@@ -125,40 +114,39 @@ Ext.define('CCIVIC.view.Foto', {
         var storeIncid = Ext.data.StoreManager.lookup('IncidStore');
 
         Ext.device.Camera.capture({
-            success: function(img){               
+            success: function(img){                       
                 var src = 'data:image/jpg;base64,' + img;
+                var image = '<div align="center"><img src="' + src + '" vspace="10" height="65%" /></div>';
 
                 for(var i = 0; i < storeIncid.getCount(); i++) {          
-                    if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){
-                        storeIncid.getAt(i).set('ValorImg', src);           
+                    if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){                
+                        storeIncid.getAt(i).set('ValorCamp1', img);    
+                        storeIncid.getAt(i).set('ValorImg', image);           
                     } 
-                }
-
-                //Ext.ComponentQuery.query('#imgFoto')[0].setSrc(src);                       
+                }                         
+                Ext.ComponentQuery.query('#FotoContainer')[0].setHtml(image);
             },
             scope: this,
             source: 'library',
             destination: 'data',
-            encoding: 'jpg',   
-            width: 320,
-            height: 320
+            encoding: 'jpg'
         });
 
         storeIncid.sync();
     },
 
     onPanelShow: function(component, options) {
-        var storeIncid = Ext.data.StoreManager.lookup('IncidStore'), uri;
+        var storeIncid = Ext.data.StoreManager.lookup('IncidStore'), image;
+
+        Ext.ComponentQuery.query('#FotoContainer')[0].setHtml('');
 
         for(var i = 0; i < storeIncid.getCount(); i++) {          
             if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){
-                uri = storeIncid.getAt(i).get('ValorImg');           
+                image = storeIncid.getAt(i).get('ValorImg');           
             } 
         }
 
-        Ext.ComponentQuery.query('#imgFoto')[0].setSrc(uri);
-        Ext.ComponentQuery.query('#imgFoto')[0].setWidth(320); 
-        Ext.ComponentQuery.query('#imgFoto')[0].setHeight(320);
+        Ext.ComponentQuery.query('#FotoContainer')[0].setHtml(image);
 
 
     }

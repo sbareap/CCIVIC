@@ -48,7 +48,7 @@
                         "itemId": "IncidList",
                         "ui": "round",
                         "modal": null,
-                        "itemTpl": "<div><p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small><img src=\"{ValorImg}\" /></p></div>",
+                        "itemTpl": "<div><p>{CodiCamp}&nbsp;{Req}</p><p><small>{ValorCamp}</small>{ValorImg}</p></div>",
                         "store": "IncidStore",
                         "onItemDisclosure": true,
                         "designer|userClassName": "MyList1"
@@ -194,7 +194,7 @@
                                     "    }\r",
                                     "    if (ListStore.getAt(j).get('IdCamp') == 'OBS') vObserva = ListStore.getAt(j).get('ValorCamp');\r",
                                     "    if (ListStore.getAt(j).get('IdCamp') == 'RISC') vRisc = ListStore.getAt(j).get('ValorCamp');\r",
-                                    "    if (ListStore.getAt(j).get('IdCamp') == 'FOTO') vFoto = ListStore.getAt(j).get('ValorImg');\r",
+                                    "    if (ListStore.getAt(j).get('IdCamp') == 'FOTO') vFoto = ListStore.getAt(j).get('ValorCamp1');\r",
                                     "\r",
                                     "    if ((ListStore.getAt(j).get('Req') == '*') && (ListStore.getAt(j).get('ValorCamp').length === 0)){        \r",
                                     "        Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       \r",
