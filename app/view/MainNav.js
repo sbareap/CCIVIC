@@ -123,18 +123,21 @@ Ext.define('CCIVIC.view.MainNav', {
 
         var storePref = Ext.data.StoreManager.lookup('PrefStore');
 
-        if (storePref.getCount() === 0){
-            Ext.Msg.alert('Avís:', 'Es necessari introduir les dades personals.');
-            storePref.add(
-            {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: '*'},
-            {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: '*'},
-            {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: '*'},
-            {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:''},
-            {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: '*'});
+        if (storePref.getCount() === 0){    
+            Ext.Msg.show({ title: 'Avís:',
+                message: 'És necessari introduir les dades personals.',
+                buttons:  [{text : 'Acceptar'}]});
 
-            var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});
-            this.push(Panel);
-        }
+                storePref.add(
+                {IdPref:'NOM', CodiPref: 'Nom', ValorPref: '', Req: '*'},
+                {IdPref:'COGNOM', CodiPref: 'Cognoms', ValorPref: '', Req: '*'},
+                {IdPref:'NUMDOC', CodiPref: 'Número de document', ValorPref: '', Req: '*'},
+                {IdPref:'TEL', CodiPref: 'Mòbil', ValorPref: '', Req:''},
+                {IdPref:'EMAIL', CodiPref: 'Adreça electrònica', ValorPref: '', Req: '*'});
+
+                var Panel= Ext.create('CCIVIC.view.Dades',{fullscreen: true});
+                this.push(Panel);
+            }
     }
 
 });

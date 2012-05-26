@@ -235,20 +235,21 @@ Ext.define('CCIVIC.view.Localitzacio', {
             var Lat = locations[0].geometry.location.lat();
             var Lng = locations[0].geometry.location.lng();
 
-            console.log(Lat);
-            console.log(Lng);
             Ext.ComponentQuery.query('#latHidden')[0].setValue(Lat);
             Ext.ComponentQuery.query('#lngHidden')[0].setValue(Lng);
 
             //Comprova que l'adreça estigui dins els limits de Cornellà
             if (cpostal != '08940'){
-                Ext.Msg.confirm('Avís:','L\'adreça actual està fora de Cornellà de Llobregat. Vols situar-te?',                        
-                function(btn){                            
-                    if (btn == 'yes'){
-                        console.log('localitza cornella '+ cornella);
-                        localitza(cornella);
+                Ext.Msg.show({ title: 'Avís:',
+                    message: 'L\'adreça actual està fora de Cornellà de Llobregat. Vols situar-te?',
+                    buttons:  [{text : 'Cancel·lar'}, {text : 'Acceptar'}],                       
+                    fn: function(btn) {                        
+                        if (btn == 'Acceptar'){                                             
+                            localitza(cornella);         
+                        }              
                     }
                 });
+
                 Ext.ComponentQuery.query('#adreca')[0].setValue('');
                 Ext.ComponentQuery.query('#latHidden')[0].setValue('');
                 Ext.ComponentQuery.query('#lngHidden')[0].setValue('');

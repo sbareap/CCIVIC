@@ -2,14 +2,14 @@
     "applicationName": "CCIVIC",
     "applicationId": "com.UOC.CCIVIC",
     "versionString": "1.0",
-    "iconName": "icon.png",
+    "iconName": "img\\CCivic.png",
     "inputPath": "C:\\xampp\\htdocs\\CCIVIC",
     "outputPath": "C:\\ccivic_build",
     "configuration": "Debug",
     "platform": "Android",
     "deviceType": "Universal",
     "certificatePath": "C:\\sil.keystroke",
-    "certificateAlias": "sbareap",	
+    "certificateAlias": "sbareap",
     "sdkPath": "C:\\Android\\android-sdk",
-    "androidAPILevel": "15"
+    "androidAPILevel": "10"
 }

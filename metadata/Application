@@ -29,6 +29,7 @@
         "appFolder": null,
         "name": "CCIVIC",
         "phoneStartupScreen": null,
+        "tabletStartupScreen": null,
         "designer|requires": [
             "Ext.device.Camera"
         ]

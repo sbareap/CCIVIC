@@ -84,39 +84,34 @@ Ext.define('CCIVIC.view.Incidencia', {
         }
         else{
             if (record.get('IdCamp') == 'OBS'){ 
-                Ext.Msg.prompt('Dades incidencia', 
-                record.get('CodiCamp')+':', 
-                function(btn,text) {    
-                    if (btn == 'ok'){                                             
-                        record.set('ValorCamp', text);         
-                    } 
-                },
-                this,
-                true,
-                null,
-                {xtype : 'textareafield',
-                    id : 'textObs',
-                    height: 350,
-                    clearIcon : false
+                Ext.Msg.show({
+                    title: record.get('CodiCamp')+':',           
+                    buttons:  [{text : 'Cancel·lar'}, {text : 'Acceptar'}],           
+                    prompt : {xtype : 'textareafield',
+                        id : 'textObs',            
+                        clearIcon : true
+                    },
+                    fn: function(btn,value) {                        
+                        if (btn == 'Acceptar'){                                             
+                            record.set('ValorCamp', value);         
+                        }              
+                    }
                 });
-
                 //Ext.getCmp('textObs').focus();
 
                 var textObs = record.get('ValorCamp').toString();                   
                 Ext.ComponentQuery.query('#textObs')[0].setValue(textObs);        
-            }
+            }          
         }
 
-        if (record.get('IdCamp') == 'RISC'){
-            Ext.Msg.confirm(null,'Comporta un risc pel ciutadà?', function(btn) {                                    
-                if (btn == 'yes'){
-                    textSiNo = 'Si';
+        if (record.get('IdCamp') == 'RISC'){        
+            Ext.Msg.show({
+                title: 'Comporta un risc pel ciutadà?',           
+                buttons:  [{text : 'No'}, {text : 'Si'}],                      
+                fn: function(btn) {                        
+                    record.set('ValorCamp', btn);               
                 }
-                else {
-                    textSiNo = 'No';
-                }
-                record.set('ValorCamp', textSiNo);               
-            }); 
+            });
         }
 
         if (record.get('IdCamp') == 'LOC'){        
@@ -151,52 +146,56 @@ Ext.define('CCIVIC.view.Incidencia', {
             if (ListStore.getAt(j).get('IdCamp') == 'RISC') vRisc = ListStore.getAt(j).get('ValorCamp');
             if (ListStore.getAt(j).get('IdCamp') == 'FOTO') vFoto = ListStore.getAt(j).get('ValorCamp1');
 
-            if ((ListStore.getAt(j).get('Req') == '*') && (ListStore.getAt(j).get('ValorCamp').length === 0)){        
-                Ext.Msg.alert('Error:', 'Falta introduir dades requerides.');       
-                correcte = 0;
+            if ((ListStore.getAt(j).get('Req') == '*') && (ListStore.getAt(j).get('ValorCamp').length === 0)){                
+                Ext.Msg.show({ title: 'Error:',
+                    message: 'Falta introduir dades requerides.',
+                    buttons:  [{text : 'Acceptar'}]});
+                    correcte = 0;
+                }
             }
-        }
 
-        if (correcte == 1) {    
-            // generar registro para enviar a l'Ajuntament.
-            for(var i = 0; i < storeDades.getCount(); i++) {   
-                if (storeDades.getAt(i).get('IdPref') == 'NOM') vNom = storeDades.getAt(i).get('ValorPref');                  
-                if (storeDades.getAt(i).get('IdPref') == 'COGNOM') vCognom = storeDades.getAt(i).get('ValorPref');              
-                if (storeDades.getAt(i).get('IdPref') == 'NUMDOC') vNif = storeDades.getAt(i).get('ValorPref');
-                if (storeDades.getAt(i).get('IdPref') == 'EMAIL') vEmail = storeDades.getAt(i).get('ValorPref');        
-                if (storeDades.getAt(i).get('IdPref') == 'TEL') vTelefon = storeDades.getAt(i).get('ValorPref');              
-            }                 
+            if (correcte == 1) {    
+                // generar registro para enviar a l'Ajuntament.
+                for(var i = 0; i < storeDades.getCount(); i++) {   
+                    if (storeDades.getAt(i).get('IdPref') == 'NOM') vNom = storeDades.getAt(i).get('ValorPref');                  
+                    if (storeDades.getAt(i).get('IdPref') == 'COGNOM') vCognom = storeDades.getAt(i).get('ValorPref');              
+                    if (storeDades.getAt(i).get('IdPref') == 'NUMDOC') vNif = storeDades.getAt(i).get('ValorPref');
+                    if (storeDades.getAt(i).get('IdPref') == 'EMAIL') vEmail = storeDades.getAt(i).get('ValorPref');        
+                    if (storeDades.getAt(i).get('IdPref') == 'TEL') vTelefon = storeDades.getAt(i).get('ValorPref');              
+                }                 
 
-            storeJSONIncid.add(
-            {nom: vNom, 
-                cognoms: vCognom, 
-                nif: vNif, 
-                email: vEmail,
-                telefon: vTelefon,
-                inc_Adreca: vAdreca, 
-                inc_Lat: vLat,
-                inc_Lng: vLng,
-                inc_Observacions: vObserva,
-                inc_Risc: vRisc,
-                inc_Foto: vFoto,
-                inc_Tipus: Ext.ComponentQuery.query('#temaHidden')[0].getValue(),
-            inc_Data: vData.toUTCString()});
+                storeJSONIncid.add(
+                {nom: vNom, 
+                    cognoms: vCognom, 
+                    nif: vNif, 
+                    email: vEmail,
+                    telefon: vTelefon,
+                    inc_Adreca: vAdreca, 
+                    inc_Lat: vLat,
+                    inc_Lng: vLng,
+                    inc_Observacions: vObserva,
+                    inc_Risc: vRisc,
+                    inc_Foto: vFoto,
+                    inc_Tipus: Ext.ComponentQuery.query('#temaHidden')[0].getValue(),
+                inc_Data: vData.toUTCString()});
 
-            storeJSONIncid.sync();   
+                storeJSONIncid.sync();   
 
-            // borrar pantalla de entrada de datos de incidencia
-            for(var i = 0; i < ListStore.getCount(); i++) {   
-                ListStore.getAt(i).set('ValorCamp','');
-                ListStore.getAt(i).set('ValorCamp1','');        
-                ListStore.getAt(i).set('ValorCamp2','');                      
-                ListStore.getAt(i).set('ValorImg','');                      
-            }   
+                // borrar pantalla de entrada de datos de incidencia
+                for(var i = 0; i < ListStore.getCount(); i++) {   
+                    ListStore.getAt(i).set('ValorCamp','');
+                    ListStore.getAt(i).set('ValorCamp1','');        
+                    ListStore.getAt(i).set('ValorCamp2','');                      
+                    ListStore.getAt(i).set('ValorImg','');                      
+                }   
 
-            ListStore.sync();
+                ListStore.sync();
 
-            Ext.Msg.alert('Avís:', 'Dades enviades correctament.');
-            this.getParent().pop();
-        }
+                Ext.Msg.show({ title: 'Avís:',
+                    message: 'Dades enviades correctament.',
+                    buttons:  [{text : 'Acceptar'}]});
+                    this.getParent().pop();
+                }
     }
 
 });

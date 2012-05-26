@@ -142,7 +142,11 @@ Ext.define('CCIVIC.view.Foto', {
 
         for(var i = 0; i < storeIncid.getCount(); i++) {          
             if (storeIncid.getAt(i).get('IdCamp') == 'FOTO'){
-                image = storeIncid.getAt(i).get('ValorImg');           
+                image = storeIncid.getAt(i).get('ValorImg');
+
+                if (image===''){
+                    image = '<div align="center"><img src="img/fotoBlanc.png" vspace="10" height="65%" /></div>';          
+                }
             } 
         }
 
