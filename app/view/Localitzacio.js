@@ -123,7 +123,7 @@ Ext.define('CCIVIC.view.Localitzacio', {
         localitza(initialLocation);
 
         function localitza(initialLocation){
-            // Metodo de Geolocalización de W3C
+            // Metode de Geolocalizació de W3C
             if(navigator.geolocation) {
                 browserSupportFlag = true;
                 navigator.geolocation.getCurrentPosition(function(position) {                                
@@ -180,13 +180,11 @@ Ext.define('CCIVIC.view.Localitzacio', {
         }
 
         function processReverseGeocoding(location, callback)
-        {
-            // Propiedades de la georreferenciación
+        {    
             var request = {
                 latLng: location
             };
 
-            // Invocación a la georreferenciación (proceso asíncrono)
             geocoder.geocode(request, function(results, status) {
 
                 /*
@@ -203,7 +201,6 @@ Ext.define('CCIVIC.view.Localitzacio', {
                     return results;
                 }
 
-                // En caso de error retorna el estado        
                 return status;
             });
         }
@@ -254,8 +251,7 @@ Ext.define('CCIVIC.view.Localitzacio', {
                 Ext.ComponentQuery.query('#latHidden')[0].setValue('');
                 Ext.ComponentQuery.query('#lngHidden')[0].setValue('');
             }
-            else {
-                console.log(adrecaComplerta);
+            else {        
                 Ext.ComponentQuery.query('#adreca')[0].setValue(adrecaComplerta); 
                 Ext.ComponentQuery.query('#latHidden')[0].setValue(Lat);
                 Ext.ComponentQuery.query('#lngHidden')[0].setValue(Lng);

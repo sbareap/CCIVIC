@@ -96,8 +96,7 @@ Ext.define('CCIVIC.view.Incidencia', {
                             record.set('ValorCamp', value);         
                         }              
                     }
-                });
-                //Ext.getCmp('textObs').focus();
+                });        
 
                 var textObs = record.get('ValorCamp').toString();                   
                 Ext.ComponentQuery.query('#textObs')[0].setValue(textObs);        
@@ -155,7 +154,7 @@ Ext.define('CCIVIC.view.Incidencia', {
             }
 
             if (correcte == 1) {    
-                // generar registro para enviar a l'Ajuntament.
+                // generar registro per enviar a l'Ajuntament.
                 for(var i = 0; i < storeDades.getCount(); i++) {   
                     if (storeDades.getAt(i).get('IdPref') == 'NOM') vNom = storeDades.getAt(i).get('ValorPref');                  
                     if (storeDades.getAt(i).get('IdPref') == 'COGNOM') vCognom = storeDades.getAt(i).get('ValorPref');              
@@ -181,7 +180,7 @@ Ext.define('CCIVIC.view.Incidencia', {
 
                 storeJSONIncid.sync();   
 
-                // borrar pantalla de entrada de datos de incidencia
+                // borrar pantalla d'entrada de dades de la incidencia
                 for(var i = 0; i < ListStore.getCount(); i++) {   
                     ListStore.getAt(i).set('ValorCamp','');
                     ListStore.getAt(i).set('ValorCamp1','');        

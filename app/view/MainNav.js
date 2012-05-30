@@ -116,9 +116,7 @@ Ext.define('CCIVIC.view.MainNav', {
             {IdCamp:'OBS', CodiCamp: 'Observacions', ValorCamp: '', ValorCamp1: '',ValorCamp2: '',ValorImg:'', Req: ''},
             {IdCamp:'RISC', CodiCamp: 'Comporta risc', ValorCamp: '', ValorCamp1: '',ValorCamp2: '',ValorImg:'', Req: ''},
             {IdCamp:'FOTO', CodiCamp: 'Fotografia', ValorCamp: '', ValorCamp1: '',ValorCamp2: '',ValorImg:'', Req:''}
-            );
-
-            //storeIncid.sync();
+            );    
         }
 
         var storePref = Ext.data.StoreManager.lookup('PrefStore');

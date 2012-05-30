@@ -19,7 +19,8 @@ Ext.Loader.setConfig({
 
 Ext.application({
     requires: [
-        'Ext.device.Camera'
+        'Ext.device.Camera',
+        'Ext.device.Connection'
     ],
 
     models: [
@@ -44,8 +45,12 @@ Ext.application({
     name: 'CCIVIC',
 
     launch: function() {
-
-        Ext.create('CCIVIC.view.MainNav', {fullscreen: true});
+        if (! Ext.device.Connection.isOnline()) {    
+            Ext.Msg.show({ title: 'Avís:',
+                message: 'Per utilitzar aquesta aplicació és necessari tenir connexió a Internet.',
+                buttons:  [{text : 'Acceptar'}]});
+            }
+            Ext.create('CCIVIC.view.MainNav', {fullscreen: true});
     }
 
 });

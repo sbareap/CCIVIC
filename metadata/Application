@@ -31,7 +31,8 @@
         "phoneStartupScreen": null,
         "tabletStartupScreen": null,
         "designer|requires": [
-            "Ext.device.Camera"
+            "Ext.device.Camera",
+            "Ext.device.Connection"
         ]
     },
     "customConfigs": [],
@@ -51,7 +52,11 @@
             "userConfig": {
                 "fn": "launch",
                 "implHandler": [
-                    ""
+                    "if (! Ext.device.Connection.isOnline()) {    \r",
+                    "    Ext.Msg.show({ title: 'Avís:',\r",
+                    "        message: 'Per utilitzar aquesta aplicació és necessari tenir connexió a Internet.',\r",
+                    "        buttons:  [{text : 'Acceptar'}]});\r",
+                    "}"
                 ],
                 "designer|userClassName": "launch"
             },

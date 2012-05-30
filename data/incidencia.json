@@ -1,9 +1,5 @@
 {
-    "incidencia": [
-        {
-            "nom": "",
-			"cognoms": "",
-            
-        }
-    ]
+"incidencia" : [
+	{"inc_Lng":"2.07066599999996","nom":"Silvia","nif":"11111111h","email":"sbareap@uoc.edu","telefon":"","inc_Adreca":"Carrer Joan Maragall, 9","inc_Lat":"41.356779","cognoms":"Barea","inc_Observacions":"Forat a la carretera","inc_Risc":"Si","inc_Foto":"","inc_Tipus":"Forat a la cal&ccedil;ada","inc_Data":"Wed, 30 May 2012 22:36:34 GMT","id":"ext-record-27"}
+]
 }
